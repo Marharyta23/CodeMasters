@@ -1,0 +1,6 @@
+.container {
+    border-radius: 30px;
+    background: var(--accent);
+
+    padding: 24px 16px 32px;
+}
