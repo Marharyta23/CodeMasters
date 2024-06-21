@@ -59,4 +59,7 @@
 }
 
 @media (min-width: 1440px) {
+    .addWaterBtn {
+        margin: 56px 0 0 auto;
+    }
 }
