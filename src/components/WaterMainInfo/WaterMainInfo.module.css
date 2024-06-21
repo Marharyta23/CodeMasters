@@ -3,4 +3,49 @@
     background: var(--accent);
 
     padding: 24px 16px 32px;
+
+    background-image: url("../../img/TrackerPage/bottle-of-water-mob-1x-min.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50px;
+    background-size: 262px 335px;
+
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 32px 32px 64px;
+
+        background-image: url("../../img/TrackerPage/bottle-of-water-tab-1x-min.png");
+        background-position: 50% 69px;
+        background-size: 374px 477px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        background-image: url("../../img/TrackerPage/bottle-of-water-desc-1x-min.png");
+        background-position: 50% 92px;
+        background-size: 472px 604px;
+
+        width: calc((100% - 32px) / 2);
+    }
+}
+
+@media (min-resolution: 192dpi) and (max-width: 767.98px) {
+    .container {
+        background-image: url("../../img/TrackerPage/bottle-of-water-mob-2x-min.png");
+    }
+}
+
+@media (min-resolution: 192dpi) and (min-width: 768px) {
+    .container {
+        background-image: url("../../img/TrackerPage/bottle-of-water-tab-2x-min.png");
+    }
+}
+
+@media (min-resolution: 192dpi) and (min-width: 1440px) {
+    .container {
+        background-image: url("../../img/TrackerPage/bottle-of-water-desc-2x-min.png");
+    }
 }

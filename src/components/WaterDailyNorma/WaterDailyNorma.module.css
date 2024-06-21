@@ -23,3 +23,28 @@
     font-size: 10px;
     line-height: 1;
 }
+
+@media (min-width: 768px) {
+    .dailyNormaContainer {
+        padding: 14px 18px;
+
+        margin-top: 101px;
+
+        max-width: 129px;
+    }
+
+    .dailyNormaNumber {
+        font-size: 15px;
+        line-height: 1.49;
+
+        margin-bottom: 4px;
+    }
+
+    .dailyNormaText {
+        font-size: 12px;
+        line-height: 1.87;
+    }
+}
+
+@media (min-width: 1440px) {
+}

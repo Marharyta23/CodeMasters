@@ -5,7 +5,8 @@
 
     gap: 10px;
 
-    max-width: 140px;
+    min-width: 140px;
+    height: auto;
 
     margin: 42px 0 0 auto;
     padding: 14px 20px;
@@ -41,4 +42,21 @@
 .addWaterBtn:active .addWaterBtnIcon,
 .addWaterBtn:focus .addWaterBtnIcon {
     stroke: var(--accent);
+}
+
+@media (min-width: 768px) {
+    .addWaterBtn {
+        min-width: 178px;
+
+        margin: 26px 0 0 auto;
+        padding: 18px 30px;
+    }
+
+    .addWaterBtnText {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 1440px) {
 }

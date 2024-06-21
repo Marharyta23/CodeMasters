@@ -70,8 +70,7 @@
 }
 
 .barScaleActiveContainer {
-    margin-bottom: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 12px;
 
     width: 100%;
 
@@ -88,4 +87,50 @@
     left: 25%;
 
     transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+    .progressBarContainer {
+        padding: 20px;
+        margin: 87px auto 0;
+
+        max-width: 295px;
+    }
+
+    .progressBarText {
+        font-size: 15px;
+        line-height: 1.49;
+
+        margin-bottom: 0;
+    }
+
+    .barContainer {
+        margin-bottom: 6px;
+
+        height: 8px;
+    }
+
+    .bar {
+        height: 8px;
+    }
+
+    .barScaleText {
+        font-size: 12px;
+        line-height: 1.87;
+    }
+
+    .barScaleActiveContainer {
+        padding-bottom: 18px;
+    }
+
+    .barScaleActiveText {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+}
+
+@media (min-width: 1440px) {
+    .progressBarContainer {
+        margin: 215px auto 0;
+    }
 }
