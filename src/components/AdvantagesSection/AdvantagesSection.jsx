@@ -7,7 +7,9 @@ import css from "./AdvantagesSection.module.css";
 
 const AdvantagesSection = () => {
   return (
-    <section style={{ backgroundImage: "url(/path/to/background.jpg)" }}>
+    // <section style={{ backgroundImage: "url(/path/to/background.jpg)"
+    // }}>
+    <section className={css.advantageSection}>
       <h2 className={css.advatageText}>Our happy customers</h2>
       <ul>
         <li>
