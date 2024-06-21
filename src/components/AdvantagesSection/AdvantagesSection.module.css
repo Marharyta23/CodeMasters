@@ -1,0 +1,19 @@
+.advatageText {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22.4px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+button {
+  border-radius: 30px;
+}
+.advatageBtnFirst {
+  background-color: #323f47;
+  color: var(--main-white);
+}
+.advatageBtnSecond {
+  background-color: var(--accent);
+  color: var(--main-white);
+}

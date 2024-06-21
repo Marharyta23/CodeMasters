@@ -1,3 +1,23 @@
-export default function WelcomeSection() {
-  return <></>;
-}
+// import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../Logo/Logo";
+
+import css from "./WelcomeSection.module.css";
+
+const WelcomeSection = () => {
+  return (
+    <section>
+      <Logo />
+      <h2 className={css.welcomeText}>Record daily water intake and track</h2>
+      <h1 className={css.welcomeHeader}>Water consumption tracker</h1>
+      <Link to="/signup">
+        <button>Try Tracker</button>
+      </Link>
+      <Link to="/signin">
+        <button>Sign In</button>
+      </Link>
+    </section>
+  );
+};
+
+export default WelcomeSection;
