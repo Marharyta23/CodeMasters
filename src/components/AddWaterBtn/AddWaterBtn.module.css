@@ -13,17 +13,43 @@
 
     border: none;
     border-radius: 30px;
+}
+
+.addWaterBtn.gray {
     background: var(--main);
 }
 
-.addWaterBtnIcon {
-    stroke: #fff;
+.addWaterBtn.white {
+    background: none;
+}
 
+.addWaterBtnIcon {
     transition: stroke 0.2s ease-in-out;
 }
 
+.gray .addWaterBtnIcon {
+    stroke: var(--main-white);
+}
+
+.white .addWaterBtnIcon {
+    stroke: var(--main);
+}
+
+.addWaterBtnIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--accent);
+    border-radius: 50%;
+
+    padding: 7px;
+
+    transition: background-color 0.2s ease-in-out;
+}
+
 .addWaterBtnText {
-    color: var(--main-white);
+    font-family: Poppins;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.29;
@@ -32,16 +58,36 @@
     transition: color 0.2s ease-in-out;
 }
 
-.addWaterBtn:hover .addWaterBtnText,
-.addWaterBtn:active .addWaterBtnText,
-.addWaterBtn:focus .addWaterBtnText {
+.gray .addWaterBtnText {
+    color: var(--main-white);
+}
+
+.white .addWaterBtnText {
+    color: var(--main);
+}
+
+.addWaterBtn.gray:hover .addWaterBtnText,
+.addWaterBtn.gray:active .addWaterBtnText,
+.addWaterBtn.gray:focus .addWaterBtnText {
     color: var(--accent);
 }
 
-.addWaterBtn:hover .addWaterBtnIcon,
-.addWaterBtn:active .addWaterBtnIcon,
-.addWaterBtn:focus .addWaterBtnIcon {
+.addWaterBtn.gray:hover .addWaterBtnIcon,
+.addWaterBtn.gray:active .addWaterBtnIcon,
+.addWaterBtn.gray:focus .addWaterBtnIcon {
     stroke: var(--accent);
+}
+
+.addWaterBtn.white:hover .addWaterBtnIcon,
+.addWaterBtn.white:active .addWaterBtnIcon,
+.addWaterBtn.white:focus .addWaterBtnIcon {
+    stroke: var(--main-white);
+}
+
+.addWaterBtn.white:hover .addWaterBtnIconContainer,
+.addWaterBtn.white:active .addWaterBtnIconContainer,
+.addWaterBtn.white:focus .addWaterBtnIconContainer {
+    background-color: var(--main);
 }
 
 @media (min-width: 768px) {
@@ -50,6 +96,11 @@
 
         margin: 26px 0 0 auto;
         padding: 18px 30px;
+    }
+
+    .gray .addWaterBtnIcon {
+        width: 24px;
+        height: 24px;
     }
 
     .addWaterBtnText {

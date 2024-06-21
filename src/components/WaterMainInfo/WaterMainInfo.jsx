@@ -11,7 +11,7 @@ export default function WaterMainInfo() {
             <Logo />
             <WaterDailyNorma />
             <WaterProgressBar />
-            <AddWaterBtn />
+            <AddWaterBtn type="gray" />
         </div>
     );
 }
