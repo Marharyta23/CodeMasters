@@ -27,8 +27,8 @@ Modal.setAppElement("#root");
 export default function ModalWrap({ children }) {
   return (
     <Modal
-      //   isOpen={true} //розкоментовуєте і модалка зʼявиться
-      //   onRequestClose={onClose}
+      isOpen={true} //розкоментовуєте і модалка зʼявиться
+      onRequestClose={onClose}
       style={customStyles}
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}

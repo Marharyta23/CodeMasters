@@ -1,0 +1,81 @@
+.modalContent {
+    width: 516px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.10);
+}
+
+.modalTitle {
+    color: var(--main);
+    text-align: center;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    /* 114.286% */
+    letter-spacing: -0.28px;
+}
+
+.modalText {
+    color: #323F47;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+    letter-spacing: -0.18px;
+}
+
+.modalBtnWrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modalButton {
+    border-radius: 30px;
+    background: var(--accent);
+    display: flex;
+    width: 170px;
+    padding: 18px 67px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--main);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 150% */
+    letter-spacing: -0.16px;
+    border: none;
+}
+
+.modalBtnCancel {
+    display: flex;
+    padding: 18px 59px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: #F0EFF4;
+    color: rgba(50, 63, 71, 0.30);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 150% */
+    letter-spacing: -0.16px;
+    border: none;
+}
+
+.modalContentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
