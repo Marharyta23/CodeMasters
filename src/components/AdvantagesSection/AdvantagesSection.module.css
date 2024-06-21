@@ -9,12 +9,43 @@
 
   background: var(--background); /* add url img for background*/
 }
+
+.advantageWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 534px;
+}
+.customersWrapper {
+  height: 67px;
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 132px;
+}
 .advatageText {
   font-size: 15px;
   font-weight: 700;
   line-height: 22.4px;
   letter-spacing: 0%;
   text-align: left;
+}
+.advatageTextAccent {
+  color: var(--accent);
+}
+.advatageBtnWrappeer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  width: 242px;
 }
 button {
   border-radius: 30px;
@@ -23,17 +54,30 @@ button {
 .advatageBtnFirst {
   background-color: #323f47;
   color: var(--main-white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: -1%;
+  text-align: center;
+  border: none;
 }
 .advatageBtnSecond {
   background-color: var(--accent);
-  color: var(--main-white);
+  color: var(--main);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: -1%;
+  text-align: center;
+  border: none;
 }
 .advatageBtnThird {
-  background-color: var(--accent);
+  background-color: var(--main-white);
   color: rgb(50, 63, 71);
   font-size: 12px;
   font-weight: 700;
   line-height: 12px;
   letter-spacing: -1%;
   text-align: center;
+  border: none;
 }
