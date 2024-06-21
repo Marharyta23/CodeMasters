@@ -1,0 +1,39 @@
+.advantageSection {
+  width: 672px;
+  height: 736px;
+  padding-left: 64px;
+  left: 32px;
+  top: 32px;
+  border-radius: 30px;
+  margin-left: 32px;
+
+  background: var(--background); /* add url img for background*/
+}
+.advatageText {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22.4px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+button {
+  border-radius: 30px;
+  height: 34px;
+}
+.advatageBtnFirst {
+  background-color: #323f47;
+  color: var(--main-white);
+}
+.advatageBtnSecond {
+  background-color: var(--accent);
+  color: var(--main-white);
+}
+.advatageBtnThird {
+  background-color: var(--accent);
+  color: rgb(50, 63, 71);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: -1%;
+  text-align: center;
+}
