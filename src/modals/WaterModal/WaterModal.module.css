@@ -1,0 +1,41 @@
+.wrapper {
+    width: 343px;
+    min-height: 490px;
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 40px 20px;
+
+    @media screen and (min-width: 768px) {
+        width: 518px;
+        min-height: 555px;
+        padding: 40px 40px;
+    }
+}
+
+.title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    max-width: 248px;
+    font-family: Poppins;
+
+    @media screen and (min-width: 768px) {
+        font-size: 28px;
+        line-height: 32px;
+        max-width: 347px;
+    }
+}
+
+.subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-family: Poppins;
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
