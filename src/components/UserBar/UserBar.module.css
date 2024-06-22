@@ -1,0 +1,67 @@
+.userBarContainer {
+    max-width: 137px;
+
+    position: relative;
+}
+
+.userBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 6px 12px;
+
+    width: 100%;
+
+    border: none;
+    border-radius: 30px;
+    background: var(--main);
+}
+
+.userBarName {
+    color: var(--main-white);
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+}
+
+.userBarIcon {
+    fill: none;
+    stroke: var(--main-white);
+
+    transform: rotate(180deg);
+
+    transition: transform 0.2s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .userBarContainer {
+        max-width: 157px;
+    }
+
+    .userBar {
+        gap: 10px;
+    }
+
+    .userBarName {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .userBarImage {
+        width: 44px;
+        height: 44px;
+    }
+
+    .userBarIcon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 1440px) {
+}
