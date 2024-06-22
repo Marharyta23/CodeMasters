@@ -1,4 +1,4 @@
-// import { useSelector } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
 import UserBarPopover from "../UserBarPopover/UserBarPopover";
 import css from "./UserBar.module.css";
@@ -8,10 +8,18 @@ export default function UserBar({ user }) {
         user = "User";
     }
 
+    // const dispatch = useDispatch();
+
     // const user = useSelector((state) => state.userName);
+    // const isVisible = useSelector((state) => state.popover);
+
+    // const handleClick = () => {
+    //     dispatch(togglePopover());
+    // };
 
     return (
         <div className={css.userBarContainer}>
+            {/* <button type="button" className={css.userBar} onClick={handleClick}> */}
             <button type="button" className={css.userBar}>
                 <p className={css.userBarName}>{user}</p>
 
