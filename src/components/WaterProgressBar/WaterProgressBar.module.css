@@ -33,7 +33,7 @@
     background: var(--accent);
 
     height: 6px;
-    width: 25%;
+    width: 0%;
 
     position: relative;
 }
@@ -84,7 +84,7 @@
 
     position: absolute;
     top: 0;
-    left: 25%;
+    left: 0%;
 
     transform: translateX(-50%);
 }
