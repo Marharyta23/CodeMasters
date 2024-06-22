@@ -1,0 +1,116 @@
+.addWaterBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-width: 140px;
+    height: auto;
+
+    margin: 42px 0 0 auto;
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: 30px;
+}
+
+.addWaterBtn.gray {
+    background: var(--main);
+}
+
+.addWaterBtn.white {
+    background: none;
+}
+
+.addWaterBtnIcon {
+    transition: stroke 0.2s ease-in-out;
+}
+
+.gray .addWaterBtnIcon {
+    stroke: var(--main-white);
+}
+
+.white .addWaterBtnIcon {
+    stroke: var(--main);
+}
+
+.addWaterBtnIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--accent);
+    border-radius: 50%;
+
+    padding: 7px;
+
+    transition: background-color 0.2s ease-in-out;
+}
+
+.addWaterBtnText {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+
+    transition: color 0.2s ease-in-out;
+}
+
+.gray .addWaterBtnText {
+    color: var(--main-white);
+}
+
+.white .addWaterBtnText {
+    color: var(--main);
+}
+
+.addWaterBtn.gray:hover .addWaterBtnText,
+.addWaterBtn.gray:active .addWaterBtnText,
+.addWaterBtn.gray:focus .addWaterBtnText {
+    color: var(--accent);
+}
+
+.addWaterBtn.gray:hover .addWaterBtnIcon,
+.addWaterBtn.gray:active .addWaterBtnIcon,
+.addWaterBtn.gray:focus .addWaterBtnIcon {
+    stroke: var(--accent);
+}
+
+.addWaterBtn.white:hover .addWaterBtnIcon,
+.addWaterBtn.white:active .addWaterBtnIcon,
+.addWaterBtn.white:focus .addWaterBtnIcon {
+    stroke: var(--main-white);
+}
+
+.addWaterBtn.white:hover .addWaterBtnIconContainer,
+.addWaterBtn.white:active .addWaterBtnIconContainer,
+.addWaterBtn.white:focus .addWaterBtnIconContainer {
+    background-color: var(--main);
+}
+
+@media (min-width: 768px) {
+    .addWaterBtn {
+        min-width: 178px;
+
+        margin: 26px 0 0 auto;
+        padding: 18px 30px;
+    }
+
+    .gray .addWaterBtnIcon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .addWaterBtnText {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 1440px) {
+    .addWaterBtn {
+        margin: 56px 0 0 auto;
+    }
+}
