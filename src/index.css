@@ -15,6 +15,11 @@
   --main-white: #fff;
 }
 
+@font-face {
+  font-family: "Gilroy";
+  src: url("./fonts/Gilroy-Regular.ttf") format("ttf");
+}
+
 /* Reset styles */
 h1,
 h2,
