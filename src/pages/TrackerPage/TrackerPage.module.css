@@ -1,0 +1,17 @@
+.tracker {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1440px) {
+    .tracker {
+        flex-direction: row;
+
+        gap: 32px;
+    }
+}
