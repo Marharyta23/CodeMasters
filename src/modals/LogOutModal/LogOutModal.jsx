@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Modal from "react-modal";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { clearStore } from "./redux/actions";
-import "./Modal.css";
+// import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
+// import axios from "axios";
+// import { clearStore } from "./redux/actions";
+import css from "../DeleteWaterModal/DeleteWaterModal.module.css";
 
 Modal.setAppElement("#root");
 
@@ -12,17 +12,17 @@ const LogOutModal = ({ isOpen, onClose }) => {
   // const dispatch = useDispatch();
   // const history = useHistory();
 
-  // const handleLogOut = async () => {
-  //   try {
-  //     await axios.post("/api/logout");
-  //   } catch (error) {
-  //     console.error("Error logging out:", error);
-  //   } finally {
-  //     dispatch(clearStore());
-  //     localStorage.clear();
-  //     history.push("/");
-  //   }
-  // };
+  const handleLogOut = async () => {
+    // try {
+    //   await axios.post("/api/logout");
+    // } catch (error) {
+    //   console.error("Error logging out:", error);
+    // } finally {
+    //   dispatch(clearStore());
+    //   localStorage.clear();
+    //   history.push("/");
+    // }
+  };
 
   useEffect(() => {
     const handleEscape = (event) => {
@@ -43,17 +43,22 @@ const LogOutModal = ({ isOpen, onClose }) => {
       <Modal
         isOpen={isOpen}
         onRequestClose={onClose}
-        className="modal-content"
+        className={css.modalContent}
         overlayClassName="modal-backdrop"
+        style={customStyles}
       >
-        <h2>Log out</h2>
-        <p>Do you really want to leave?</p>
-        <button className="modal-button" onClick={handleLogOut}>
-          Log out
-        </button>
-        <button className="modal-button" onClick={onClose}>
-          Cancel
-        </button>
+        <div className={css.modalContentWrapper}>
+          <h2 className={css.modalTitle}>Log out</h2>
+          <p className={css.modalText}>Do you really want to leave?</p>
+          <div className={css.modalBtnWrapper}>
+            <button className={css.modalBtn} onClick={handleLogOut}>
+              Log out
+            </button>
+            <button className={css.modalBtnCancel} onClick={onClose}>
+              Cancel
+            </button>
+          </div>
+        </div>
       </Modal>
     </div>
   );
