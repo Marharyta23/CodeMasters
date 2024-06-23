@@ -1,0 +1,136 @@
+.progressBarContainer {
+    border-radius: 15px;
+    background: var(--main-white);
+    box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+
+    padding: 12px;
+    margin: 49px auto 0;
+
+    max-width: 198px;
+}
+
+.progressBarText {
+    color: var(--main);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+
+    margin-bottom: 8px;
+}
+
+.barContainer {
+    border-radius: 9px;
+    background: var(--background);
+
+    margin-bottom: 8px;
+
+    width: 100%;
+    height: 6px;
+}
+
+.bar {
+    border-radius: 9px;
+    background: var(--accent);
+
+    height: 6px;
+    width: 0%;
+
+    position: relative;
+}
+
+.bar::after {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    transform: translate(50%, -50%);
+
+    display: block;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    background: var(--main-white);
+}
+
+.barScaleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.barScaleText {
+    color: rgba(47, 47, 47, 0.6);
+    font-size: 10px;
+    line-height: 1;
+}
+
+.barScaleActiveContainer {
+    padding-bottom: 12px;
+
+    width: 100%;
+
+    position: relative;
+}
+
+.barScaleActiveText {
+    color: var(--accent);
+    font-size: 8px;
+    line-height: 1;
+
+    position: absolute;
+    top: 0;
+    left: 0%;
+
+    transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+    .progressBarContainer {
+        padding: 20px;
+        margin: 87px auto 0;
+
+        max-width: 295px;
+    }
+
+    .progressBarText {
+        font-size: 15px;
+        line-height: 1.49;
+
+        margin-bottom: 0;
+    }
+
+    .barContainer {
+        margin-bottom: 6px;
+
+        height: 8px;
+    }
+
+    .bar {
+        height: 8px;
+    }
+
+    .barScaleText {
+        font-size: 12px;
+        line-height: 1.87;
+    }
+
+    .barScaleActiveContainer {
+        padding-bottom: 18px;
+    }
+
+    .barScaleActiveText {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+}
+
+@media (min-width: 1440px) {
+    .progressBarContainer {
+        margin: 215px auto 0;
+    }
+}

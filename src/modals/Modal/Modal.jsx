@@ -28,7 +28,7 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-export default function ModalWrap({ children }) {
+export default function ModalWrap({ children, content }) {
   return (
     <Modal
       // isOpen={true} //розкоментовуєте і модалка зʼявиться
@@ -36,6 +36,7 @@ export default function ModalWrap({ children }) {
       style={customStyles}
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
+      content={content}
     >
       {children}
     </Modal>
