@@ -1,26 +1,27 @@
-// import { useSelector, useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import UserBarPopover from "../UserBarPopover/UserBarPopover";
 import css from "./UserBar.module.css";
+
+import { togglePopover } from "../../redux/popover/slice";
 
 export default function UserBar({ user }) {
     if (!user) {
         user = "User";
     }
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     // const user = useSelector((state) => state.userName);
-    // const isVisible = useSelector((state) => state.popover);
 
-    // const handleClick = () => {
-    //     dispatch(togglePopover());
-    // };
+    const handleClick = () => {
+        dispatch(togglePopover());
+    };
 
     return (
         <div className={css.userBarContainer}>
-            {/* <button type="button" className={css.userBar} onClick={handleClick}> */}
-            <button type="button" className={css.userBar}>
+            <button type="button" className={css.userBar} onClick={handleClick}>
                 <p className={css.userBarName}>{user}</p>
 
                 <img src="" alt="avatar" className={css.userBarImage} width="38" height="38" />
