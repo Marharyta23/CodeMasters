@@ -8,7 +8,10 @@ const customStyles = {
     right: 0,
     bottom: 0,
     border: "none",
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: "rgba(47, 47, 47, 0.60)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   content: {
     top: "50%",
@@ -18,7 +21,8 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     border: "none",
-    backgroundColor: "transparent",
+    backgroundColor: "var(--main-white)",
+    overflow: "auto",
   },
 };
 
@@ -28,7 +32,7 @@ export default function ModalWrap({ children, content }) {
   return (
     <Modal
       // isOpen={true} //розкоментовуєте і модалка зʼявиться
-      //   onRequestClose={onClose}
+      // onRequestClose={onClose}
       style={customStyles}
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
