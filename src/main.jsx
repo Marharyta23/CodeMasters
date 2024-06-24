@@ -12,11 +12,11 @@ import store from "./redux/store.js";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <Provider> */}
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-      {/* </Provider> */}
+      <Provider store={store}>
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
