@@ -1,29 +1,32 @@
 import React, { useEffect } from "react";
 import Modal from "react-modal";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-// import { updateWaterData } from "./redux/actions";
+import {
+  deleteWater,
+  fetchWaterData,
+} from "../../redux/deleteWater/deleteWaterSlice";
 import css from "./DeleteWaterModal.module.css";
 
 Modal.setAppElement("#root");
 
 const DeleteWaterModal = ({ isOpen, onClose, waterId }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    // try {
-    //   const response = await axios.delete(`/api/water/${waterId}`);
-    //   if (response.status === 200) {
-    //     toast.success("Record deleted successfully");
-    //     dispatch(updateWaterData());
-    //     onClose();
-    //   } else {
-    //     throw new Error("Failed to delete record");
-    //   }
-    // } catch (error) {
-    //   toast.error("Error deleting record: " + error.message);
-    // }
+    try {
+      const resultAction = await dispatch(deleteWater(waterId));
+      if (deleteWater.fulfilled.match(resultAction)) {
+        toast.success("Record deleted successfully");
+        dispatch(fetchWaterData());
+        onClose();
+      } else {
+        throw new Error(resultAction.payload || "Failed to delete record");
+      }
+    } catch (error) {
+      toast.error("Error deleting record: " + error.message);
+    }
   };
 
   useEffect(() => {
@@ -40,31 +43,31 @@ const DeleteWaterModal = ({ isOpen, onClose, waterId }) => {
     };
   }, [onClose]);
 
-  // const customStyles = {
-  //   overlay: {
-  //     position: "fixed",
-  //     top: 0,
-  //     left: 0,
-  //     right: 0,
-  //     bottom: 0,
-  //     border: "none",
-  //     backgroundColor: "rgba(47, 47, 47, 0.60)",
-  //     display: "flex",
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //   },
-  //   content: {
-  //     top: "50%",
-  //     left: "50%",
-  //     right: "auto",
-  //     bottom: "auto",
-  //     marginRight: "-50%",
-  //     transform: "translate(-50%, -50%)",
-  //     border: "none",
-  //     backgroundColor: "var(--main-white)",
-  //     overflow: "auto",
-  //   },
-  // };
+  const customStyles = {
+    overlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      border: "none",
+      backgroundColor: "rgba(47, 47, 47, 0.60)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      border: "none",
+      backgroundColor: "var(--main-white)",
+      overflow: "auto",
+    },
+  };
 
   return (
     <div>
