@@ -45,7 +45,7 @@ const SignUpForm = () => {
   };
 
   const onSubmit = (data) => {
-    data.preventDefault();
+    // data.preventDefault();
 
     dispatch(
       register({
@@ -54,11 +54,13 @@ const SignUpForm = () => {
       })
     )
       .unwrap()
-      .then(() => {
+      .then((response) => {
+        console.log("Registration successful:", response);
         navigate("/tracker");
       })
       .catch((error) => {
-        alert(error);
+        console.error("Registration error:", error);
+        alert(error.message);
       });
   };
 
