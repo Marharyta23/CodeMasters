@@ -42,6 +42,7 @@ export default function WaterList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedWaterRecord, setSelectedWaterRecord] = useState(null);
 
   const handleOpenEditModal = (waterRecord) => {
     setSelectedWaterRecord(waterRecord);
