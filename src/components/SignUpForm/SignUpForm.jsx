@@ -45,7 +45,7 @@ const SignUpForm = () => {
   };
 
   const onSubmit = (data) => {
-    data.preventDefault();
+    // data.preventDefault();
 
     dispatch(
       register({
@@ -58,7 +58,7 @@ const SignUpForm = () => {
         navigate("/tracker");
       })
       .catch((error) => {
-        alert(error);
+        alert(error.message);
       });
   };
 
