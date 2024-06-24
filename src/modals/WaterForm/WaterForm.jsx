@@ -1,17 +1,18 @@
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import css from "../WaterForm/WaterForm.module.css";
 
-// const schema = yup.object().shape({
-//   time: yup.string().required("Please, enter the recorded time"),
-//   amount: yup
-//     .number()
-//     .min(1, "Amount of water must be more than 1 ml")
-//     .max(5000, "Amount of water must be less than 5000 ml")
-//     .typeError("Enter a valid amount of water in ml")
-//     .required("Value is required"),
-// });
+const schema = yup.object().shape({
+  time: yup.string().required("Please, enter the recorded time"),
+  amount: yup
+    .number()
+    .min(1, "Amount of water must be more than 1 ml")
+    .max(5000, "Amount of water must be less than 5000 ml")
+    .typeError("Enter a valid amount of water in ml")
+    .required("Value is required"),
+});
 
 function getCurrentTime() {
   const now = new Date();
@@ -20,14 +21,25 @@ function getCurrentTime() {
   // let seconds = String(now.getSeconds()).padStart(2, "0");
   return `${hours}:${minutes}`;
 }
+
 const currentTime = getCurrentTime();
 
+const defaultValues = {
+  time: currentTime,
+  amount: 50,
+};
+
 export default function WaterForm({ content }) {
-  const { register, setValue, getValues, watch, handleSubmit } = useForm({
-    defaultValues: {
-      time: currentTime,
-      amount: 50,
-    },
+  const {
+    register,
+    setValue,
+    getValues,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues,
   });
 
   const handleDerementWaterAmount = () => {
