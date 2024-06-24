@@ -9,8 +9,10 @@ export default function SignInPage() {
   return (
     <div className={css.SignInPageWrapper}>
       <DocumentTitle>Sign In</DocumentTitle>
-      <Logo />
-      <SignInForm />
+      <div className={css.SignInPageSection}>
+        <Logo />
+        <SignInForm />/
+      </div>
       <AdvantagesSection />
     </div>
   );
