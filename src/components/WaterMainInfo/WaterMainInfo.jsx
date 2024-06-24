@@ -6,12 +6,12 @@ import Logo from "../Logo/Logo";
 import css from "./WaterMainInfo.module.css";
 
 export default function WaterMainInfo() {
-    return (
-        <div className={css.container}>
-            <Logo />
-            <WaterDailyNorma />
-            <WaterProgressBar />
-            <AddWaterBtn type="gray" />
-        </div>
-    );
+  return (
+    <div className={css.container}>
+      <Logo />
+      <WaterDailyNorma />
+      <WaterProgressBar />
+      <AddWaterBtn type="gray" />
+    </div>
+  );
 }
