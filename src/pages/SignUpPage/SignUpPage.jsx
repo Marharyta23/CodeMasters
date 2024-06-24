@@ -9,8 +9,10 @@ export default function SignUpPage() {
   return (
     <div className={css.SignUpPageWrapper}>
       <DocumentTitle>Sign Up</DocumentTitle>
-      <Logo />
-      <SignUpForm />
+      <div className={css.SignUpPageSection}>
+        <Logo />
+        <SignUpForm />
+      </div>
       <AdvantagesSection />
     </div>
   );
