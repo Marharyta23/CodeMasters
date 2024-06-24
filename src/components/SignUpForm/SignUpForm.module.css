@@ -18,6 +18,7 @@
 }
 
 .signUpFormInput {
+  position: relative;
   width: 436px;
   height: 56px;
   box-sizing: border-box;
@@ -32,6 +33,19 @@
   letter-spacing: -1%;
   text-align: left;
 }
+
+/* .signUpInputBtn {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+} */
 .signUpFormBtn {
   margin-top: 32px;
   background-color: var(--accent);
@@ -48,4 +62,10 @@
   text-decoration: underline;
   color: var(--main-color);
   font-weight: 700;
+}
+
+/*icons*/
+.passwordToggleIcon {
+  width: 20px;
+  height: 20px;
 }
