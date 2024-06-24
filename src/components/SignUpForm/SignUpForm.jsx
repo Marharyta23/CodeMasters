@@ -54,10 +54,12 @@ const SignUpForm = () => {
       })
     )
       .unwrap()
-      .then(() => {
+      .then((response) => {
+        console.log("Registration successful:", response);
         navigate("/tracker");
       })
       .catch((error) => {
+        console.error("Registration error:", error);
         alert(error.message);
       });
   };
