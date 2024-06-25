@@ -1,3 +1,4 @@
-export const selectItems = (state) => state.updateWater.items;
-export const selectIsLoading = (state) => state.updateWater.isLoading;
-export const selectIsError = (state) => state.updateWater.isError;
+export const selectUpdateWaterItems = (state) => state.updateWater.items;
+export const selectUpdateWaterIsLoading = (state) =>
+  state.updateWater.isLoading;
+export const selectUpdateWaterIsError = (state) => state.updateWater.isError;
