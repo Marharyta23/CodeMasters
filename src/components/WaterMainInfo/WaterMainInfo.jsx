@@ -10,6 +10,14 @@ import WaterModal from "../../modals/WaterModal/WaterModal";
 
 export default function WaterMainInfo() {
   const [modalState, setModalState] = useState({ isOpen: false, content: "" });
+  return (
+    <div className={css.container}>
+      <Logo />
+      <WaterDailyNorma />
+      <WaterProgressBar />
+      <AddWaterBtn type="gray" />
+    </div>
+  );
 
   const handleClick = (content) => {
     setModalState({ isOpen: true, content: content });

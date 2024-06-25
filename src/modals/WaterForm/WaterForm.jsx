@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { useEffect } from "react";
 import css from "../WaterForm/WaterForm.module.css";
+
 
 const schema = yup.object().shape({
   time: yup.string().required("Please, enter the recorded time"),
@@ -29,7 +30,7 @@ const defaultValues = {
   amount: 50,
 };
 
-export default function WaterForm({ content }) {
+export default function WaterForm({ selectedWaterRecord }) {
   const {
     register,
     setValue,
@@ -41,6 +42,20 @@ export default function WaterForm({ content }) {
     resolver: yupResolver(schema),
     defaultValues,
   });
+
+  useEffect(() => {
+    if (selectedWaterRecord) {
+      const date = new Date(selectedWaterRecord.date);
+      const formattedTime = date.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+
+      setValue("time", formattedTime);
+      setValue("amount", selectedWaterRecord.amountWater);
+    }
+  }, [selectedWaterRecord, setValue]);
 
   const handleDerementWaterAmount = () => {
     const currentValue = getValues("amount");
@@ -90,7 +105,7 @@ export default function WaterForm({ content }) {
           <span className={css.timeSpan}> Recording time:</span>
           <input
             className={css.input}
-            type="number"
+            type="text"
             name="time"
             {...register("time")}
           />

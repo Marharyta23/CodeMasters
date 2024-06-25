@@ -2,7 +2,7 @@ import WaterForm from "../WaterForm/WaterForm.jsx";
 
 import css from "../WaterModal/WaterModal.module.css";
 
-export default function WaterModal({ content }) {
+export default function WaterModal({ content, waterRecord }) {
   let title, subtitle;
   if (content === "Add") {
     title = "Add water";
@@ -17,7 +17,7 @@ export default function WaterModal({ content }) {
     <div className={css.wrapper}>
       <h2 className={css.formTitle}>{title}</h2>
       <p className={css.subtitle}>{subtitle}</p>
-      <WaterForm content={content} />
+      <WaterForm selectedWaterRecord={waterRecord} />
     </div>
   );
 }
