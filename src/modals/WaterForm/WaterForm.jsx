@@ -82,7 +82,7 @@ export default function WaterForm({ selectedWaterRecord }) {
           onClick={handleDerementWaterAmount}
         >
           <svg className={css.icon} width="14" height="14">
-            <use href="../../../src/img/icons.svg#icon-minus"></use>
+            <use href="./src/img/icons.svg#icon-minus"></use>
           </svg>
         </button>
 
@@ -95,7 +95,7 @@ export default function WaterForm({ selectedWaterRecord }) {
           onClick={handleIncrementWaterAmount}
         >
           <svg className={css.icon} width="14" height="14">
-            <use href="../../../src/img/icons.svg#icon-plus"></use>
+            <use href="./src/img/icons.svg#icon-plus"></use>
           </svg>
         </button>
       </div>

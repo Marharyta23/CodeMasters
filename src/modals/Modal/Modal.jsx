@@ -9,7 +9,6 @@ export default function ModalWrap({
   content,
   isOpen,
   onRequestClose,
-  closeModal,
 }) {
   return (
     <Modal

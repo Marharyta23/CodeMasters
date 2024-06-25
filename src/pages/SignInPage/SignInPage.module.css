@@ -1,3 +1,10 @@
 .SignInPageWrapper {
   display: flex;
 }
+.SignInPageSection {
+  width: 672px;
+  height: 736px;
+  padding: 32px 32px 64px;
+  border-radius: 30px;
+  background: var(--background);
+}
