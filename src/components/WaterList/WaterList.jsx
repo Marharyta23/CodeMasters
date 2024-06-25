@@ -1,5 +1,4 @@
 import { useState } from "react";
-import WaterForm from "../../modals/WaterForm/WaterForm";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import css from "./WaterList.module.css";
 import ModalWrap from "../../modals/Modal/Modal";
@@ -114,7 +113,8 @@ export default function WaterList() {
               <div className={css.dailyInfo__rightContainer}>
                 <button
                   className={css.dailyInfo__iconButton}
-                  onClick={() => handleOpenEditModal(waterRecord)}
+                  // onClick={() => handleOpenEditModal(waterRecord)}
+                  onClick={() => handleClick("Edit")}
                 >
                   <FaEdit />
                 </button>
@@ -130,16 +130,9 @@ export default function WaterList() {
         })}
       </ul>
 
-      {modalState && (
-        <ModalWrap
-          isOpen={modalState.isOpen}
-          onRequestClose={closeEditModal}
-          contentLabel="Edit Water Record"
-        >
-          <WaterModal
-            content={modalState.content}
-            waterRecord={selectedWaterRecord}
-          />
+      {modalState.isOpen && (
+        <ModalWrap isOpen={modalState.isOpen} onRequestClose={handleClose}>
+          <WaterModal content={modalState.content} />
         </ModalWrap>
       )}
     </div>
