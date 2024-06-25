@@ -45,3 +45,8 @@
   color: var(--main-color);
   font-weight: 700;
 }
+/*icon*/
+.passwordToggleIcon {
+  width: 20px;
+  height: 20px;
+}

@@ -25,6 +25,7 @@ const SignUpForm = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
 
+  // Використання react-hook-form для управління формою
   const {
     register: registerInput,
     handleSubmit,
@@ -32,7 +33,7 @@ const SignUpForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
+  // Показ та приховування паролю та повторного паролю
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
@@ -44,6 +45,7 @@ const SignUpForm = () => {
     setShowRepeatPassword(!showRepeatPassword);
   };
 
+  // Обробник подання форми
   const onSubmit = (data) => {
     // data.preventDefault();
 
