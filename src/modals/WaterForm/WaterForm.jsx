@@ -1,17 +1,19 @@
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { useEffect } from "react";
 import css from "../WaterForm/WaterForm.module.css";
 
-// const schema = yup.object().shape({
-//   time: yup.string().required("Please, enter the recorded time"),
-//   amount: yup
-//     .number()
-//     .min(1, "Amount of water must be more than 1 ml")
-//     .max(5000, "Amount of water must be less than 5000 ml")
-//     .typeError("Enter a valid amount of water in ml")
-//     .required("Value is required"),
-// });
+
+const schema = yup.object().shape({
+  time: yup.string().required("Please, enter the recorded time"),
+  amount: yup
+    .number()
+    .min(1, "Amount of water must be more than 1 ml")
+    .max(5000, "Amount of water must be less than 5000 ml")
+    .typeError("Enter a valid amount of water in ml")
+    .required("Value is required"),
+});
 
 function getCurrentTime() {
   const now = new Date();
@@ -20,15 +22,40 @@ function getCurrentTime() {
   // let seconds = String(now.getSeconds()).padStart(2, "0");
   return `${hours}:${minutes}`;
 }
+
 const currentTime = getCurrentTime();
 
-export default function WaterForm({ content }) {
-  const { register, setValue, getValues, watch, handleSubmit } = useForm({
-    defaultValues: {
-      time: currentTime,
-      amount: 50,
-    },
+const defaultValues = {
+  time: currentTime,
+  amount: 50,
+};
+
+export default function WaterForm({ selectedWaterRecord }) {
+  const {
+    register,
+    setValue,
+    getValues,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues,
   });
+
+  useEffect(() => {
+    if (selectedWaterRecord) {
+      const date = new Date(selectedWaterRecord.date);
+      const formattedTime = date.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+
+      setValue("time", formattedTime);
+      setValue("amount", selectedWaterRecord.amountWater);
+    }
+  }, [selectedWaterRecord, setValue]);
 
   const handleDerementWaterAmount = () => {
     const currentValue = getValues("amount");
@@ -55,7 +82,7 @@ export default function WaterForm({ content }) {
           onClick={handleDerementWaterAmount}
         >
           <svg className={css.icon} width="14" height="14">
-            <use href="../../../src/img/icons.svg#icon-minus"></use>
+            <use href="./src/img/icons.svg#icon-minus"></use>
           </svg>
         </button>
 
@@ -68,7 +95,7 @@ export default function WaterForm({ content }) {
           onClick={handleIncrementWaterAmount}
         >
           <svg className={css.icon} width="14" height="14">
-            <use href="../../../src/img/icons.svg#icon-plus"></use>
+            <use href="./src/img/icons.svg#icon-plus"></use>
           </svg>
         </button>
       </div>
@@ -78,7 +105,7 @@ export default function WaterForm({ content }) {
           <span className={css.timeSpan}> Recording time:</span>
           <input
             className={css.input}
-            type="number"
+            type="text"
             name="time"
             {...register("time")}
           />

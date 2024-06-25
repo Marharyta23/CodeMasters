@@ -9,28 +9,36 @@ import ModalWrap from "../../modals/Modal/Modal";
 import WaterModal from "../../modals/WaterModal/WaterModal";
 
 export default function WaterMainInfo() {
-    const [modalState, setModalState] = useState({ isOpen: false, content: "" });
+  const [modalState, setModalState] = useState({ isOpen: false, content: "" });
+  return (
+    <div className={css.container}>
+      <Logo />
+      <WaterDailyNorma />
+      <WaterProgressBar />
+      <AddWaterBtn type="gray" />
+    </div>
+  );
 
-    const handleClick = (content) => {
-        setModalState({ isOpen: true, content: content });
-    };
+  const handleClick = (content) => {
+    setModalState({ isOpen: true, content: content });
+  };
 
-    const handleClose = () => {
-        setModalState({ isOpen: false, content: "" });
-    };
+  const handleClose = () => {
+    setModalState({ isOpen: false, content: "" });
+  };
 
-    return (
-        <div className={css.container}>
-            <Logo />
-            <WaterDailyNorma />
-            <WaterProgressBar />
-            <AddWaterBtn type="gray" onClick={() => handleClick("Add")} />
+  return (
+    <div className={css.container}>
+      <Logo />
+      <WaterDailyNorma />
+      <WaterProgressBar />
+      <AddWaterBtn type="gray" onClick={() => handleClick("Add")} />
 
-            {modalState.isOpen && (
-                <ModalWrap isOpen={modalState.isOpen} onRequestClose={handleClose}>
-                    <WaterModal content={modalState.content} />
-                </ModalWrap>
-            )}
-        </div>
-    );
+      {modalState.isOpen && (
+        <ModalWrap isOpen={modalState.isOpen} onRequestClose={handleClose}>
+          <WaterModal content={modalState.content} />
+        </ModalWrap>
+      )}
+    </div>
+  );
 }
