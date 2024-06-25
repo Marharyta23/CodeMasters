@@ -5,7 +5,6 @@ import css from "./WaterList.module.css";
 import ModalWrap from "../../modals/Modal/Modal";
 import WaterModal from "../../modals/WaterModal/WaterModal";
 
-
 //const { monthStats, waterRecords } = useWater();
 //teest
 const waterRecords = [
@@ -69,65 +68,80 @@ export default function WaterList() {
     console.log("Form Submitted:", values);
     closeEditModal();
   };
+  //==============
+
+  const handleClick = (content) => {
+    setModalState({ isOpen: true, content: content });
+  };
+
+  const handleClose = () => {
+    setModalState({ isOpen: false, content: "" });
+  };
+  //================
 
   if (!waterRecords || waterRecords.length === 0) return;
 
   return (
     <div>
-    <ul className={css.dailyInfo__StyledListAddWater}>
-      {waterRecords.map((waterRecord) => {
-        const date = new Date(waterRecord.date);
-        const formattedTime = date.toLocaleTimeString("en-US", {
-          hour: "numeric",
-          minute: "2-digit",
-          hour12: true,
-        });
-        // const hours = date.getUTCHours();
-        // const minutes = date.getUTCMinutes();
-        // const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-        // const formattedHours = hours < 10 ? "0" + hours : hours;
+      <ul className={css.dailyInfo__StyledListAddWater}>
+        {waterRecords.map((waterRecord) => {
+          const date = new Date(waterRecord.date);
+          const formattedTime = date.toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+          });
+          // const hours = date.getUTCHours();
+          // const minutes = date.getUTCMinutes();
+          // const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+          // const formattedHours = hours < 10 ? "0" + hours : hours;
 
-        return (
-          <li key={waterRecord._id} className={css.dailyInfo__listItem}>
-            <div className={css.dailyInfo__leftContainer}>
-              <div className={css.dailyInfo__Icon}>
-                <svg>
-                  <use href="../../src/img/icons.svg#icon-plus"></use>
-                </svg>
+          return (
+            <li key={waterRecord._id} className={css.dailyInfo__listItem}>
+              <div className={css.dailyInfo__leftContainer}>
+                <div className={css.dailyInfo__Icon}>
+                  <svg>
+                    <use href="../../src/img/icons.svg#icon-plus"></use>
+                  </svg>
+                </div>
+                <div className={css.dailyInfo__dataContainer}>
+                  <span className={css.dailyInfo__water}>
+                    {waterRecord.amountWater} ml
+                  </span>
+                  <span className={css.dailyInfo__time}>{formattedTime}</span>
+                </div>
               </div>
-              <div className={css.dailyInfo__dataContainer}>
-                <span className={css.dailyInfo__water}>
-                  {waterRecord.amountWater} ml
-                </span>
-                <span className={css.dailyInfo__time}>{formattedTime}</span>
+              <div className={css.dailyInfo__rightContainer}>
+                <button
+                  className={css.dailyInfo__iconButton}
+                  onClick={() => handleOpenEditModal(waterRecord)}
+                >
+                  <FaEdit />
+                </button>
+                <button
+                  className={css.dailyInfo__iconButton}
+                  onClick={() => {}}
+                >
+                  <FaTrash />
+                </button>
               </div>
-            </div>
-            <div className={css.dailyInfo__rightContainer}>
-              <button
-                className={css.dailyInfo__iconButton}
-                onClick={() => handleOpenEditModal(waterRecord)}
-              >
-                <FaEdit />
-              </button>
-              <button
-                className={css.dailyInfo__iconButton}
-                onClick={() => {}}
-              >
-                <FaTrash />
-              </button>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+            </li>
+          );
+        })}
+      </ul>
 
-     {modalState && <ModalWrap
-        isOpen={modalState.isOpen}
-        onRequestClose={closeEditModal}
-        contentLabel="Edit Water Record"
-     >
-        <WaterModal content={modalState.content} waterRecord={selectedWaterRecord} />
-     </ModalWrap>}
-  </div>
+      {modalState && (
+        <ModalWrap
+          isOpen={modalState.isOpen}
+          onRequestClose={closeEditModal}
+          contentLabel="Edit Water Record"
+        >
+          <WaterModal
+            content={modalState.content}
+            waterRecord={selectedWaterRecord}
+          />
+        </ModalWrap>
+      )}
+    </div>
   );
 }
