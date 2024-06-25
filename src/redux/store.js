@@ -16,20 +16,39 @@
 
 /* Viktory' code*/
 import { configureStore } from "@reduxjs/toolkit";
-import { addWaterReduser } from "./addWater/addWaterSlice";
-import { updateWaterReduser } from "./updateWater/updateWaterSlice";
-import { popoverReducer } from "./popover/slice";
-import waterReducer from "./deleteWater/deleteWaterSlice";
-import authReducer from "./logout/authSlice";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const store = configureStore({
-  reducer: {
-    popover: popoverReducer,
-    water: waterReducer,
-    auth: authReducer,
-    addWater: addWaterReduser,
-    updateWater: updateWaterReduser,
-  },
+import { authReducer } from "../redux/auth/slice";
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
+
+const rootReducer = {
+  auth: persistReducer(authPersistConfig, authReducer),
+};
+
+const middleware = (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  });
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware,
 });
 
-export default store;
+export const persistor = persistStore(store);
