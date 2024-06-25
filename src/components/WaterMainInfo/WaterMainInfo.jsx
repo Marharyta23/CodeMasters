@@ -19,8 +19,6 @@ export default function WaterMainInfo() {
     </div>
   );
 
-  const [modalState, setModalState] = useState({ isOpen: false, content: "" });
-
   const handleClick = (content) => {
     setModalState({ isOpen: true, content: content });
   };
