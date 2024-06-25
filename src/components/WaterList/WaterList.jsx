@@ -1,7 +1,10 @@
 import { useState } from "react";
-
+import WaterForm from "../../modals/WaterForm/WaterForm";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import css from "./WaterList.module.css";
+import ModalWrap from "../../modals/Modal/Modal";
+import WaterModal from "../../modals/WaterModal/WaterModal";
+
 
 //const { monthStats, waterRecords } = useWater();
 //teest
@@ -39,18 +42,18 @@ const waterRecords = [
 ];
 
 export default function WaterList() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalState, setModalState] = useState({ isOpen: false, content: "" });
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedWaterRecord, setSelectedWaterRecord] = useState(null);
 
   const handleOpenEditModal = (waterRecord) => {
     setSelectedWaterRecord(waterRecord);
-    setIsEditModalOpen(true);
+    setModalState({ isOpen: true, content: "Edit" });
   };
 
   const closeEditModal = () => {
-    setIsEditModalOpen(false);
+    setModalState({ isOpen: false, content: "" });
   };
 
   const handleOpenDeleteModal = (waterRecord) => {
@@ -62,9 +65,15 @@ export default function WaterList() {
     setIsDeleteModalOpen(false);
   };
 
+  const handleSubmit = (values) => {
+    console.log("Form Submitted:", values);
+    closeEditModal();
+  };
+
   if (!waterRecords || waterRecords.length === 0) return;
 
   return (
+    <div>
     <ul className={css.dailyInfo__StyledListAddWater}>
       {waterRecords.map((waterRecord) => {
         const date = new Date(waterRecord.date);
@@ -102,7 +111,7 @@ export default function WaterList() {
               </button>
               <button
                 className={css.dailyInfo__iconButton}
-                onClick={() => handleOpenDeleteModal(waterRecord)}
+                onClick={() => {}}
               >
                 <FaTrash />
               </button>
@@ -111,5 +120,14 @@ export default function WaterList() {
         );
       })}
     </ul>
+
+     {modalState && <ModalWrap
+        isOpen={modalState.isOpen}
+        onRequestClose={closeEditModal}
+        contentLabel="Edit Water Record"
+     >
+        <WaterModal content={modalState.content} waterRecord={selectedWaterRecord} />
+     </ModalWrap>}
+  </div>
   );
 }

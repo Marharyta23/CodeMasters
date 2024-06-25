@@ -24,7 +24,7 @@ export default function ModalWrap({
       <button
         type="button"
         className={css.modalCloseButton}
-        onClick={closeModal}
+        onClick={onRequestClose}
       >
         <svg className={css.icon} width="14" height="14">
           <use href="../../../src/img/icons.svg#icon-close"></use>

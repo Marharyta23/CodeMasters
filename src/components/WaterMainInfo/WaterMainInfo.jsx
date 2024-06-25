@@ -9,14 +9,14 @@ import ModalWrap from "../../modals/Modal/Modal";
 import WaterModal from "../../modals/WaterModal/WaterModal";
 
 export default function WaterMainInfo() {
-  return (
-    <div className={css.container}>
-      <Logo />
-      <WaterDailyNorma />
-      <WaterProgressBar />
-      <AddWaterBtn type="gray" />
-    </div>
-  );
+  // return (
+  //   <div className={css.container}>
+  //     <Logo />
+  //     <WaterDailyNorma />
+  //     <WaterProgressBar />
+  //     <AddWaterBtn type="gray" />
+  //   </div>
+  // );
   const [modalState, setModalState] = useState({ isOpen: false, content: "" });
 
   const handleClick = (content) => {
