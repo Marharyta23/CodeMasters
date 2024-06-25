@@ -101,7 +101,7 @@ export default function WaterForm({ selectedWaterRecord }) {
       </div>
 
       <div className={css.inputWrap}>
-        <label className={css.label}>
+        <label className={errors.time ? css.labelError : css.label}>
           <span className={css.timeSpan}> Recording time:</span>
           <input
             className={css.input}
@@ -110,8 +110,9 @@ export default function WaterForm({ selectedWaterRecord }) {
             {...register("time")}
           />
         </label>
+        {errors.time && <p className={css.error}>{errors.time.message}</p>}
 
-        <label className={css.label}>
+        <label className={errors.amount ? css.labelError : css.label}>
           <span className={css.amountSpan}>
             Enter the value of the water used:
           </span>
@@ -122,6 +123,7 @@ export default function WaterForm({ selectedWaterRecord }) {
             {...register("amount")}
           />
         </label>
+        {errors.amount && <p className={css.error}>{errors.amount.message}</p>}
 
         <button className={css.saveBtn} type="submit">
           Save
