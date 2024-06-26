@@ -15,17 +15,16 @@ const LogOutModal = ({ onRequestClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogOut = async () => {
-    try {
-      await dispatch(logOut()).unwrap();
-      dispatch(clearUser());
-      localStorage.clear();
-      navigate("/");
-    } catch (error) {
-      console.error("Error logging out:", error);
-    } finally {
-      onRequestClose();
-    }
+  const onLogOut = () => {
+    dispatch(logOut())
+      .then(() => {
+        console.log("Logout successful");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+        alert(error.message);
+      });
   };
 
   // useEffect(() => {
@@ -47,7 +46,7 @@ const LogOutModal = ({ onRequestClose }) => {
       <h2 className={css.modalTitle}>Log out</h2>
       <p className={css.modalText}>Do you really want to leave?</p>
       <div className={css.modalBtnWrapper}>
-        <button className={css.modalBtn} onClick={handleLogOut}>
+        <button className={css.modalBtn} onClick={onLogOut}>
           Log out
         </button>
         <button className={css.modalBtnCancel} onClick={onRequestClose}>
