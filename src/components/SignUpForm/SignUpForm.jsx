@@ -53,12 +53,12 @@ const SignUpForm = () => {
       register({
         email: data.email,
         password: data.password,
+        password_conform: data.repeatPassword,
       })
     )
       .unwrap()
       .then((response) => {
         console.log("Registration successful:", response);
-        navigate("/tracker");
       })
       .catch((error) => {
         console.error("Registration error:", error);
