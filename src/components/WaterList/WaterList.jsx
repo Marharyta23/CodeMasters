@@ -5,6 +5,8 @@ import { openModal } from "../../redux/modal/slice";
 
 import css from "./WaterList.module.css";
 import { useState } from "react";
+import ModalWrap from "../../modals/Modal/Modal";
+import DeleteWaterModal from "../../modals/DeleteWaterModal/DeleteWaterModal";
 
 //teest
 const waterRecords = [
@@ -148,12 +150,6 @@ export default function WaterList() {
           );
         })}
       </ul>
-      {isDeleteModalOpen && (
-        <DeleteWaterModal
-          onClose={closeDeleteModal}
-          waterId={selectedWaterId}
-        />
-      )}
     </div>
   );
 }

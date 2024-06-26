@@ -1,8 +1,5 @@
-import { useEffect } from "react";
-import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
 
 import {
   deleteWater,
@@ -10,19 +7,21 @@ import {
 } from "../../redux/deleteWater/deleteWaterSlice";
 
 import css from "./DeleteWaterModal.module.css";
+import { closeModal } from "../../redux/modal/slice";
 
-Modal.setAppElement("#root");
-
-const DeleteWaterModal = ({ onRequestClose, waterId }) => {
+const DeleteWaterModal = ({ waterId }) => {
   const dispatch = useDispatch();
 
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
   const handleDelete = async () => {
     try {
       const resultAction = await dispatch(deleteWater(waterId));
       if (deleteWater.fulfilled.match(resultAction)) {
         toast.success("Record deleted successfully");
         dispatch(fetchWaterData());
-        onRequestClose();
+        handleClose();
       } else {
         throw new Error(resultAction.payload || "Failed to delete record");
       }
@@ -30,20 +29,6 @@ const DeleteWaterModal = ({ onRequestClose, waterId }) => {
       toast.error("Error deleting record: " + error.message);
     }
   };
-
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        onRequestClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onRequestClose]);
 
   return (
     <>
@@ -56,7 +41,7 @@ const DeleteWaterModal = ({ onRequestClose, waterId }) => {
           <button className={css.modalButton} onClick={handleDelete}>
             Delete
           </button>
-          <button className={css.modalBtnCancel} onClick={onRequestClose}>
+          <button className={css.modalBtnCancel} onClick={handleClose}>
             Cancel
           </button>
         </div>
