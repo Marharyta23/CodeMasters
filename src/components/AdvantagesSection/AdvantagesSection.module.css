@@ -1,81 +1,233 @@
+/*--Mobile screen*/
 .advantageSection {
-  width: 672px;
-  height: 736px;
-  padding: 32px 32px 64px;
   border-radius: 30px;
-  margin-left: 32px;
-
-  background: var(--background); /* add url img for background*/
+  background-image: url(../../img/HomePage/girl-drinks-mob-1x-min.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 209px 16px 32px;
+  width: 343px;
+  height: 353px;
 }
 
 .advantageWrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 534px;
 }
 .customersWrapper {
-  height: 67px;
-  /* Auto layout */
+  height: 48px;
+  /* max-width: 155px; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 14px;
   border-radius: 30px;
   box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
-  margin-bottom: 132px;
+  margin-bottom: 96px;
+  background-color: var(--main-white);
 }
+.advantages_usersImg {
+  display: flex;
+}
+
+.user {
+  width: 26px;
+  height: 28px;
+  border-radius: 50%;
+  top: 10px;
+  left: 14px;
+  gap: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.user1 {
+  background-image: url("../../img/HomePage/happy-customer-1-mob-1x-min.png");
+}
+
+.user2 {
+  background-image: url("../../img/HomePage/happy-customer-2-mob-1x-min.png");
+}
+
+.user3 {
+  background-image: url("../../img/HomePage/happy-customer-3-mob-1x-min.png");
+}
+@media only screen and (min-resolution: 192dpi) {
+  .user1 {
+    background-image: url("../../img/HomePage/happy-customer-1-mob-2x-min.png");
+  }
+
+  .user2 {
+    background-image: url("../../img/HomePage/happy-customer-2-mob-2x-min.png");
+  }
+
+  .user3 {
+    background-image: url("../../img/HomePage/happy-customer-3-mob-2x-min.png");
+  }
+}
+.advantages_point {
+  width: 26px;
+  height: 28px;
+  position: relative;
+  border-color: var(--main-white);
+}
+
+.advantages_point:nth-child(1) {
+  z-index: 3;
+}
+
+.advantages_point:nth-child(2) {
+  z-index: 2;
+}
+
+.advantages_point:not(:first-child) {
+  margin-left: -10px;
+}
+
 .advatageText {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 22.4px;
+  line-height: 14px;
   letter-spacing: 0%;
   text-align: left;
 }
 .advatageTextAccent {
   color: var(--accent);
 }
+
 .advatageBtnWrappeer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
   padding: 0;
   margin: 0;
   color: #fff;
-  width: 242px;
+  width: 168px;
 }
 button {
   border-radius: 30px;
-  height: 34px;
+  height: 26px;
+}
+.ellipse {
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  width: 8px;
+  height: 8px;
 }
 .advatageBtnFirst {
   background-color: #323f47;
   color: var(--main-white);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 700;
-  line-height: 12px;
-  letter-spacing: -1%;
+  line-height: 8px;
+  letter-spacing: -0.01em;
   text-align: center;
   border: none;
+  width: 81px;
 }
 .advatageBtnSecond {
   background-color: var(--accent);
   color: var(--main);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 700;
-  line-height: 12px;
-  letter-spacing: -1%;
+  line-height: 8px;
+  letter-spacing: -0.01em;
   text-align: center;
   border: none;
+  width: 83px;
 }
 .advatageBtnThird {
   background-color: var(--main-white);
-  color: rgb(50, 63, 71);
-  font-size: 12px;
+  color: var(--main);
+  font-size: 8px;
   font-weight: 700;
-  line-height: 12px;
-  letter-spacing: -1%;
+  line-height: 8px;
+  letter-spacing: -0.01em;
   text-align: center;
   border: none;
+  width: 108px;
+}
+@media screen and (min-width: 320px) and (max-width: 767.98px) {
+  .customersWrapper {
+    height: 48px;
+    max-width: 155px;
+  }
+}
+/*--Tablet screen*/
+
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
+  .advantageSection {
+    width: 704px;
+    height: 446px;
+    border-radius: 30px;
+    background-image: url(../../img/HomePage/girl-drinks-tab-1x-min.png);
+  }
+}
+/*--Desktop screen*/
+
+@media screen and (min-width: 1440px) {
+  .advantageSection {
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 64px;
+    border-radius: 30px;
+    margin-left: 32px;
+    background: var(--background); /* add url img for background*/
+    background-image: url(../../img/HomePage/girl-drinks-desc-1x-min.png);
+  }
+
+  .advantageWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 534px;
+  }
+  .customersWrapper {
+    height: 67px;
+    width: 237px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 132px;
+  }
+  .advatageText {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22.4px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  .advatageBtnWrappeer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    width: 242px;
+  }
+  button {
+    height: 34px;
+  }
+  .advatageBtnFirst {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -1%;
+  }
+  .advatageBtnSecond {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+  }
+  .advatageBtnThird {
+    font-size: 12px;
+    line-height: 12px;
+  }
 }

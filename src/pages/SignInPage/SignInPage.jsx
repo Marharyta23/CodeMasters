@@ -11,7 +11,7 @@ export default function SignInPage() {
       <DocumentTitle>Sign In</DocumentTitle>
       <div className={css.SignInPageSection}>
         <Logo />
-        <SignInForm />/
+        <SignInForm />
       </div>
       <AdvantagesSection />
     </div>
