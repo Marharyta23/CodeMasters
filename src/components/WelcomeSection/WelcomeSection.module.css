@@ -1,84 +1,130 @@
+/*--Mobile screen--*/
 .welcomeSection {
-  /* position: absolute; */
-  width: 672px;
-  height: 736px;
-  padding: 32px 32px 64px;
   border-radius: 30px;
   background: var(--background);
+  height: 411px;
+  padding: 24px 16px 16px;
+  margin-bottom: 16px;
 }
-
 .welcomeText {
+  font-size: 14px;
   color: var(--main-text);
-  font-size: 16px;
-  font-weight: 400;
-  padding-top: 132px;
-  padding-bottom: 16px;
-  line-height: 24px;
-  letter-spacing: 6%;
-  text-align: left;
+  letter-spacing: 0.06em;
+  margin-top: 74px;
+  margin-bottom: 16px;
 }
-
 .welcomeHeader {
-  /* Desktop_tablet/H1 */
-  color: rgb(50, 63, 71);
-  font-family: Poppins;
-  font-size: 80px;
+  color: var(--main);
+  font-size: 38px;
   font-weight: 700;
-  line-height: 76px;
-  letter-spacing: -1%;
+  letter-spacing: -0.01em;
   text-align: left;
-}
-.welcomeBtnWrapper {
-  display: flex;
-  padding-top: 32px;
+  margin-bottom: 32px;
 }
 .tryBtn {
-  /* width: 169px; */
-  height: 60px;
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
+  background-color: var(--accent);
+  margin-right: 10px;
+  height: 46px;
+  /* display: flex;
+  flex-direction: row; */
   justify-content: center;
   align-items: center;
-  padding: 18px 40px 18px 40px;
-
-  /* Inside Auto Layout */
-  margin: 0px 16px;
-
-  background-color: var(--accent);
-  border: 1px solid rgb(50, 63, 71);
-
-  color: rgb(50, 63, 71);
-  font-size: 16px;
+  padding: 14px 19px 14px 19px;
+  border-radius: 30px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 24px;
-  letter-spacing: -1%;
+  line-height: 18px;
+  letter-spacing: -0.01em;
   text-align: center;
+  border: none;
 }
 .signInBtn {
-  position: static;
-  /* width: 169px; */
-  height: 60px;
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 40px 18px 40px;
-
-  /* Inside Auto Layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 16px;
-
+  width: 104px;
+  height: 46px;
   background-color: var(--background-color);
-  border: 1px solid rgb(50, 63, 71);
-
-  color: rgb(50, 63, 71);
-  font-size: 16px;
+  border-radius: 30px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 24px;
-  letter-spacing: -1%;
+  line-height: 18px;
+  letter-spacing: -0.01em;
   text-align: center;
+}
+
+/*--Tablet screen--*/
+
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
+  .welcomeSection {
+    width: 704px;
+    height: 446px;
+    padding: 32px;
+  }
+}
+
+/*--Desktop screen*/
+
+@media screen and (min-width: 1440px) {
+  .welcomeSection {
+    /* position: absolute; */
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 64px;
+  }
+
+  .welcomeText {
+    font-size: 16px;
+    padding-top: 132px;
+    padding-bottom: 16px;
+    line-height: 24px;
+    letter-spacing: 6%;
+    text-align: left;
+  }
+
+  .welcomeHeader {
+    /* Desktop_tablet/H1 */
+    color: rgb(50, 63, 71);
+    font-family: Poppins;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 76px;
+    letter-spacing: -1%;
+    text-align: left;
+  }
+  .welcomeBtnWrapper {
+    display: flex;
+    padding-top: 32px;
+  }
+  .tryBtn {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 40px 18px 40px;
+    margin: 0px 16px;
+    color: rgb(50, 63, 71);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -1%;
+    text-align: center;
+  }
+  .signInBtn {
+    height: 60px;
+    width: 135px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 40px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 16px;
+    border: 1px solid rgb(50, 63, 71);
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    white-space: nowrap;
+  }
 }

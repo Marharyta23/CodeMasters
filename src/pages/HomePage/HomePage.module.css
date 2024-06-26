@@ -1,3 +1,21 @@
-.HomePageSection {
-  display: flex;
+/* --Mobile styles--*/
+
+@media screen and (min-widh: 320px) and (max-width: 767.99px) {
+  .HomePageSection {
+    height: 780px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .HomePageSection {
+    padding: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .HomePageSection {
+    display: flex;
+    gap: 32px;
+    max-width: 1376px;
+  }
 }
