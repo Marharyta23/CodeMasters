@@ -6,7 +6,7 @@ import css from "./WelcomeSection.module.css";
 
 const WelcomeSection = () => {
   return (
-    <section className={css.welcomeSection}>
+    <div className={css.welcomeSection}>
       <Logo />
       <h2 className={css.welcomeText}>Record daily water intake and track</h2>
       <h1 className={css.welcomeHeader}>Water consumption tracker</h1>
@@ -18,7 +18,7 @@ const WelcomeSection = () => {
           <button className={css.signInBtn}>Sign In</button>
         </Link>
       </div>
-    </section>
+    </div>
   );
 };
 

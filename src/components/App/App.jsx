@@ -21,30 +21,46 @@ const SignUpPage = lazy(() => import("../../pages/SignUpPage/SignUpPage"));
 const TrackerPage = lazy(() => import("../../pages/TrackerPage/TrackerPage"));
 
 export default function App() {
-    const dispatch = useDispatch();
-    const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-    useEffect(() => {
-        dispatch(refreshUser());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-    return isRefreshing ? (
-        <b>Refreshing user...</b>
-    ) : (
-        <SharedLayout>
-            <Suspense>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/signup" element={<SignUpPage />} />
-                    <Route path="/signin" element={<SignInPage />} />
-                    <Route path="/tracker" element={<TrackerPage />} />
-
-                    {/* <Route path="/" element={<HomePage />} />
-                    <Route path="/signup" element={<RestrictedRoute redirectTo="/tracker" component={<SignUpPage />} />} />
-                    <Route path="/signin" element={<RestrictedRoute redirectTo="/tracker" component={<SignInPage />} />} />
-                    <Route path="/tracker" element={<PrivateRoute redirectTo="/signin" component={<TrackerPage />} />} /> */}
-                </Routes>
-            </Suspense>
-        </SharedLayout>
-    );
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <SharedLayout>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<SignUpPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute
+                redirectTo="/tracker"
+                component={<SignInPage />}
+              />
+            }
+          />
+          <Route
+            path="/tracker"
+            element={
+              <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
+            }
+          />
+        </Routes>
+      </Suspense>
+    </SharedLayout>
+  );
 }
