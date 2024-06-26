@@ -1,60 +1,54 @@
 import { useEffect } from "react";
-import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
-import { clearUser } from "../../redux/logout/authSlice";
+import { logOut } from "../../redux/auth/operations";
 
 import css from "../DeleteWaterModal/DeleteWaterModal.module.css";
 
-Modal.setAppElement("#root");
-
 const LogOutModal = ({ onClose }) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const handleLogOut = async () => {
-        try {
-            await axios.post("/api/logout");
-            dispatch(clearUser());
-            localStorage.clear();
-            navigate("/");
-        } catch (error) {
-            console.error("Error logging out:", error);
-        } finally {
-            onClose();
-        }
+  const onLogOut = () => {
+    dispatch(logOut())
+      .then(() => {
+        console.log("Logout successful");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+        alert(error.message);
+      });
+  };
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
 
-    useEffect(() => {
-        const handleEscape = (event) => {
-            if (event.key === "Escape") {
-                onClose();
-            }
-        };
+    document.addEventListener("keydown", handleEscape);
 
-        document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
 
-        return () => {
-            document.removeEventListener("keydown", handleEscape);
-        };
-    }, [onClose]);
-
-    return (
-        <div className={css.modalContentWrapper}>
-            <h2 className={css.modalTitle}>Log out</h2>
-            <p className={css.modalText}>Do you really want to leave?</p>
-            <div className={css.modalBtnWrapper}>
-                <button className={css.modalBtn} onClick={handleLogOut}>
-                    Log out
-                </button>
-                <button className={css.modalBtnCancel} onClick={onClose}>
-                    Cancel
-                </button>
-            </div>
-        </div>
-    );
+  return (
+    <div className={css.modalContentWrapper}>
+      <h2 className={css.modalTitle}>Log out</h2>
+      <p className={css.modalText}>Do you really want to leave?</p>
+      <div className={css.modalBtnWrapper}>
+        <button className={css.modalBtn} onClick={onLogOut}>
+          Log out
+        </button>
+        <button className={css.modalBtnCancel} onClick={onClose}>
+          Cancel
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default LogOutModal;
