@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:regular,700&display=swap);
 .imageWrap {
   display: flex;
   flex-direction: column;
@@ -69,10 +70,10 @@
 
 .inputTitleBold {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 125%;
   letter-spacing: -0.01em;
-  color: var(--main);
+  /* color: var(--main); */
 }
 
 .dailyTitle {
@@ -108,6 +109,10 @@
   position: absolute;
   left: 0;
   top: 0;
+  /* fill: none;
+  stroke: #9be1a0;
+  border: 35x;
+  font-weight: 700; */
 }
 
 .iconWrap {
@@ -195,4 +200,76 @@
   text-align: center;
   color: var(--main);
   transition: 0.3s ease-in-out;
+  border-color: transparent;
+}
+@media (hover: hover) and (pointer: fine) {
+  .submitBtn:hover {
+    cursor: pointer;
+    background-color: #87d28d;
+  }
+}
+
+.buttonUpload {
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .iconUpload {
+    width: 20px;
+    height: 20px;
+  }
+
+  .inputTitleBold {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .inputTitle {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .error {
+    font-size: 14px;
+    line-height: 129%;
+    bottom: -19px;
+  }
+
+  .dailyTitle {
+    margin-bottom: 0;
+  }
+
+  .normaForm {
+    display: flex;
+    gap: 28px;
+  }
+
+  .requiredAmount {
+    display: flex;
+  }
+
+  .accentLiter {
+    font-size: 15px;
+  }
+
+  .submitBtn {
+    padding: 16px 50px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .blockWrap {
+    margin-bottom: 0px;
+  }
+
+  .submitBtn {
+    margin-top: 16px;
+  }
 }
