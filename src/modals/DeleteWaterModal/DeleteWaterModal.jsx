@@ -29,70 +29,70 @@ const DeleteWaterModal = ({ isOpen, onClose, waterId }) => {
     }
   };
 
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
+  // useEffect(() => {
+  //   const handleEscape = (event) => {
+  //     if (event.key === "Escape") {
+  //       onClose();
+  //     }
+  //   };
 
-    document.addEventListener("keydown", handleEscape);
+  //   document.addEventListener("keydown", handleEscape);
 
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleEscape);
+  //   };
+  // }, [onClose]);
 
-  const customStyles = {
-    overlay: {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      border: "none",
-      backgroundColor: "rgba(47, 47, 47, 0.60)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      border: "none",
-      backgroundColor: "var(--main-white)",
-      overflow: "auto",
-    },
-  };
+  // const customStyles = {
+  //   overlay: {
+  //     position: "fixed",
+  //     top: 0,
+  //     left: 0,
+  //     right: 0,
+  //     bottom: 0,
+  //     border: "none",
+  //     backgroundColor: "rgba(47, 47, 47, 0.60)",
+  //     display: "flex",
+  //     justifyContent: "center",
+  //     alignItems: "center",
+  //   },
+  //   content: {
+  //     top: "50%",
+  //     left: "50%",
+  //     right: "auto",
+  //     bottom: "auto",
+  //     marginRight: "-50%",
+  //     transform: "translate(-50%, -50%)",
+  //     border: "none",
+  //     backgroundColor: "var(--main-white)",
+  //     overflow: "auto",
+  //   },
+  // };
 
   return (
     <div>
-      <Modal
+      {/* <Modal
         isOpen={isOpen}
         onRequestClose={onClose}
         className={css.modalContent}
         overlayClassName="modal-backdrop"
         style={customStyles}
-      >
-        <div className={css.modalContentWrapper}>
-          <h2 className={css.modalTitle}>Delete entry</h2>
-          <p className={css.modalText}>
-            Are you sure you want to delete the entry?
-          </p>
-          <div className={css.modalBtnWrapper}>
-            <button className={css.modalButton} onClick={handleDelete}>
-              Delete
-            </button>
-            <button className={css.modalBtnCancel} onClick={onClose}>
-              Cancel
-            </button>
-          </div>
+      > */}
+      <div className={css.modalContentWrapper}>
+        <h2 className={css.modalTitle}>Delete entry</h2>
+        <p className={css.modalText}>
+          Are you sure you want to delete the entry?
+        </p>
+        <div className={css.modalBtnWrapper}>
+          <button className={css.modalButton} onClick={handleDelete}>
+            Delete
+          </button>
+          <button className={css.modalBtnCancel} onClick={onClose}>
+            Cancel
+          </button>
         </div>
-      </Modal>
+      </div>
+      {/* </Modal> */}
       <Toaster position="top-right" />
     </div>
   );

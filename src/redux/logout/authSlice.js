@@ -1,4 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const logout = createAsyncThunk("auth/logout", async () => {
+  await axios.post("/auth/logout");
+});
 
 const initialState = {
   user: null,
