@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchWaterData = createAsyncThunk(
   "water/fetchWaterData",
   async () => {
-    const response = await axios.get("/api/water");
+    const response = await axios.get("/water");
     return response.data;
   }
 );
@@ -13,7 +13,7 @@ export const deleteWater = createAsyncThunk(
   "water/deleteWater",
   async (waterId, { rejectWithValue }) => {
     try {
-      await axios.delete(`/api/water/${waterId}`);
+      await axios.delete(`/water/${waterId}`);
       return waterId;
     } catch (error) {
       return rejectWithValue(error.message);
