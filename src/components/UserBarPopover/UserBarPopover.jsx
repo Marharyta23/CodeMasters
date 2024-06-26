@@ -5,6 +5,7 @@ import clsx from "clsx";
 import css from "./UserBarPopover.module.css";
 
 import { hidePopover } from "../../redux/popover/slice";
+import { openModal } from "../../redux/modal/slice";
 
 export default function UserBarPopover() {
     const { isVisible } = useSelector((state) => state.popover);
@@ -36,9 +37,13 @@ export default function UserBarPopover() {
         return null;
     }
 
+    const showModal = (modalType) => {
+        dispatch(openModal(modalType));
+    };
+
     return (
         <div className={css.container} ref={popoverRef}>
-            <button type="button" className={css.popoverBtn}>
+            <button type="button" className={css.popoverBtn} onClick={() => showModal("UserSettingsModal")}>
                 <svg className={css.popoverIcon} width="16" height="16">
                     <use href="../../../src/img/icons.svg#icon-settings"></use>
                 </svg>
@@ -46,7 +51,7 @@ export default function UserBarPopover() {
                 <p className={css.popoverText}>Setting</p>
             </button>
 
-            <button type="button" className={clsx(css.popoverBtn, css.popoverBtnGray)}>
+            <button type="button" className={clsx(css.popoverBtn, css.popoverBtnGray)} onClick={() => showModal("LogOutModal")}>
                 <svg className={css.popoverIcon} width="16" height="16">
                     <use href="../../../src/img/icons.svg#icon-log-out"></use>
                 </svg>
