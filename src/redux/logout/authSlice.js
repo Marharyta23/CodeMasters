@@ -1,7 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const logout = createAsyncThunk("auth/logout", async () => {
-  await axios.post("/auth/logout");
+axios.defaults.baseURL = "https://codemasters-backend-5m3n.onrender.com/";
+// axios.defaults.baseURL =
+//   "http://ec2-44-217-80-216.compute-1.amazonaws.com:3000";
+
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = "";
+};
+
+export const logOut = createAsyncThunk("auth/logout", async () => {
+  await axios.post("/users/logout");
+  clearAuthHeader();
 });
 
 const initialState = {
@@ -9,7 +19,7 @@ const initialState = {
   isAuthenticated: false,
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -21,6 +31,12 @@ export const authSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(logOut.fulfilled, (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
+    });
   },
 });
 

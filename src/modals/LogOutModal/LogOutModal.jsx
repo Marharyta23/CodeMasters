@@ -1,45 +1,46 @@
 import { useEffect } from "react";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { logOut } from "../../redux/logout/authSlice";
 
 import { clearUser } from "../../redux/logout/authSlice";
 
 import css from "../DeleteWaterModal/DeleteWaterModal.module.css";
 
-Modal.setAppElement("#root");
+// Modal.setAppElement("#root");
 
-const LogOutModal = ({ onClose }) => {
+const LogOutModal = ({ onRequestClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     try {
-      await axios.post("/api/logout");
+      await dispatch(logOut()).unwrap();
       dispatch(clearUser());
       localStorage.clear();
       navigate("/");
     } catch (error) {
       console.error("Error logging out:", error);
     } finally {
-      onClose();
+      onRequestClose();
     }
   };
 
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
+  // useEffect(() => {
+  //   const handleEscape = (event) => {
+  //     if (event.key === "Escape") {
+  //       onRequestClose();
+  //     }
+  //   };
 
-    document.addEventListener("keydown", handleEscape);
+  //   document.addEventListener("keydown", handleEscape);
 
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleEscape);
+  //   };
+  // }, [onRequestClose]);
 
   return (
     <div className={css.modalContentWrapper}>
@@ -49,7 +50,7 @@ const LogOutModal = ({ onClose }) => {
         <button className={css.modalBtn} onClick={handleLogOut}>
           Log out
         </button>
-        <button className={css.modalBtnCancel} onClick={onClose}>
+        <button className={css.modalBtnCancel} onClick={onRequestClose}>
           Cancel
         </button>
       </div>

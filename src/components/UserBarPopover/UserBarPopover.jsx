@@ -7,7 +7,7 @@ import ModalWrap from "../../modals/Modal/Modal";
 import css from "./UserBarPopover.module.css";
 
 import { hidePopover } from "../../redux/popover/slice";
-import { openModal } from "../../redux/modal/slice";
+import { openModal, closeModal } from "../../redux/modal/slice";
 
 export default function UserBarPopover() {
   const { isVisible } = useSelector((state) => state.popover);
@@ -82,8 +82,8 @@ export default function UserBarPopover() {
 
         <p className={css.popoverText}>Log out</p>
       </button>
-      <ModalWrap isOpen={isOpen} onRequestClose={handleClose}>
-        <LogOutModal onRequestClose={handleClose} />
+      <ModalWrap modalType="LogOutModal">
+        <LogOutModal onRequestClose={() => dispatch(closeModal())} />
       </ModalWrap>
     </div>
   );

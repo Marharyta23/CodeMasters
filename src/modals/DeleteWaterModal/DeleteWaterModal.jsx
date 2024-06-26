@@ -13,7 +13,7 @@ import css from "./DeleteWaterModal.module.css";
 
 Modal.setAppElement("#root");
 
-const DeleteWaterModal = ({ onClose, waterId }) => {
+const DeleteWaterModal = ({ onRequestClose, waterId }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
@@ -22,7 +22,7 @@ const DeleteWaterModal = ({ onClose, waterId }) => {
       if (deleteWater.fulfilled.match(resultAction)) {
         toast.success("Record deleted successfully");
         dispatch(fetchWaterData());
-        onClose();
+        onRequestClose();
       } else {
         throw new Error(resultAction.payload || "Failed to delete record");
       }
@@ -34,7 +34,7 @@ const DeleteWaterModal = ({ onClose, waterId }) => {
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        onClose();
+        onRequestClose();
       }
     };
 
@@ -43,7 +43,7 @@ const DeleteWaterModal = ({ onClose, waterId }) => {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [onClose]);
+  }, [onRequestClose]);
 
   return (
     <>
@@ -56,7 +56,7 @@ const DeleteWaterModal = ({ onClose, waterId }) => {
           <button className={css.modalButton} onClick={handleDelete}>
             Delete
           </button>
-          <button className={css.modalBtnCancel} onClick={onClose}>
+          <button className={css.modalBtnCancel} onClick={onRequestClose}>
             Cancel
           </button>
         </div>
