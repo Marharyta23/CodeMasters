@@ -27,31 +27,20 @@ const LogOutModal = ({ onClose }) => {
         onClose();
       }
     };
-    // useEffect(() => {
-    //   const handleEscape = (event) => {
-    //     if (event.key === "Escape") {
-    //       onRequestClose();
-    //     }
-    //   };
 
     document.addEventListener("keydown", handleEscape);
-    //   document.addEventListener("keydown", handleEscape);
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
   }, [onClose]);
-  //   return () => {
-  //     document.removeEventListener("keydown", handleEscape);
-  //   };
-  // }, [onRequestClose]);
 
   return (
     <div className={css.modalContentWrapper}>
       <h2 className={css.modalTitle}>Log out</h2>
       <p className={css.modalText}>Do you really want to leave?</p>
       <div className={css.modalBtnWrapper}>
-        <button className={css.modalBtn} onClick={handleLogOut}>
+        <button className={css.modalBtn} onClick={onLogOut}>
           Log out
         </button>
         <button className={css.modalBtnCancel} onClick={onClose}>
