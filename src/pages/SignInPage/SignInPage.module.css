@@ -1,10 +1,38 @@
-.SignInPageWrapper {
-  display: flex;
-}
+/*--General style--*/
 .SignInPageSection {
-  width: 672px;
-  height: 736px;
-  padding: 32px 32px 64px;
   border-radius: 30px;
   background: var(--background);
+}
+
+/*--Mobile screen--*/
+@media screen and (min-width: 320px) and (max-width: 767.98px) {
+  body {
+    zoom: 0.85;
+  }
+  .SignInPageSection {
+    width: 343px;
+    height: 780px;
+    padding: 24px 18px;
+  }
+}
+
+/*--Tablet screen--*/
+
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
+  .SignInPageSection {
+    width: 704px;
+    height: 960px;
+    padding: 32px 32px 64px;
+  }
+}
+/*--Desktop screen*/
+@media screen and (min-width: 1440px) {
+  .SignInPageWrapper {
+    display: flex;
+  }
+  .SignInPageSection {
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 64px;
+  }
 }

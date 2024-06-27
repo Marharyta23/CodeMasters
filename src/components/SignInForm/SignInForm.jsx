@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 //   const dispatch = useDispatch();
 
 //   const handleSubmit = (e) => {
-//     e.preventDefault();
+//     e.preventDefault(); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //     const form = e.target;
 
 //     dispatch(
@@ -34,7 +34,7 @@ const schema = yup.object().shape({
 //         console.log("login error");
 //       });
 
-//     form.reset();
+//     form.reset(); !!!!!!!!!!!!!!!!!!!!
 //   };
 
 //   return (
@@ -84,7 +84,7 @@ const SignInForm = () => {
       })
       .catch((error) => {
         // Обробка помилки авторизації (наприклад, показ сповіщення користувачеві)
-        alert(`Authentication failed: ${error.message}`);
+        console.log(`Authentication failed: ${error.message}`);
       });
   };
 
@@ -92,21 +92,37 @@ const SignInForm = () => {
     <div className={css.signInForm}>
       <h2 className={css.signInFormHeader}>Sign In</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label className={css.signUInFormLabel}>Email</label>
+        <div className={errors.email ? `${css.error}` : ""}>
+          <label
+            className={errors.email ? `${css.errorLabel}` : css.signInFormLabel}
+          >
+            Email
+          </label>
           <input
-            className={css.signInFormInput}
+            className={`${css.signInFormInput} ${
+              errors.email ? css.error : ""
+            }`}
             type="email"
             placeholder="Enter your email"
             {...register("email")}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && (
+            <p className={css.errorMessage}>{errors.email.message}</p>
+          )}
         </div>
-        <div>
-          <label className={css.signUInFormLabel}>Password</label>
+        <div className={errors.password ? `${css.error}` : ""}>
+          <label
+            className={
+              errors.password ? `${css.errorLabel}` : css.signInFormLabel
+            }
+          >
+            Password
+          </label>
           <div style={{ position: "relative" }}>
             <input
-              className={css.signInFormInput}
+              className={`${css.signInFormInput} ${
+                errors.password ? css.error : ""
+              }`}
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
               {...register("password")}
@@ -142,13 +158,15 @@ const SignInForm = () => {
               )}
             </svg>
           </div>
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <p className={css.errorMessage}>{errors.password.message}</p>
+          )}
         </div>
         <button className={css.signInBtn} type="submit">
           Sign In
         </button>
       </form>
-      <p>
+      <p className={css.signInPageText}>
         Don't have an account?{" "}
         <Link to="/signup" className={css.SignUpPageLink}>
           Sign Up

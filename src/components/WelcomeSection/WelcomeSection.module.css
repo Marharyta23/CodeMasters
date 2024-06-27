@@ -38,6 +38,9 @@
   text-align: center;
   border: none;
 }
+.tryBtn:hover {
+  background-color: var(--accent-hover);
+}
 .signInBtn {
   width: 104px;
   height: 46px;
