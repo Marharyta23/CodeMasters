@@ -3,7 +3,7 @@ import css from "./UserSettingsForm.module.css";
 // import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 // import { yupResolver } from "@hookform/resolvers/yup";
-import modalSprite from "../../img/svg/modalSprite.svg";
+import modalSprite from "../../img/icons.svg";
 export default function UserSettingsForm() {
   const {
     register,

@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-
+import iconClose from "../../img/icons.svg#icon-close";
 import clsx from "clsx";
 
 import { closeModal } from "../../redux/modal/slice";
@@ -36,7 +36,7 @@ export default function ModalWrap({ children, modalType }) {
         onClick={handleClose}
       >
         <svg className={css.icon} width="24" height="24">
-          <use href="../../../src/img/icons.svg#icon-close"></use>
+          <use href={iconClose}></use>
         </svg>
       </button>
 
