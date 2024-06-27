@@ -6,7 +6,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
-    /* 120% */
     letter-spacing: -0.2px;
 }
 
@@ -18,7 +17,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 18px;
-    /* 128.571% */
     letter-spacing: -0.14px;
 }
 
@@ -39,7 +37,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 18px;
-    /* 128.571% */
     letter-spacing: -0.14px;
     display: flex;
     padding: 14px 129px;
@@ -61,7 +58,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 18px;
-    /* 128.571% */
     letter-spacing: -0.14px;
     display: flex;
     padding: 14px 126px;
@@ -88,7 +84,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 18px;
-    /* 128.571% */
     letter-spacing: -0.14px;
     border-radius: 30px;
     background: #f0eff4;
@@ -117,14 +112,12 @@
     .modalTitle {
         font-size: 28px;
         line-height: 32px;
-        /* 114.286% */
         letter-spacing: -0.28px;
     }
 
     .modalText {
         font-size: 18px;
         line-height: 24px;
-        /* 133.333% */
         letter-spacing: -0.18px;
     }
 
