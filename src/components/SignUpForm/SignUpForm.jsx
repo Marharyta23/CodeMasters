@@ -62,7 +62,6 @@ const SignUpForm = () => {
       })
       .catch((error) => {
         console.error("Registration error:", error);
-        alert(error.message);
       });
   };
 
@@ -174,7 +173,7 @@ const SignUpForm = () => {
         </button>
         <p className={css.signUpPageText}>
           Already have an account?
-          <Link to="/signin" className={css.SignUpPageLink}>
+          <Link to="/signin" className={css.signInPageLink}>
             {" "}
             Sign In
           </Link>
