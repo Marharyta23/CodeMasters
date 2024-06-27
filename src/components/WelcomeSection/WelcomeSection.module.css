@@ -19,14 +19,12 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   text-align: left;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
 }
 .tryBtn {
   background-color: var(--accent);
   margin-right: 10px;
   height: 46px;
-  /* display: flex;
-  flex-direction: row; */
   justify-content: center;
   align-items: center;
   padding: 14px 19px 14px 19px;
@@ -51,6 +49,11 @@
   line-height: 18px;
   letter-spacing: -0.01em;
   text-align: center;
+  border: 1px solid rgb(50, 63, 71);
+}
+.signInBtn:hover {
+  color: var(--accent-hover);
+  border: 1px solid var(--accent-hover);
 }
 
 /*--Tablet screen--*/
@@ -58,8 +61,33 @@
 @media screen and (min-width: 768px) and (max-width: 1439.98px) {
   .welcomeSection {
     width: 704px;
-    height: 446px;
-    padding: 32px;
+    height: 498px;
+    padding: 32px 32px 16px 32px;
+  }
+  .welcomeText {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding-left: 32px;
+    margin-top: 50px;
+  }
+  .welcomeHeader {
+    font-size: 64px;
+    line-height: 70px;
+    padding-left: 32px;
+    margin-top: 16px;
+  }
+  .welcomeBtnWrapper {
+    margin-top: 32px;
+    padding-left: 32px;
+    padding-bottom: 50px;
+  }
+  .tryBtn {
+    font-size: 16px;
+  }
+  .signInBtn {
+    font-size: 16px;
   }
 }
 
@@ -78,23 +106,22 @@
     padding-top: 132px;
     padding-bottom: 16px;
     line-height: 24px;
-    letter-spacing: 6%;
+    letter-spacing: 0.06em;
     text-align: left;
+    padding-left: 32px;
   }
 
   .welcomeHeader {
-    /* Desktop_tablet/H1 */
-    color: rgb(50, 63, 71);
-    font-family: Poppins;
     font-size: 80px;
-    font-weight: 700;
     line-height: 76px;
-    letter-spacing: -1%;
+    letter-spacing: -0.01em;
     text-align: left;
+    padding-left: 32px;
   }
   .welcomeBtnWrapper {
     display: flex;
     padding-top: 32px;
+    padding-left: 32px;
   }
   .tryBtn {
     height: 60px;
@@ -103,7 +130,6 @@
     justify-content: center;
     align-items: center;
     padding: 18px 40px 18px 40px;
-    margin: 0px 16px;
     color: rgb(50, 63, 71);
     font-size: 16px;
     font-weight: 700;
@@ -123,7 +149,6 @@
     order: 0;
     flex-grow: 0;
     margin: 0px 16px;
-    border: 1px solid rgb(50, 63, 71);
     font-size: 16px;
     line-height: 24px;
     letter-spacing: -0.01em;
