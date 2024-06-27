@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// axios.defaults.baseURL = "https://codemasters-backend-5m3n.onrender.com/";
-axios.defaults.baseURL =
-  "http://ec2-44-217-80-216.compute-1.amazonaws.com:3000";
-
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
