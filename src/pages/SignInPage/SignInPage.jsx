@@ -4,6 +4,7 @@ import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
 
 import css from "./SignInPage.module.css";
+import { Toaster } from "react-hot-toast";
 
 export default function SignInPage() {
   return (
@@ -14,6 +15,7 @@ export default function SignInPage() {
         <SignInForm />
       </div>
       <AdvantagesSection />
+      <Toaster />
     </div>
   );
 }

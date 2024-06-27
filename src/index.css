@@ -86,7 +86,7 @@ body {
     margin-right: auto;
 
     /*на час розробки*/
-    outline: 2px solid red;
+    /* outline: 2px solid red; */
     outline-offset: -2px;
   }
 }
@@ -97,7 +97,7 @@ body {
     padding: 32px;
 
     /*на час розробки*/
-    outline: 2px solid rgb(0, 255, 42);
+    /* outline: 2px solid rgb(0, 255, 42); */
     outline-offset: -2px;
   }
 }
@@ -108,7 +108,7 @@ body {
     padding: 32px;
 
     /*на час розробки*/
-    outline: 2px solid rgb(255, 0, 170);
+    /* outline: 2px solid rgb(255, 0, 170); */
     outline-offset: -2px;
   }
 }
