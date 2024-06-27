@@ -7,7 +7,6 @@ export const successToast = (message) =>
       padding: "12px",
       background: "#e2fee2",
       color: "#242424",
-      //   position: "top-right",
     },
   });
 
@@ -18,6 +17,5 @@ export const errorToast = (message) =>
       padding: "12px",
       background: "#ffeaea",
       color: "#242424",
-      //   position: "top-right",
     },
   });
