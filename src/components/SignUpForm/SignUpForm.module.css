@@ -1,13 +1,98 @@
+/*--General style--*/
 .signUpForm {
   margin: 0 auto;
-  width: 436px;
 }
 .signUpFormHeader {
   font-weight: 700;
+  color: #323f47;
+}
+.signUpFormLabel {
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+}
+.signUpFormInput {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  background-color: var(--background);
+  color: rgba(47, 47, 47, 0.6);
+  text-align: left;
+}
+.signUpFormBtn {
+  background-color: var(--accent);
+  font-weight: 700;
+  border: none;
+}
+.signUpPageText {
+  text-align: center;
+}
+.signInPageLink {
+  text-decoration: underline;
+  color: var(--main-color);
+  font-weight: 700;
+}
+
+/*---Mobile screen--*/
+@media screen and (min-width: 320px) and (max-width: 767.98px) {
+  .signUpForm {
+    width: 312px !important;
+  }
+  .signUpFormHeader {
+    font-size: 32px;
+    margin-top: 172px;
+    margin-bottom: 32px;
+  }
+  .signUpFormLabel {
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    /* gap: 42px; */
+  }
+  .signUpFormInput {
+    width: 312px !important;
+    height: 50px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    margin: 8px 0px;
+  }
+  .signUpFormBtn {
+    margin-top: 32px;
+    width: 312px !important;
+    height: 60px;
+    font-size: 16px;
+  }
+  .signUpPageText {
+    font-size: 14px;
+    letter-spacing: -0.01em;
+  }
+  .signInPageLink {
+    font-size: 14px;
+    letter-spacing: -0.01em;
+  }
+  /*icons*/
+  .passwordToggleIcon {
+    display: none;
+  }
+}
+
+/*--Tablet screen--*/
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
+}
+
+/*--Desktop screen--*/
+
+@media screen and (min-width: 1440px) {
+}
+.signUpForm {
+  width: 436px;
+}
+.signUpFormHeader {
   font-size: 36px;
   margin-top: 74px;
   margin-bottom: 32px;
-  color: #323f47;
 }
 
 .signUpFormLabel {
@@ -21,17 +106,9 @@
   position: relative;
   width: 436px;
   height: 56px;
-  box-sizing: border-box;
-  border: 1px solid rgba(47, 47, 47, 0.2);
-  border-radius: 15px;
-  background-color: var(--background);
-
-  color: rgba(47, 47, 47, 0.6);
   font-size: 16px;
-  font-weight: 400;
   line-height: 24px;
   letter-spacing: -1%;
-  text-align: left;
 }
 
 /* .signUpInputBtn {
@@ -55,13 +132,8 @@
   font-size: 16px;
   border: none;
 }
-.signUpPageText {
-  text-align: center;
-}
-.SignUpPageLink {
-  text-decoration: underline;
-  color: var(--main-color);
-  font-weight: 700;
+
+.signInPageLink {
 }
 
 /*icons*/
