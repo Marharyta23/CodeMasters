@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import addWaterIcon from "../../img/icons.svg#icon-plus";
+import addWaterIcon from "../../img/icons.svg";
 import css from "./AddWaterBtn.module.css";
 
 export default function AddWaterBtn({ type, className, onClick }) {
@@ -12,7 +12,7 @@ export default function AddWaterBtn({ type, className, onClick }) {
     >
       {type === "gray" ? (
         <svg className={css.addWaterBtnIcon} width="16" height="16">
-          <use href={addWaterIcon}></use>
+          <use href={`${addWaterIcon}#icon-plus`}></use>
         </svg>
       ) : (
         <div className={css.addWaterBtnIconContainer}>
