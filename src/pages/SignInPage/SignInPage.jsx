@@ -4,7 +4,10 @@ import Logo from "../../components/Logo/Logo.jsx";
 import SignInForm from "../../components/SignInForm/SignInForm.jsx";
 import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+import { selectIsLoading } from "../../redux/auth/selectors.js";
+import { useSelector } from "react-redux";
 
+import Loader from "../../components/Loader/Loader";
 import css from "./SignInPage.module.css";
 import { Toaster } from "react-hot-toast";
 
@@ -22,9 +25,15 @@ export default function SignInPage() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const loading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    console.log("Loading state:", loading);
+  }, [loading]);
 
   return (
     <div className={css.SignInPageWrapper}>
+      {loading && <Loader />}
       <DocumentTitle>Sign In</DocumentTitle>
       <div className={css.SignInPageSection}>
         <Logo />
