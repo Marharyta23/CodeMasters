@@ -2,12 +2,15 @@ import { useId, useRef, useState } from "react";
 import css from "./UserSettingsForm.module.css";
 // import * as Yup from "yup";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+// import { yupResolver } from "@hookform/resolvers/yup";
+import modalSprite from "../../img/svg/modalSprite.svg";
 export default function UserSettingsForm() {
   const {
     register,
     // handleSubmit,
+
     formState: { errors },
+    watch,
   } = useForm({
     // resolver: yupResolver(schema),
     defaultValues: {
@@ -28,6 +31,7 @@ export default function UserSettingsForm() {
     const selectedFile = e.target.files[0];
     setFile(selectedFile); // обновляем выбранный файл
   };
+
   return (
     <>
       <form className={css.form} encType="multipart/form-data">
@@ -46,7 +50,7 @@ export default function UserSettingsForm() {
               ref={fileInputRef}
             />
             <svg className={css.iconUpload} width="18" height="18">
-              {/* <use xlinkHref={`${sprite}#icon-upload`}></use> */}
+              <use href="./src/img/icons.svg#icon-upload"></use>
             </svg>
             <p>Upload a photo</p>
           </label>
@@ -70,11 +74,11 @@ export default function UserSettingsForm() {
                 <span className={css.iconWrap}>
                   <svg className={css.iconRadio} width="20" height="20">
                     <use
-                    // xlinkHref={
-                    //   watch("gender") === "woman"
-                    //     ? `${sprite}#icon-radio-active`
-                    //     : `${sprite}#icon-radio`
-                    // }
+                      xlinkHref={
+                        watch("gender") === "woman"
+                          ? `${modalSprite}#icon-radio-active`
+                          : `${modalSprite}#icon-radio`
+                      }
                     ></use>
                   </svg>
                 </span>
@@ -91,11 +95,11 @@ export default function UserSettingsForm() {
                 <span className={css.iconWrap}>
                   <svg className={css.iconRadio} width="20" height="20">
                     <use
-                    // xlinkHref={
-                    //   watch("gender") === "man"
-                    //     ? `${sprite}#icon-radio-active`
-                    //     : `${sprite}#icon-radio`
-                    // }
+                      xlinkHref={
+                        watch("gender") === "man"
+                          ? `${modalSprite}#icon-radio-active`
+                          : `${modalSprite}#icon-radio`
+                      }
                     ></use>
                   </svg>
                 </span>
@@ -176,7 +180,7 @@ export default function UserSettingsForm() {
               </div>
               <div className={css.activeTime}>
                 <svg className={css.iconExclamation} width="18" height="18">
-                  {/* <use xlinkHref={`${sprite}#icon-exclamation-mark`}></use> */}
+                  <use xlinkHref={`${modalSprite}#icon-exclamation-mark`}></use>
                 </svg>
                 <p>Active time in hours</p>
               </div>
@@ -196,7 +200,7 @@ export default function UserSettingsForm() {
                   type="number"
                   name="weight"
                   className={css.inputField}
-                  // {...register("weight")}
+                  {...register("weight")}
                 />
                 {errors.weight && (
                   <p className={css.error}>{errors.weight.message}</p>

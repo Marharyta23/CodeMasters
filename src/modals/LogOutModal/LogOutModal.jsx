@@ -1,17 +1,11 @@
 import { useEffect } from "react";
-// import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { logOut } from "../../redux/logout/authSlice";
-
-import { clearUser } from "../../redux/logout/authSlice";
+import { logOut } from "../../redux/auth/operations";
 
 import css from "../DeleteWaterModal/DeleteWaterModal.module.css";
 
-// Modal.setAppElement("#root");
-
-const LogOutModal = ({ onRequestClose }) => {
+const LogOutModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,19 +21,19 @@ const LogOutModal = ({ onRequestClose }) => {
       });
   };
 
-  // useEffect(() => {
-  //   const handleEscape = (event) => {
-  //     if (event.key === "Escape") {
-  //       onRequestClose();
-  //     }
-  //   };
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
 
-  //   document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleEscape);
 
-  //   return () => {
-  //     document.removeEventListener("keydown", handleEscape);
-  //   };
-  // }, [onRequestClose]);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
 
   return (
     <div className={css.modalContentWrapper}>
@@ -49,7 +43,7 @@ const LogOutModal = ({ onRequestClose }) => {
         <button className={css.modalBtn} onClick={onLogOut}>
           Log out
         </button>
-        <button className={css.modalBtnCancel} onClick={onRequestClose}>
+        <button className={css.modalBtnCancel} onClick={onClose}>
           Cancel
         </button>
       </div>

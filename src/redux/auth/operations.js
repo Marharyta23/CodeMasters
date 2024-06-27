@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 axios.defaults.baseURL =
-  "http://ec2-44-217-80-216.compute-1.amazonaws.com:3000/";
+  "https://ec2-44-217-80-216.compute-1.amazonaws.com:3443/";
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -29,7 +29,7 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("auth/login", credentials);
-      setAuthHeader(data.token);
+      setAuthHeader(data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
