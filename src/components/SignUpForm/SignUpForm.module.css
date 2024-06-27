@@ -4,7 +4,7 @@
 }
 .signUpFormHeader {
   font-weight: 700;
-  color: #323f47;
+  color: var(--main);
 }
 .signUpFormLabel {
   font-weight: 700;
@@ -17,20 +17,30 @@
   border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 15px;
   background-color: var(--background);
-  color: rgba(47, 47, 47, 0.6);
+  color: #2f2f2f99;
   text-align: left;
+  outline: none;
+}
+.signUpFormInput:hover,
+.signUpFormInput:active,
+.signUpFormInput:focus {
+  color: var(--main-text);
 }
 .signUpFormBtn {
   background-color: var(--accent);
   font-weight: 700;
   border: none;
 }
+.signUpFormBtn:hover {
+  background-color: var(--accent-hover);
+}
 .signUpPageText {
   text-align: center;
+  color: #2f2f2f80;
 }
 .signInPageLink {
   text-decoration: underline;
-  color: var(--main-color);
+  color: var(--main-text);
   font-weight: 700;
 }
 
@@ -44,11 +54,10 @@
     margin-top: 172px;
     margin-bottom: 32px;
   }
-  .signUpFormLabel {
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    /* gap: 42px; */
+  .signUInFormLabel {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
   }
   .signUpFormInput {
     width: 312px !important;
