@@ -1,8 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://codemasters-backend-5m3n.onrender.com";
-
 export const addWater = createAsyncThunk(
   "water/addWater",
   async (formData, thunkAPI) => {

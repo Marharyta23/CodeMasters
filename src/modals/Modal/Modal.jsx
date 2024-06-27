@@ -36,7 +36,7 @@ export default function ModalWrap({ children, modalType }) {
         onClick={handleClose}
       >
         <svg className={css.icon} width="24" height="24">
-          <use href={iconClose}></use>
+          <use href={`${iconClose}#icon-close`}></use>
         </svg>
       </button>
 
