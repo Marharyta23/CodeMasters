@@ -6,6 +6,7 @@ import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
 
 import css from "./SignInPage.module.css";
+import { Toaster } from "react-hot-toast";
 
 export default function SignInPage() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1440);
@@ -30,6 +31,7 @@ export default function SignInPage() {
         <SignInForm />
       </div>
       {isDesktop && <AdvantagesSection />}
+      <Toaster />
     </div>
   );
 }

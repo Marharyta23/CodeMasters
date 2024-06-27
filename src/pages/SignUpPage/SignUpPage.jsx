@@ -4,6 +4,7 @@ import Logo from "../../components/Logo/Logo";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+import { Toaster } from "react-hot-toast";
 
 import css from "./SignUpPage.module.css";
 
@@ -30,6 +31,7 @@ export default function SignUpPage() {
         <SignUpForm />
       </div>
       {isDesktop && <AdvantagesSection />}
+      <Toaster />
     </div>
   );
 }
