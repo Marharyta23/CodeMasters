@@ -15,25 +15,25 @@ import DeleteWaterModal from "../../modals/DeleteWaterModal/DeleteWaterModal";
 import css from "./TrackerPage.module.css";
 
 export default function TrackerPage() {
-  const { modalType } = useSelector(selectModalState);
+    const { modalType, props } = useSelector(selectModalState);
 
-  return (
-    <>
-      <DocumentTitle>Water Tracker</DocumentTitle>
+    return (
+        <>
+            <DocumentTitle>Water Tracker</DocumentTitle>
 
-      <section className={css.tracker}>
-        <WaterMainInfo />
-        <WaterDetailedInfo />
-      </section>
+            <section className={css.tracker}>
+                <WaterMainInfo />
+                <WaterDetailedInfo />
+            </section>
 
-      <ModalWrap modalType={modalType}>
-        {modalType === "WaterModalAdd" && <WaterModal content={"Add"} />}
-        {modalType === "WaterModalEdit" && <WaterModal content={"Edit"} />}
-        {modalType === "UserSettingsModal" && <UserSettingsModal />}
-        {modalType === "LogOutModal" && <LogOutModal />}
-        {modalType === "DeleteWaterModal" && <DeleteWaterModal />}
-      </ModalWrap>
-      <Toaster />
-    </>
-  );
+            <ModalWrap modalType={modalType}>
+                {modalType === "WaterModalAdd" && <WaterModal />}
+                {modalType === "WaterModalEdit" && <WaterModal waterRecord={props} />}
+                {modalType === "UserSettingsModal" && <UserSettingsModal />}
+                {modalType === "LogOutModal" && <LogOutModal />}
+                {modalType === "DeleteWaterModal" && <DeleteWaterModal waterId={props} />}
+            </ModalWrap>
+            <Toaster />
+        </>
+    );
 }
