@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import toast, { Toaster } from "react-hot-toast";
 
 import {
   deleteWater,
@@ -8,6 +7,7 @@ import {
 
 import css from "./DeleteWaterModal.module.css";
 import { closeModal } from "../../redux/modal/slice";
+import { successToast, errorToast } from "../../helpers/toast";
 
 const DeleteWaterModal = ({ waterId }) => {
   const dispatch = useDispatch();
@@ -19,14 +19,14 @@ const DeleteWaterModal = ({ waterId }) => {
     try {
       const resultAction = await dispatch(deleteWater(waterId));
       if (deleteWater.fulfilled.match(resultAction)) {
-        toast.success("Record deleted successfully");
+        successToast("Record deleted successfully");
         dispatch(fetchWaterData());
         handleClose();
       } else {
         throw new Error(resultAction.payload || "Failed to delete record");
       }
     } catch (error) {
-      toast.error("Error deleting record: " + error.message);
+      errorToast("Error deleting record: " + error.message);
     }
   };
 
@@ -46,8 +46,6 @@ const DeleteWaterModal = ({ waterId }) => {
           </button>
         </div>
       </div>
-
-      <Toaster position="top-right" />
     </>
   );
 };
