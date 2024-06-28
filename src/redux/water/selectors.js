@@ -1,3 +1,3 @@
-export const selectWaterRecords = (state) => state.water.waterRecords;
-export const selectMonthStats = (state) => state.water.monthStats;
-export const selectForceRender = (state) => state.water.forceRender;
+export const selectWaterData = (state) => state.water.waterData;
+export const selectWaterLoading = (state) => state.water.loading;
+export const selectWaterError = (state) => state.water.error;
