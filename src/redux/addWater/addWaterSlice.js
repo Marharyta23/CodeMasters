@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addWater } from "./addWaterOperations";
 
 const INITIAL_STATE = {
-  waterData: null,
+  waterCards: [],
   isLoading: false,
   isError: false,
 };
@@ -20,7 +20,7 @@ export const addWaterSlice = createSlice({
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = null;
-        state.waterData = [...state.waterData, action.payload];
+        state.waterCards = [...state.waterCards, action.payload];
       })
       .addCase(addWater.rejected, () => {
         state.isLoading = false;
