@@ -159,7 +159,7 @@ button {
   }
 }
 
-/*--Tablet screen*/
+/*-----------Tablet screen---------------------------*/
 
 @media screen and (min-width: 768px) and (max-width: 1439.98px) {
   .advantageSection {
@@ -191,8 +191,41 @@ button {
       background-image: url("../../img/HomePage/girl-drinks-tab-2x-min.png");
     }
   }
+  .advatageBtnWrappeer {
+    width: 242px;
+  }
+  .advatageBtnFirst {
+    width: 112px;
+    height: 34px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 11px 16px 11px 16px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .advatageBtnSecond {
+    width: 121px;
+    height: 34px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: -0.01em;
+    padding: 11px 16px 11px 16px;
+  }
+  .advatageBtnThird {
+    width: 158px;
+    height: 34px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 11px 16px 11px 16px;
+  }
 }
-/*--Desktop screen*/
+
+/*--------Desktop screen------------------------------*/
 
 @media screen and (min-width: 1440px) {
   .advantageSection {

@@ -12,7 +12,7 @@ export default function WaterMainInfo() {
     const dispatch = useDispatch();
 
     const showModal = (modalType) => {
-        dispatch(openModal(modalType));
+        dispatch(openModal({ modalType }));
     };
 
     return (
