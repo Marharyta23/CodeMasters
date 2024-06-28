@@ -18,7 +18,7 @@ export default function DailyInfo() {
     const dispatch = useDispatch();
 
     const showModal = (modalType) => {
-        dispatch(openModal(modalType));
+        dispatch(openModal({ modalType }));
     };
 
     return (
