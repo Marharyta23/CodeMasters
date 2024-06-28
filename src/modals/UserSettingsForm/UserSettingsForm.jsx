@@ -1,9 +1,29 @@
 import { useId, useRef, useState } from "react";
 import css from "./UserSettingsForm.module.css";
-// import * as Yup from "yup";
+import * as Yup from "yup";
 import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-import modalSprite from "../../img/icons.svg";
+import { yupResolver } from "@hookform/resolvers/yup";
+import modalIcons from "../../img/icons.svg";
+// import { useSelector } from "react-redux";
+// import { selectUserAvatar } from "../../redux/userSettings/selector";
+// import { Toaster, toast } from "react-hot-toast";
+const schema = Yup.object().shape({
+  name: Yup.string().min(2, "Too short!").max(50, "Too long!"),
+  email: Yup.string().email("Invalid email").min(2, "Too short!"),
+  weight: Yup.number()
+    .typeError(" must be a number")
+    .min(0, "weight must be 0 or more")
+    .max(200, "Weight must be less than or equal to 200"),
+  activeTimeSport: Yup.number()
+    .typeError("Active sport time must be a number")
+    .min(0, "Time active sport must be 0 or more")
+    .max(1000, "Time must be less than or equal to 1000"),
+  dailyWaterRate: Yup.number()
+    .typeError(" must be a number")
+    .positive("Water consumption must be a positive number")
+    .max(10000, "Water consumption must be less than or equal to 10000"),
+  gender: Yup.string().oneOf(["woman", "man", ""]).nullable(),
+});
 export default function UserSettingsForm() {
   const {
     register,
@@ -12,32 +32,46 @@ export default function UserSettingsForm() {
     formState: { errors },
     watch,
   } = useForm({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
     defaultValues: {
       name: "",
       email: "",
       weight: 0,
-      activeSportTime: 0,
-      dailyWaterNorma: 0,
+      activeTimeSport: 0,
+      dailyWaterRate: 0,
       gender: "",
     },
   });
+  // const avatarURL = useSelector(selectUserAvatar);
   const nameId = useId();
   const emailId = useId();
   const [file, setFile] = useState(null); // состояние для хранения файла
   const fileInputRef = useRef(null); // объект ссылки для получения доступа к инпуту файла
+
   const onFileChange = (e) => {
     // обработчик события (извлекаем выбранный userom файл)
     const selectedFile = e.target.files[0];
     setFile(selectedFile); // обновляем выбранный файл
   };
-
+  // функция расчёта нормы воды
+  const calculate = () => {
+    const weight = parseFloat(watch("weight")) || 0;
+    const activeTimeSport = parseFloat(watch("activeTimeSport")) || 0;
+    if (watch("gender") === "woman") {
+      return (weight * 0.03 + activeTimeSport * 0.4).toFixed(1);
+    } else if (watch("gender") === "man") {
+      return (weight * 0.04 + activeTimeSport * 0.6).toFixed(1);
+    }
+    return 0;
+  };
   return (
     <>
       <form className={css.form} encType="multipart/form-data">
         <div className={css.imageWrap}>
           <img
-            // src={file ? URL.createObjectURL(file) : avatarURL}
+            src={file ? URL.createObjectURL(file) : null} // avatarURL
+            // конструкция позволяет динамически отображать выбранное пользователем изображение
+            // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
             className={css.avatarImg}
           />
@@ -50,7 +84,7 @@ export default function UserSettingsForm() {
               ref={fileInputRef}
             />
             <svg className={css.iconUpload} width="18" height="18">
-              <use href="./src/img/icons.svg#icon-upload"></use>
+              <use xlinkHref={`${modalIcons}#icon-upload`}></use>
             </svg>
             <p>Upload a photo</p>
           </label>
@@ -76,8 +110,8 @@ export default function UserSettingsForm() {
                     <use
                       xlinkHref={
                         watch("gender") === "woman"
-                          ? `${modalSprite}#icon-radio-active`
-                          : `${modalSprite}#icon-radio`
+                          ? `${modalIcons}#icon-radio-active`
+                          : `${modalIcons}#icon-radio`
                       }
                     ></use>
                   </svg>
@@ -97,8 +131,8 @@ export default function UserSettingsForm() {
                     <use
                       xlinkHref={
                         watch("gender") === "man"
-                          ? `${modalSprite}#icon-radio-active`
-                          : `${modalSprite}#icon-radio`
+                          ? `${modalIcons}#icon-radio-active`
+                          : `${modalIcons}#icon-radio`
                       }
                     ></use>
                   </svg>
@@ -180,7 +214,7 @@ export default function UserSettingsForm() {
               </div>
               <div className={css.activeTime}>
                 <svg className={css.iconExclamation} width="18" height="18">
-                  <use xlinkHref={`${modalSprite}#icon-exclamation-mark`}></use>
+                  <use xlinkHref={`${modalIcons}#icon-exclamation-mark`}></use>
                 </svg>
                 <p>Active time in hours</p>
               </div>
@@ -208,7 +242,7 @@ export default function UserSettingsForm() {
               </div>
               <div
                 className={`${css.inputContainer} ${
-                  errors.activeSportTime ? css.hasError : ""
+                  errors.activeTimeSport ? css.hasError : ""
                 }`}
               >
                 <label className={css.inputTitle}>
@@ -216,12 +250,12 @@ export default function UserSettingsForm() {
                 </label>
                 <input
                   type="number"
-                  name="activeSportTime"
+                  name="activeTimeSport"
                   className={css.inputField}
-                  {...register("activeSportTime")}
+                  {...register("activeTimeSport")}
                 />
-                {errors.activeSportTime && (
-                  <p className={css.error}>{errors.activeSportTime.message}</p>
+                {errors.activeTimeSport && (
+                  <p className={css.error}>{errors.activeTimeSport.message}</p>
                 )}
               </div>
             </div>
@@ -231,12 +265,12 @@ export default function UserSettingsForm() {
                   The required amount of water in liters per day:
                 </h3>
                 <p className={`${css.accentText} ${css.accentLiter}`}>
-                  {/* {calculate()} L */}
+                  {calculate()} L
                 </p>
               </div>
               <div
                 className={`${css.inputContainer} ${
-                  errors.dailyWaterNorma ? css.hasError : ""
+                  errors.dailyWaterRate ? css.hasError : ""
                 }`}
               >
                 <label className={css.inputTitleBold}>
@@ -244,12 +278,12 @@ export default function UserSettingsForm() {
                 </label>
                 <input
                   type="number"
-                  name="dailyWaterNorma"
+                  name="dailyWaterRate"
                   className={css.inputField}
-                  {...register("dailyWaterNorma")}
+                  {...register("dailyWaterRate")}
                 />
-                {errors.dailyWaterNorma && (
-                  <p className={css.error}>{errors.dailyWaterNorma.message}</p>
+                {errors.dailyWaterRate && (
+                  <p className={css.error}>{errors.dailyWaterRate.message}</p>
                 )}
               </div>
             </div>

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { updateWater } from "./updateWaterOperations";
 
 const INITIAL_STATE = {
-  items: null,
+  waterCards: [],
   isLoading: false,
   isError: false,
 };
@@ -20,8 +20,8 @@ export const updateWaterSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
 
-        const index = state.items.findIndex(
-          (item) => item.id === action.payload.id
+        const index = state.waterCards.findIndex(
+          (waterCard) => waterCard.id === action.payload.id
         );
         state.items[index] = action.payload;
       })
