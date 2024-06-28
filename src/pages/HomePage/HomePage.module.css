@@ -1,17 +1,17 @@
-/* --Mobile styles--*/
+/* --Mobile screen--*/
 
 @media screen and (min-widh: 320px) and (max-width: 767.99px) {
   .HomePageSection {
     height: 780px;
   }
 }
-
+/*--Tablet screen--*/
 @media screen and (min-width: 768px) {
   .HomePageSection {
-    padding: 32px;
+    margin: o auto;
   }
 }
-
+/*--Desktop screen*/
 @media screen and (min-width: 1440px) {
   .HomePageSection {
     display: flex;

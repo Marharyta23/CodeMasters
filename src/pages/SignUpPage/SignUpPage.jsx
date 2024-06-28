@@ -6,6 +6,11 @@ import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
 import { Toaster } from "react-hot-toast";
 
+import { selectIsLoading } from "../../redux/auth/selectors";
+import { useSelector } from "react-redux";
+
+import Loader from "../../components/Loader/Loader";
+
 import css from "./SignUpPage.module.css";
 
 export default function SignUpPage() {
@@ -23,8 +28,15 @@ export default function SignUpPage() {
     };
   }, []);
 
+  const loading = useSelector(selectIsLoading);
+
+  useEffect(() => {
+    console.log("Loading state:", loading);
+  }, [loading]);
+
   return (
     <div className={css.SignUpPageWrapper}>
+      {loading && <Loader />}
       <DocumentTitle>Sign Up</DocumentTitle>
       <div className={css.SignUpPageSection}>
         <Logo />
