@@ -90,11 +90,10 @@ export default function WaterForm({ selectedWaterRecord }) {
         successToast("Water card added successfully!");
       } else {
         const FormDataToUpdate = {
+            time: time,
           amount: values.amount,
-          time: time,
-          _id: values._id,
         };
-        dispatch(updateWater(FormDataToUpdate));
+        dispatch(updateWater(selectedWaterRecord._id, FormDataToUpdate));
 
         successToast("Water card has been updated successfully!");
       }
