@@ -28,4 +28,4 @@ export const addWaterSlice = createSlice({
       }),
 });
 
-export const addWaterReduser = addWaterSlice.reducer;
+export const addWaterReducer = addWaterSlice.reducer;
