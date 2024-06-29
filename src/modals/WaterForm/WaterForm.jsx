@@ -125,13 +125,13 @@ export default function WaterForm({ selectedWaterRecord }) {
             <div className={css.inputWrap}>
                 <label className={errors.time ? css.labelError : css.label}>
                     <span className={css.timeSpan}> Recording time:</span>
-                    <input className={css.input} type="text" name="time" {...register("time", { pattern: /^\d{2}:\d{2}$/ })} />
+                    <input className={errors.time ? css.inputError : css.input} type="text" name="time" {...register("time", { pattern: /^\d{2}:\d{2}$/ })} />
                 </label>
                 {errors.time && <p className={css.error}>{errors.time.message}</p>}
 
                 <label className={errors.amount ? css.labelError : css.label}>
                     <span className={css.amountSpan}>Enter the value of the water used:</span>
-                    <input className={css.input} type="number" name="amount" {...register("amount")} />
+                    <input className={errors.amount ? css.inputError : css.input} type="number" name="amount" {...register("amount")} />
                 </label>
                 {errors.amount && <p className={css.error}>{errors.amount.message}</p>}
             </div>
