@@ -9,6 +9,8 @@ import { selectModalState } from "../../redux/modal/selector";
 
 import iconPlus from "../../img/icons.svg#icon-plus";
 import iconMinus from "../../img/icons.svg#icon-minus";
+import { updateWater } from "../../redux/updateWater/updateWaterOperations";
+import { addWater } from '../../redux/addWater/addWaterOperations';
 
 const schema = yup.object().shape({
     time: yup
@@ -51,19 +53,19 @@ export default function WaterForm({ selectedWaterRecord }) {
         defaultValues,
     });
 
-    // useEffect(() => {
-    //   if (selectedWaterRecord) {
-    //     const date = new Date(selectedWaterRecord.date);
-    //     const formattedTime = date.toLocaleTimeString("en-US", {
-    //       hour: "numeric",
-    //       minute: "2-digit",
-    //       hour12: true,
-    //     });
+    useEffect(() => {
+      if (selectedWaterRecord) {
+        const date = new Date(selectedWaterRecord.date);
+        const formattedTime = date.toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        });
 
-    //     setValue("time", formattedTime);
-    //     setValue("amount", selectedWaterRecord.amountWater);
-    //   }
-    // }, [selectedWaterRecord, setValue]);
+        setValue("time", timeToShow);
+        setValue("amount", selectedWaterRecord.amountWater);
+      }
+    }, [selectedWaterRecord, setValue]);
 
     const handleDerementWaterAmount = () => {
         const currentValue = getValues("amount");
@@ -83,10 +85,21 @@ export default function WaterForm({ selectedWaterRecord }) {
             day: date.getDate(),
             time: timeToSend,
         };
+
+        const FormDataToUpdate = {
+          amount: values.amount,
+          time: timeToSend,
+          _id: values._id,
+        }
+
         if (modalType === "WaterModalAdd") {
-            // dispatch(addWater(FormDataToSend));
+            dispatch(addWater(FormDataToSend));
 
             successToast("Water card added successfully");
+        } else {
+          dispatch(updateWater(FormDataToUpdate))
+
+            successToast("Water card has been updated successfully");
         }
         console.log(FormDataToSend, modalType);
 
