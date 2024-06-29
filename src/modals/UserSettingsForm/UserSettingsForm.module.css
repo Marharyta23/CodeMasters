@@ -109,10 +109,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  /* fill: none;
-  stroke: #9be1a0;
-  border: 35x;
-  font-weight: 700; */
 }
 
 .iconWrap {
@@ -253,11 +249,6 @@
     display: flex;
     align-items: center;
   }
-
-  .accentLiter {
-    font-size: 15px;
-  }
-
   .submitBtn {
     padding: 16px 50px;
     font-size: 16px;

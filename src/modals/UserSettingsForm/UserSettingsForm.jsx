@@ -1,15 +1,16 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import css from "./UserSettingsForm.module.css";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import modalIcons from "../../img/icons.svg";
-// import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { selectUserAvatar } from "../../redux/userSettings/selector";
+import { currentUser } from "../../redux/userSettings/operations";
 // import { Toaster, toast } from "react-hot-toast";
 const schema = Yup.object().shape({
-  name: Yup.string().min(2, "Too short!").max(50, "Too long!"),
-  email: Yup.string().email("Invalid email").min(2, "Too short!"),
+  name: Yup.string().min(2, "Name is required!").max(50, "Too long!"),
+  email: Yup.string().email("Invalid email").min(2, "Email is required!"),
   weight: Yup.number()
     .typeError(" must be a number")
     .min(0, "weight must be 0 or more")
@@ -27,8 +28,7 @@ const schema = Yup.object().shape({
 export default function UserSettingsForm() {
   const {
     register,
-    // handleSubmit,
-
+    handleSubmit,
     formState: { errors },
     watch,
   } = useForm({
@@ -42,6 +42,7 @@ export default function UserSettingsForm() {
       gender: "",
     },
   });
+  const dispatch = useDispatch();
   // const avatarURL = useSelector(selectUserAvatar);
   const nameId = useId();
   const emailId = useId();
@@ -53,6 +54,11 @@ export default function UserSettingsForm() {
     const selectedFile = e.target.files[0];
     setFile(selectedFile); // обновляем выбранный файл
   };
+  // запрос на сервер с целью получить текущие данные пользователя
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
+
   // функция расчёта нормы воды
   const calculate = () => {
     const weight = parseFloat(watch("weight")) || 0;
@@ -64,12 +70,29 @@ export default function UserSettingsForm() {
     }
     return 0;
   };
+
+  const submit = async (userData) => {
+    console.log("userData: ", userData);
+    const formData = new FormData();
+    Object.keys(userData).forEach((key) => {
+      formData.append(key, userData[key]);
+    });
+    if (file) {
+      formData.append("avatar", file);
+      console.log("file: ", file);
+    }
+  };
+
   return (
     <>
-      <form className={css.form} encType="multipart/form-data">
+      <form
+        className={css.form}
+        onSubmit={handleSubmit(submit)}
+        encType="multipart/form-data"
+      >
         <div className={css.imageWrap}>
           <img
-            src={file ? URL.createObjectURL(file) : null} // avatarURL
+            src={file ? URL.createObjectURL(file) : null}
             // конструкция позволяет динамически отображать выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
