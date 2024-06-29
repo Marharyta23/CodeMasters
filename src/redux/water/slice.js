@@ -20,7 +20,8 @@ const handleRejected = (state, action) => {
 const waterSlice = createSlice({
     name: "water",
     initialState: {
-        waterData: [],
+        waterDataDay: [],
+        waterDataMonth: [],
         loading: false,
         error: null,
     },
@@ -30,30 +31,34 @@ const waterSlice = createSlice({
             .addCase(fetchWaterDataDay.pending, handlePending)
             .addCase(fetchWaterDataDay.fulfilled, (state, action) => {
                 handleFulfilled(state);
-                state.waterData = action.payload;
+                state.waterDataDay = action.payload;
             })
             .addCase(fetchWaterDataDay.rejected, handleRejected)
 
             .addCase(fetchWaterDataMonth.pending, handlePending)
             .addCase(fetchWaterDataMonth.fulfilled, (state, action) => {
                 handleFulfilled(state);
-                state.waterData = action.payload;
+                state.waterDataMonth = action.payload;
             })
             .addCase(fetchWaterDataMonth.rejected, handleRejected)
 
             .addCase(addWater.pending, handlePending)
             .addCase(addWater.fulfilled, (state, action) => {
                 handleFulfilled(state);
-                state.waterData.push(action.payload);
+                state.waterDataDay.push(action.payload);
             })
             .addCase(addWater.rejected, handleRejected)
 
             .addCase(updateWater.pending, handlePending)
             .addCase(updateWater.fulfilled, (state, action) => {
                 handleFulfilled(state);
-                const index = state.waterData.findIndex((water) => water.id === action.payload.id);
+                const index = state.waterDataDay.findIndex((water) => water._id === action.payload._id);
                 if (index !== -1) {
-                    state.waterData[index] = action.payload;
+                    state.waterDataDay[index] = {
+                        ...state.waterDataDay[index],
+                        amount: action.payload.amount,
+                        time: action.payload.time,
+                    };
                 }
             })
             .addCase(updateWater.rejected, handleRejected)
@@ -61,7 +66,7 @@ const waterSlice = createSlice({
             .addCase(deleteWater.pending, handlePending)
             .addCase(deleteWater.fulfilled, (state, action) => {
                 handleFulfilled(state);
-                state.waterData = state.waterData.filter((water) => water.id !== action.payload);
+                state.waterDataDay = state.waterDataDay.filter((water) => water._id !== action.payload._id);
             })
             .addCase(deleteWater.rejected, handlePending);
     },
