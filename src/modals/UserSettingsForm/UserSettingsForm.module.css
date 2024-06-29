@@ -191,8 +191,7 @@
 
 .accentLiter {
   font-size: 14px;
-  margin-top: 0;
-  margin-left: 5px;
+  margin-top: 10px;
 }
 
 .submitBtn {
@@ -252,6 +251,7 @@
 
   .requiredAmount {
     display: flex;
+    align-items: center;
   }
 
   .accentLiter {
@@ -262,6 +262,11 @@
     padding: 16px 50px;
     font-size: 16px;
     line-height: 1.5;
+  }
+  .accentLiter {
+    font-size: 14px;
+    margin-top: 0;
+    margin-left: 5px;
   }
 }
 @media screen and (min-width: 1440px) {
