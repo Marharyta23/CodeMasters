@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { currentUser, updateUserInfo } from "./operations";
+import { currentUser} from "./operations";
+// import { currentUser, updateUserInfo } from "./operations";
 
 const userSlice = createSlice({
   name: "user",
@@ -13,18 +14,16 @@ const userSlice = createSlice({
       gender: null,
       weight: 0,
     },
+    accessToken: null,
+    isLoggedIn: false,
   },
   extraReducers: (builder) => {
     builder
+
       .addCase(currentUser.fulfilled, (state, action) => {
         state.user = action.payload;
+        state.isLoggedIn = true;
       })
-      .addCase(updateUserInfo.fulfilled, (state, action) => {
-        const updatedFields = action.payload;
-        Object.keys(updatedFields).forEach((key) => {
-          state.user[key] = updatedFields[key];
-        });
-      });
   },
 });
 

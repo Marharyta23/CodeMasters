@@ -2,15 +2,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useEffect } from "react";
-import css from "../WaterForm/WaterForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { successToast } from "../../helpers/toast";
 import { selectModalState } from "../../redux/modal/selector";
-
 import iconPlus from "../../img/icons.svg#icon-plus";
 import iconMinus from "../../img/icons.svg#icon-minus";
-import { updateWater } from "../../redux/updateWater/updateWaterOperations";
-import { addWater } from "../../redux/water/operations";
+import { errorToast, successToast } from "../../helpers/toast";
+import { addWater, updateWater } from "../../redux/water/operations";
+
+import css from "../WaterForm/WaterForm.module.css";
 
 const schema = yup.object().shape({
   time: yup
@@ -29,11 +28,11 @@ const schema = yup.object().shape({
 });
 
 const date = new Date();
-const timeToShow = date.toLocaleTimeString().slice(0, -3);
-const timeToSend = date.toLocaleTimeString();
+
+const time = date.toLocaleTimeString().slice(0, -3);
 
 const defaultValues = {
-  time: timeToShow,
+  time: time,
   amount: 50,
 };
 
@@ -62,7 +61,7 @@ export default function WaterForm({ selectedWaterRecord }) {
         hour12: true,
       });
 
-      setValue("time", timeToShow);
+      setValue("time", time);
       setValue("amount", selectedWaterRecord.amountWater);
     }
   }, [selectedWaterRecord, setValue]);
@@ -78,31 +77,31 @@ export default function WaterForm({ selectedWaterRecord }) {
   };
 
   const onSubmit = (values) => {
-    const FormDataToSend = {
-      amount: values.amount,
-      year: date.getFullYear(),
-      month: date.getMonth() + 1,
-      day: date.getDate(),
-      time: timeToSend,
-    };
+    try {
+      if (modalType === "WaterModalAdd") {
+        const FormDataToAdd = {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate(),
+          ...values,
+        };
+        dispatch(addWater(FormDataToAdd));
 
-    const FormDataToUpdate = {
-      amount: values.amount,
-      time: timeToSend,
-      _id: values._id,
-    };
+        successToast("Water card added successfully!");
+      } else {
+        const FormDataToUpdate = {
+          amount: values.amount,
+          time: time,
+          _id: values._id,
+        };
+        dispatch(updateWater(FormDataToUpdate));
 
-    if (modalType === "WaterModalAdd") {
-      dispatch(addWater(FormDataToSend));
-
-      successToast("Water card added successfully");
-    } else {
-      dispatch(updateWater(FormDataToUpdate));
-
-      successToast("Water card has been updated successfully");
+        successToast("Water card has been updated successfully!");
+      }
+    } catch (error) {
+      errorToast("Runtime error");
+      console.log(error.message);
     }
-    console.log(FormDataToSend, modalType);
-
     reset();
   };
 
@@ -140,7 +139,7 @@ export default function WaterForm({ selectedWaterRecord }) {
           <span className={css.timeSpan}> Recording time:</span>
           <input
             className={errors.time ? css.inputError : css.input}
-            type="text"
+            type="string"
             name="time"
             {...register("time", { pattern: /^\d{2}:\d{2}$/ })}
           />

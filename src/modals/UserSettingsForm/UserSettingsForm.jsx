@@ -1,20 +1,15 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import css from "./UserSettingsForm.module.css";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import modalIcons from "../../img/icons.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUserAvatar } from "../../redux/userSettings/selector";
-import {
-  currentUser,
-  updateUserInfo,
-} from "../../redux/userSettings/operations";
-import { errorToast, successToast } from "../../helpers/toast";
-
+// import { useSelector } from "react-redux";
+// import { selectUserAvatar } from "../../redux/userSettings/selector";
+// import { Toaster, toast } from "react-hot-toast";
 const schema = Yup.object().shape({
-  name: Yup.string().min(2, "Name is required!").max(50, "Too long!"),
-  email: Yup.string().email("Invalid email").min(2, "Email is required!"),
+  name: Yup.string().min(2, "Too short!").max(50, "Too long!"),
+  email: Yup.string().email("Invalid email").min(2, "Too short!"),
   weight: Yup.number()
     .typeError(" must be a number")
     .min(0, "weight must be 0 or more")
@@ -29,13 +24,11 @@ const schema = Yup.object().shape({
     .max(10000, "Water consumption must be less than or equal to 10000"),
   gender: Yup.string().oneOf(["woman", "man", ""]).nullable(),
 });
-export default function UserSettingsForm({ onCLose }) {
-  const dispatch = useDispatch();
-  const avatarURL = useSelector(selectUserAvatar);
-
+export default function UserSettingsForm() {
   const {
     register,
-    handleSubmit,
+    // handleSubmit,
+
     formState: { errors },
     watch,
   } = useForm({
@@ -43,28 +36,23 @@ export default function UserSettingsForm({ onCLose }) {
     defaultValues: {
       name: "",
       email: "",
-      gender: "",
       weight: 0,
       activeTimeSport: 0,
       dailyWaterRate: 0,
+      gender: "",
     },
   });
-
+  // const avatarURL = useSelector(selectUserAvatar);
   const nameId = useId();
   const emailId = useId();
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null); // состояние для хранения файла
   const fileInputRef = useRef(null); // объект ссылки для получения доступа к инпуту файла
 
   const onFileChange = (e) => {
     // обработчик события (извлекаем выбранный userom файл)
     const selectedFile = e.target.files[0];
-    setFile(selectedFile); // обновляем
+    setFile(selectedFile); // обновляем выбранный файл
   };
-  // запрос на сервер с целью получить текущие данные пользователя
-  useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
-
   // функция расчёта нормы воды
   const calculate = () => {
     const weight = parseFloat(watch("weight")) || 0;
@@ -76,38 +64,12 @@ export default function UserSettingsForm({ onCLose }) {
     }
     return 0;
   };
-  // обработка отправки формы
-  const submit = async (userData) => {
-    console.log("userData: ", userData);
-    const formData = new FormData(); // создаём объект formData
-    console.log("formData: ", formData);
-    Object.keys(userData).forEach((key) => {
-      formData.append(key, userData[key]);
-    });
-    if (file) {
-      formData.append("avatar", file);
-      console.log("file: ", file);
-    }
-    try {
-      await dispatch(updateUserInfo(formData).unwrap()); // отправка данных(formData) на бек
-      console.log("formData: ", formData);
-      successToast("User updated successfuly");
-      onCLose();
-    } catch (error) {
-      errorToast("Error: Unsuccessful update of user information", error);
-    }
-  };
-
   return (
     <>
-      <form
-        className={css.form}
-        onSubmit={handleSubmit(submit)}
-        encType="multipart/form-data"
-      >
+      <form className={css.form} encType="multipart/form-data">
         <div className={css.imageWrap}>
           <img
-            src={file ? URL.createObjectURL(file) : avatarURL}
+            src={file ? URL.createObjectURL(file) : null} // avatarURL
             // конструкция позволяет динамически отображать выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
