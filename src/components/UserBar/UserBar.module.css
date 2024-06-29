@@ -38,6 +38,10 @@
     transition: transform 0.2s ease-in-out;
 }
 
+.userBarImage {
+    border-radius: 50%;
+}
+
 @media (min-width: 768px) {
     .userBarContainer {
         max-width: 157px;
