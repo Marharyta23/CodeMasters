@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { hidePopover } from "../../redux/popover/slice";
 import { openModal } from "../../redux/modal/slice";
 
+import icons from "../../img/icons.svg";
+
 import css from "./UserBarPopover.module.css";
 
 export default function UserBarPopover() {
@@ -46,7 +48,7 @@ export default function UserBarPopover() {
         <div className={css.container} ref={popoverRef}>
             <button type="button" className={css.popoverBtn} onClick={() => showModal("UserSettingsModal")}>
                 <svg className={css.popoverIcon} width="16" height="16">
-                    <use href="../../../src/img/icons.svg#icon-settings"></use>
+                    <use href={`${icons}#icon-settings`}></use>
                 </svg>
 
                 <p className={css.popoverText}>Setting</p>
@@ -54,7 +56,7 @@ export default function UserBarPopover() {
 
             <button type="button" className={clsx(css.popoverBtn, css.popoverBtnGray)} onClick={() => showModal("LogOutModal")}>
                 <svg className={css.popoverIcon} width="16" height="16">
-                    <use href="../../../src/img/icons.svg#icon-log-out"></use>
+                    <use href={`${icons}#icon-log-out`}></use>
                 </svg>
 
                 <p className={css.popoverText}>Log out</p>

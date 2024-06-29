@@ -1,6 +1,9 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+
 import { selectModalState } from "../../redux/modal/selector";
+import { fetchWaterDataDay, fetchWaterDataMonth } from "../../redux/water/operations";
 
 import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
 import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
@@ -15,7 +18,18 @@ import DeleteWaterModal from "../../modals/DeleteWaterModal/DeleteWaterModal";
 import css from "./TrackerPage.module.css";
 
 export default function TrackerPage() {
+    const dispatch = useDispatch();
     const { modalType, props } = useSelector(selectModalState);
+
+    useEffect(() => {
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.getMonth();
+        const year = today.getFullYear();
+
+        dispatch(fetchWaterDataDay({ day, month, year }));
+        dispatch(fetchWaterDataMonth({ month, year }));
+    }, [dispatch]);
 
     return (
         <>

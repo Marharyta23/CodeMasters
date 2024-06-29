@@ -1,6 +1,4 @@
 .userBarContainer {
-    max-width: 137px;
-
     position: relative;
 }
 
@@ -39,10 +37,6 @@
 }
 
 @media (min-width: 768px) {
-    .userBarContainer {
-        max-width: 157px;
-    }
-
     .userBar {
         gap: 10px;
     }
