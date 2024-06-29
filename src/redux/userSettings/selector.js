@@ -1,1 +1,1 @@
-// export const selectUserAvatar = (state) => state.user.user.avatarURL;
+export const selectUserAvatar = (state) => state.user.user.avatarURL;
