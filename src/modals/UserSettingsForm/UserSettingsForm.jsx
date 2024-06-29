@@ -1,16 +1,18 @@
-import { useEffect, useId, useRef, useState } from "react";
-import css from "./UserSettingsForm.module.css";
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import modalIcons from "../../img/icons.svg";
+import { useId, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserAvatar } from "../../redux/userSettings/selector";
-import {
-  currentUser,
-  updateUserInfo,
-} from "../../redux/userSettings/operations";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+// import { selectUserAvatar } from "../../redux/userSettings/selector";
+// import { currentUser, updateUserInfo } from "../../redux/userSettings/operations";
+import { selectUser } from "../../redux/auth/selectors";
+import { updateUserInfo } from "../../redux/auth/operations";
+
 import { errorToast, successToast } from "../../helpers/toast";
+import modalIcons from "../../img/icons.svg";
+
+import css from "./UserSettingsForm.module.css";
 
 const schema = Yup.object().shape({
   name: Yup.string().min(2, "Name is required!").max(50, "Too long!"),
@@ -31,7 +33,9 @@ const schema = Yup.object().shape({
 });
 export default function UserSettingsForm({ onCLose }) {
   const dispatch = useDispatch();
-  const avatarURL = useSelector(selectUserAvatar);
+
+  const user = useSelector(selectUser);
+  const avatarURL = user.avatarURL;
 
   const {
     register,
@@ -60,10 +64,6 @@ export default function UserSettingsForm({ onCLose }) {
     const selectedFile = e.target.files[0];
     setFile(selectedFile); // обновляем
   };
-  // запрос на сервер с целью получить текущие данные пользователя
-  useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
 
   // функция расчёта нормы воды
   const calculate = () => {
@@ -76,6 +76,7 @@ export default function UserSettingsForm({ onCLose }) {
     }
     return 0;
   };
+
   // обработка отправки формы
   const submit = async (userData) => {
     console.log("userData: ", userData);
@@ -127,6 +128,7 @@ export default function UserSettingsForm({ onCLose }) {
             <p>Upload a photo</p>
           </label>
         </div>
+
         <div className={css.partWrap}>
           <div
             className={`${css.inputContainerGender} ${
@@ -183,6 +185,7 @@ export default function UserSettingsForm({ onCLose }) {
             )}
           </div>
         </div>
+
         <div className={css.block}>
           <div className={css.blockWrap}>
             <div className={css.partWrap}>
@@ -327,6 +330,7 @@ export default function UserSettingsForm({ onCLose }) {
             </div>
           </div>
         </div>
+
         <button type="submit" className={css.submitBtn}>
           Save
         </button>
