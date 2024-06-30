@@ -1,99 +1,119 @@
 .dailyInfo__StyledListAddWater {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0 0 24px;
-  display: flex;
-  gap: 8px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0 0 24px;
+    display: flex;
+    gap: 8px;
 
+    min-height: 74px;
+    height: auto;
 }
 
 .dailyInfo__listItem {
-  background-color: white;
-  border-radius: 20px;
-  display: flex;
-  line-height: 26px;
-  min-width: 149px;
-  height: 74px;
-  padding: 19px 14px;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 10px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    line-height: 26px;
+    min-width: 149px;
+    height: 74px;
+    padding: 19px 14px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
 }
 
-.dailyInfo__leftContainer {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.dailyInfo__centerContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .dailyInfo__rightContainer {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-direction: column;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
 }
 
-.dailyInfo__Icon svg {
-  display: flex;
-  width: 38px;
-  height: 38px;
-  stroke: black;
+.dailyInfo__Icon {
+    width: 38px;
+    height: 38px;
+
+    stroke: var(--accent);
+    fill: var(--accent);
+}
+
+.dailyInfo__iconSvg {
+    width: 14px;
+    height: 14px;
+
+    stroke: var(--main);
+    fill: none;
 }
 
 .dailyInfo__dataContainer {
-  display: flex;
-  gap: 6px;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: flex-start;
-  min-width: 50px;
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 50px;
 }
 
 .dailyInfo__water {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  color: rgba(50, 63, 71, 1);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    color: rgba(50, 63, 71, 1);
 }
 
 .dailyInfo__time {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
-  color: rgba(47, 47, 47, 0.6);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: rgba(47, 47, 47, 0.6);
 }
 
 .dailyInfo__iconButton {
-  border: 0;
-  height: 14px;
-  display: contents;
+    border: 0;
+    height: 14px;
+    display: contents;
 }
 
 @media (min-width: 768px) {
-  .dailyInfo__listItem {
-    min-width: 192px;
-    height: 86px;
-    padding: 20px;
-    gap: 20px;
-  }
+    .dailyInfo__StyledListAddWater {
+        min-height: 86px;
+    }
 
-  .dailyInfo__leftContainer {
-    gap: 20px;
-  }
+    .dailyInfo__listItem {
+        min-width: 192px;
+        height: 86px;
+        padding: 20px;
+        gap: 20px;
+    }
 
-  .dailyInfo__rightContainer {
-    gap: 14px;
-  }
+    .dailyInfo__centerContainer {
+        gap: 20px;
+    }
 
-  .dailyInfo__Icon svg {
-    width: 45px;
-    height: 45px;
-  }
+    .dailyInfo__rightContainer {
+        gap: 14px;
+    }
 
-  .dailyInfo__dataContainer {
-    min-width: 52px;
-  }
+    .dailyInfo__Icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .dailyInfo__iconSvg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .dailyInfo__dataContainer {
+        min-width: 52px;
+    }
 }
