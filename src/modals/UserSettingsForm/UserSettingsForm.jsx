@@ -93,7 +93,7 @@ export default function UserSettingsForm() {
       formData.append(key, userData[key]);
     });
     if (file) {
-      formData.append("avatar", file);
+      formData.append("avatarURL", file);
       console.log("file: ", file);
     }
     try {
