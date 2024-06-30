@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-import iconClose from "../../img/icons.svg#icon-close";
+import iconClose from "../../img/icons.svg";
 import clsx from "clsx";
 
 import { closeModal } from "../../redux/modal/slice";

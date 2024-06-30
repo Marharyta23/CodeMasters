@@ -7,10 +7,8 @@ import * as yup from "yup";
 import { closeModal } from "../../redux/modal/slice";
 import { addWater, updateWater } from "../../redux/water/operations";
 import { selectModalState } from "../../redux/modal/selector";
-
-import iconPlus from "../../img/icons.svg#icon-plus";
-import iconMinus from "../../img/icons.svg#icon-minus";
-
+import iconPlus from "../../img/icons.svg";
+import iconMinus from "../../img/icons.svg";
 import { errorToast, successToast } from "../../helpers/toast";
 
 import css from "../WaterForm/WaterForm.module.css";
