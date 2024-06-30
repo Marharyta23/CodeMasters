@@ -3,3 +3,11 @@
   font-weight: 700;
   line-height: 24px;
 }
+
+/* mediav */
+@media screen and (min-width: 768px) {
+  .dailyInfo__todayDate {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
