@@ -122,3 +122,10 @@
   }
 
 }
+
+@media screen and (min-width: 1440px) {
+  .monthlyInfo__Days {
+    column-gap: 43px;
+  }
+
+}
