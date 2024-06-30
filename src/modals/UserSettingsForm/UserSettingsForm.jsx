@@ -1,11 +1,9 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-// import { selectUserAvatar } from "../../redux/userSettings/selector";
-// import { currentUser, updateUserInfo } from "../../redux/userSettings/operations";
 import { selectUser } from "../../redux/auth/selectors";
 import { updateUserInfo } from "../../redux/auth/operations";
 
@@ -31,15 +29,15 @@ const schema = Yup.object().shape({
     .max(10000, "Water consumption must be less than or equal to 10000"),
   gender: Yup.string().oneOf(["woman", "man", ""]).nullable(),
 });
-export default function UserSettingsForm({ onCLose }) {
+export default function UserSettingsForm() {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
   const avatarURL = user.avatarURL;
-
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     watch,
   } = useForm({
@@ -54,6 +52,16 @@ export default function UserSettingsForm({ onCLose }) {
     },
   });
 
+  useEffect(() => {
+    if (user) {
+      setValue("name", user.name || "");
+      setValue("email", user.email || "");
+      setValue("weight", user.weight || 0);
+      setValue("activeTimeSport", user.activeTimeSport || 0);
+      setValue("dailyWaterRate", user.dailyWaterRate || 0);
+      setValue("gender", user.gender || "");
+    }
+  }, [user, setValue]);
   const nameId = useId();
   const emailId = useId();
   const [file, setFile] = useState(null);
@@ -81,7 +89,6 @@ export default function UserSettingsForm({ onCLose }) {
   const submit = async (userData) => {
     console.log("userData: ", userData);
     const formData = new FormData(); // создаём объект formData
-    console.log("formData: ", formData);
     Object.keys(userData).forEach((key) => {
       formData.append(key, userData[key]);
     });
@@ -90,10 +97,9 @@ export default function UserSettingsForm({ onCLose }) {
       console.log("file: ", file);
     }
     try {
-      await dispatch(updateUserInfo(formData).unwrap()); // отправка данных(formData) на бек
+      await dispatch(updateUserInfo(formData)); // отправка данных(formData) на бек
       console.log("formData: ", formData);
       successToast("User updated successfuly");
-      onCLose();
     } catch (error) {
       errorToast("Error: Unsuccessful update of user information", error);
     }
@@ -224,6 +230,7 @@ export default function UserSettingsForm({ onCLose }) {
                   id={emailId}
                   className={css.inputField}
                   {...register("email")}
+                  // onChange={(e) => setEmail(e.target.value)}
                 />
                 {errors.email && (
                   <p className={css.error}>{errors.email.message}</p>
