@@ -3,7 +3,7 @@ import {
   selectForceRender,
   selectMonthStats,
   selectWaterRecords,
-} from "../redux/water/selectors.js";
+} from "../redux/waterCalendar/selectors.js";
 
 export const useWater = () => ({
   waterRecords: useSelector(selectWaterRecords),
