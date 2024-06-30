@@ -4,42 +4,7 @@ import { openModal } from "../../redux/modal/slice";
 import { selectWaterDataDay } from "../../redux/water/selectors";
 
 import icons from "../../img/icons.svg";
-
 import css from "./WaterList.module.css";
-
-//teest
-// const waterRecords = [
-//     {
-//         _id: "1234",
-//         amountWater: 150,
-//         date: new Date(),
-//     },
-//     {
-//         _id: "343",
-//         amountWater: 250,
-//         date: new Date(),
-//     },
-//     {
-//         _id: "3543",
-//         amountWater: 350,
-//         date: new Date(),
-//     },
-//     {
-//         _id: "35343",
-//         amountWater: 350,
-//         date: new Date(),
-//     },
-//     {
-//         _id: "35543",
-//         amountWater: 350,
-//         date: new Date(),
-//     },
-//     {
-//         _id: "36543",
-//         amountWater: 350,
-//         date: new Date(),
-//     },
-// ];
 
 export default function WaterList() {
   const waterRecords = useSelector(selectWaterDataDay);
@@ -107,26 +72,17 @@ export default function WaterList() {
     <div>
       <ul className={css.dailyInfo__StyledListAddWater}>
         {waterRecords.map((waterRecord) => {
-          // const date = new Date(waterRecord.date);
-
-          // const formattedTime = date.toLocaleTimeString("en-US", {
-          //     hour: "numeric",
-          //     minute: "2-digit",
-          //     hour12: true,
-          // });
-
-          // const updatedWaterRecord = {
-          //     ...waterRecord,
-          //     date: formattedTime,
-          // };
-
-          // const hours = date.getUTCHours();
-          // const minutes = date.getUTCMinutes();
-          // const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-          // const formattedHours = hours < 10 ? "0" + hours : hours;
-
           const time = waterRecord.time;
           const amount = waterRecord.amount;
+
+          const timeString12hr = new Date(
+            "1970-01-01T" + time + "Z"
+          ).toLocaleTimeString("en-US", {
+            timeZone: "UTC",
+            hour12: true,
+            hour: "numeric",
+            minute: "numeric",
+          });
 
           return (
             <li key={waterRecord._id} className={css.dailyInfo__listItem}>
@@ -137,7 +93,7 @@ export default function WaterList() {
               <div className={css.dailyInfo__centerContainer}>
                 <div className={css.dailyInfo__dataContainer}>
                   <span className={css.dailyInfo__water}>{amount} ml</span>
-                  <span className={css.dailyInfo__time}>{time}</span>
+                  <span className={css.dailyInfo__time}>{timeString12hr}</span>
                 </div>
               </div>
 
@@ -146,11 +102,7 @@ export default function WaterList() {
                   className={css.dailyInfo__iconButton}
                   onClick={() => showModal("WaterModalEdit", waterRecord._id)}
                 >
-                  <svg
-                    className={css.dailyInfo__iconSvg}
-                    width="14"
-                    height="14"
-                  >
+                  <svg className={css.dailyInfo__iconSvg}>
                     <use href={`${icons}#icon-edit`}></use>
                   </svg>
                 </button>
@@ -158,11 +110,7 @@ export default function WaterList() {
                   className={css.dailyInfo__iconButton}
                   onClick={() => showModal("DeleteWaterModal", waterRecord._id)}
                 >
-                  <svg
-                    className={css.dailyInfo__iconSvg}
-                    width="14"
-                    height="14"
-                  >
+                  <svg className={css.dailyInfo__iconSvg}>
                     <use href={`${icons}#icon-delete`}></use>
                   </svg>
                 </button>
