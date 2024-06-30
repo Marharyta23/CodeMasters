@@ -4,8 +4,8 @@ import * as yup from "yup";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModalState } from "../../redux/modal/selector";
-import iconPlus from "../../img/icons.svg#icon-plus";
-import iconMinus from "../../img/icons.svg#icon-minus";
+import iconPlus from "../../img/icons.svg";
+import iconMinus from "../../img/icons.svg";
 import { errorToast, successToast } from "../../helpers/toast";
 import { addWater, updateWater } from "../../redux/water/operations";
 
