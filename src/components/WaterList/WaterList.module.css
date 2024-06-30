@@ -125,3 +125,9 @@
         min-width: 52px;
     }
 }
+
+@media (min-width: 1440px) {
+    .dailyInfo__StyledListAddWater {
+        gap: 16px;
+    }
+}
