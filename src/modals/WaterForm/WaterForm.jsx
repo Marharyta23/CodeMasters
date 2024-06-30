@@ -1,13 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import { closeModal } from "../../redux/modal/slice";
+import { addWater, updateWater } from "../../redux/water/operations";
 import { selectModalState } from "../../redux/modal/selector";
+
 import iconPlus from "../../img/icons.svg#icon-plus";
 import iconMinus from "../../img/icons.svg#icon-minus";
+
 import { errorToast, successToast } from "../../helpers/toast";
-import { addWater, updateWater } from "../../redux/water/operations";
 
 import css from "../WaterForm/WaterForm.module.css";
 
@@ -90,13 +94,16 @@ export default function WaterForm({ selectedWaterRecord }) {
         successToast("Water card added successfully!");
       } else {
         const FormDataToUpdate = {
-            time: time,
           amount: values.amount,
+          time: time,
+          _id: values._id,
         };
-        dispatch(updateWater(selectedWaterRecord._id, FormDataToUpdate));
+        dispatch(updateWater(FormDataToUpdate));
 
         successToast("Water card has been updated successfully!");
       }
+
+      dispatch(closeModal());
     } catch (error) {
       errorToast("Runtime error");
       console.log(error.message);
