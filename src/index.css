@@ -67,9 +67,11 @@ img {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
   margin: 0;
   background-color: var(--main-white);
-  min-height: 100vh;
 }
 
 @media screen and (min-width: 320px) and (max-width: 375px) {

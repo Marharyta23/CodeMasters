@@ -9,6 +9,12 @@
   height: 14px;
 }
 
+.monthlyInfo__Statistics svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .monthlyInfo__ButtonPagination {
   border: none;
   padding: 0;
@@ -26,10 +32,13 @@
 .monthlyInfo__Pagination {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 1px;
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
+  flex-grow: 2;
+  justify-content: flex-end;
+  margin-right: 23px;
 }
 
 .monthlyInfo__HeaderCalendar {
