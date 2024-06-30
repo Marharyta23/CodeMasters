@@ -52,6 +52,7 @@ const waterSlice = createSlice({
             .addCase(updateWater.pending, handlePending)
             .addCase(updateWater.fulfilled, (state, action) => {
                 handleFulfilled(state);
+
                 const index = state.waterDataDay.findIndex((water) => water._id === action.payload._id);
                 if (index !== -1) {
                     state.waterDataDay[index] = {
