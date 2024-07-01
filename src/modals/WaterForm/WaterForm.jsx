@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { closeModal } from "../../redux/modal/slice";
 import { addWater, updateWater } from "../../redux/water/operations";
 import { selectModalState } from "../../redux/modal/selector";
-import { selectWaterDataDay } from "../../redux/water/selectors";
+import { selectWaterDataDay, selectDay } from "../../redux/water/selectors";
 
 import iconPlus from "../../img/icons.svg";
 import iconMinus from "../../img/icons.svg";
@@ -25,7 +25,6 @@ const schema = yup.object().shape({
     .typeError("Please, enter the amount between 1 and 5000 ml!")
     .required("Please, enter the amount of water drunk!"),
 });
-
 const date = new Date();
 const time = date.toLocaleTimeString().slice(0, -3);
 const defaultValues = {
@@ -87,14 +86,15 @@ export default function WaterForm() {
     const currentValue = getValues("amount");
     setValue("amount", currentValue + 50);
   };
+  const selectDate = useSelector(selectDay);
 
   const onSubmit = (values) => {
     try {
       if (modalType === "WaterModalAdd") {
         const FormDataToAdd = {
-          year: date.getFullYear(),
-          month: date.getMonth(),
-          day: date.getDate(),
+          year: selectDate.year,
+          month: selectDate.month,
+          day: selectDate.day,
           ...values,
         };
         dispatch(addWater(FormDataToAdd));

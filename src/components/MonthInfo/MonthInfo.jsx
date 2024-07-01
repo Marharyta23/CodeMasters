@@ -20,6 +20,7 @@ import { IconWrapper, Days, Day } from "./MonthlyList.styled";
 import {
   selectWaterDataDay,
   selectWaterDataMonth,
+  selectDay,
 } from "../../redux/water/selectors";
 import {
   fetchWaterDataDay,
@@ -37,12 +38,14 @@ export default function MonthInfo() {
   const days = eachDayOfInterval({ start: startDate, end: endDate });
   const lastDayNumber = endDate.getDate();
 
+  const day = useSelector(selectDay);
+
   const formattedDays = useMemo(() => {
     return days.map((day) => {
-      const fullDate = format(day, "yyyy-MM-dd");
+      const fullDate = format(day, "yyyy-M-d");
+
       return {
         day: getDate(day),
-        isToday: isToday(day),
         fullDate,
       };
     });
@@ -50,7 +53,7 @@ export default function MonthInfo() {
 
   const handlePrevMonth = () => {
     setCurrentDate((prevDate) => startOfMonth(addMonths(prevDate, -1)));
-    const month = currentDate.getMonth();
+    const month = currentDate.getMonth() - 1;
     const year = currentDate.getFullYear();
     dispatch(fetchWaterDataMonth({ month, year }));
   };
@@ -60,7 +63,7 @@ export default function MonthInfo() {
       const nextMonth = addMonths(prevDate, 1);
       return endOfMonth(nextMonth);
     });
-    const month = currentDate.getMonth();
+    const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
     dispatch(fetchWaterDataMonth({ month, year }));
   };
@@ -105,6 +108,12 @@ export default function MonthInfo() {
       waterPercentage[i] = percent;
     }
   }
+  const isToday = (fullDate) => {
+    if (day.month.length === 1) {
+      return fullDate === `${day.year}-0${day.month}-${day.day}`;
+    }
+    return fullDate === `${day.year}-${day.month}-${day.day}`;
+  };
 
   return (
     <div className={css.monthlyInfo__waterList}>
@@ -160,7 +169,7 @@ export default function MonthInfo() {
               <Day
                 className={css.monthlyInfo__Day}
                 percentage={0}
-                isToday={item.isToday}
+                isToday={isToday(item.fullDate)}
               >
                 {item.day}
               </Day>

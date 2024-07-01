@@ -7,7 +7,7 @@ import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import WaterList from "../WaterList/WaterList";
 
 import css from "./DailyInfo.module.css";
-import { selectWaterDataDay } from "../../redux/water/selectors";
+import { selectWaterDataDay, selectDay } from "../../redux/water/selectors";
 
 export default function DailyInfo() {
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,12 +22,47 @@ export default function DailyInfo() {
     dispatch(openModal({ modalType }));
   };
 
-  const day = useSelector(selectWaterDataDay);
+  const today = new Date();
+
+  const day = useSelector(selectDay);
+
+  const getDay = () => {
+    if (
+      day.day == today.getDate() &&
+      day.month == today.getMonth() + 1 &&
+      day.year == today.getFullYear()
+    ) {
+      return "Today";
+    }
+    if (
+      day.day == today.getDate() - 1 &&
+      day.month == today.getMonth() + 1 &&
+      day.year == today.getFullYear()
+    ) {
+      return "Yesterday";
+    }
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    return `${months[day.month - 1]} ${day.day}`;
+  };
 
   return (
     <div className={css.dailyInfo}>
       <div className={css.dailyInfo__header}>
-        <ChooseDate>Today</ChooseDate>
+        <ChooseDate>{getDay()}</ChooseDate>
         <AddWaterBtn
           type="white"
           className={css.dailyInfo__button}

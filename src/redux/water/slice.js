@@ -8,6 +8,8 @@ import {
   updateWater,
 } from "./operations";
 
+const today = new Date();
+
 const handlePending = (state) => {
   state.loading = true;
   state.error = null;
@@ -30,6 +32,11 @@ const waterSlice = createSlice({
     waterDataMonth: [],
     loading: false,
     error: null,
+    date: {
+      day: today.getDate(),
+      month: today.getMonth() + 1,
+      year: today.getFullYear(),
+    },
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -37,7 +44,10 @@ const waterSlice = createSlice({
       .addCase(fetchWaterDataDay.pending, handlePending)
       .addCase(fetchWaterDataDay.fulfilled, (state, action) => {
         handleFulfilled(state);
-        state.waterDataDay = action.payload;
+        state.waterDataDay = action.payload.data;
+        state.date.day = action.payload.day;
+        state.date.month = action.payload.month;
+        state.date.year = action.payload.year;
       })
       .addCase(fetchWaterDataDay.rejected, handleRejected)
 
