@@ -50,7 +50,7 @@ export default function MonthInfo() {
 
   const handlePrevMonth = () => {
     setCurrentDate((prevDate) => startOfMonth(addMonths(prevDate, -1)));
-    const month = currentDate.getMonth() - 1;
+    const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
     dispatch(fetchWaterDataMonth({ month, year }));
   };
@@ -60,7 +60,7 @@ export default function MonthInfo() {
       const nextMonth = addMonths(prevDate, 1);
       return endOfMonth(nextMonth);
     });
-    const month = currentDate.getMonth() + 1;
+    const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
     dispatch(fetchWaterDataMonth({ month, year }));
   };
