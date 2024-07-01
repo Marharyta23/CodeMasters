@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
+import { errorToast } from "../../helpers/toast"; // імпортуємо toast
+
 import icons from "../../img/icons.svg";
 
 import css from "./SignUpForm.module.css";
@@ -61,9 +63,12 @@ const SignUpForm = () => {
       .unwrap()
       .then((response) => {
         console.log("Registration successful:", response);
+        // successToast("Registration successful"); // Показуємо успішне повідомлення
+        navigate("/tracker");
       })
       .catch((error) => {
         console.error("Registration error:", error);
+        errorToast(`Registration failed`); // Показуємо notification про помилку
       });
   };
 
@@ -112,7 +117,7 @@ const SignUpForm = () => {
               style={{
                 position: "absolute",
                 right: 10,
-                top: "50%",
+                top: "40%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
                 fill: "none",
@@ -154,7 +159,7 @@ const SignUpForm = () => {
               style={{
                 position: "absolute",
                 right: 10,
-                top: "50%",
+                top: "40%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
                 fill: "none",
