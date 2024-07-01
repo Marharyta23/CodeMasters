@@ -60,7 +60,7 @@ export default function MonthInfo() {
       const nextMonth = addMonths(prevDate, 1);
       return endOfMonth(nextMonth);
     });
-    const month = currentDate.getMonth() - 1;
+    const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
     dispatch(fetchWaterDataMonth({ month, year }));
   };
@@ -69,7 +69,7 @@ export default function MonthInfo() {
     const day = date.split("-")[2];
     const month = Number(date.split("-")[1]) - 1;
     const year = date.split("-")[0];
-
+    setCurrentDate(date);
     dispatch(fetchWaterDataDay({ day, month, year }));
   };
 
@@ -83,7 +83,7 @@ export default function MonthInfo() {
         end: endOfCurrentMonth,
       })
     );
-  }, [currentDate]);
+  }, [currentDate, selectWaterDataDay]);
 
   const dailyWaterRate = useSelector(selectUser).dailyWaterRate * 1000;
   const waterDataDay = useSelector(selectWaterDataMonth);
@@ -98,13 +98,10 @@ export default function MonthInfo() {
           totalWater += water.amount;
         });
       }
-
       let percent = Math.floor((totalWater / dailyWaterRate) * 100);
-
       if (percent > 100) {
         percent = 100;
       }
-
       waterPercentage[i] = percent;
     }
   }

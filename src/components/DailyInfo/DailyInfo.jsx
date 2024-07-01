@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { openModal } from "../../redux/modal/slice";
 
@@ -7,6 +7,7 @@ import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import WaterList from "../WaterList/WaterList";
 
 import css from "./DailyInfo.module.css";
+import { selectWaterDataDay } from "../../redux/water/selectors";
 
 export default function DailyInfo() {
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,6 +21,8 @@ export default function DailyInfo() {
   const showModal = (modalType) => {
     dispatch(openModal({ modalType }));
   };
+
+  const day = useSelector(selectWaterDataDay);
 
   return (
     <div className={css.dailyInfo}>
