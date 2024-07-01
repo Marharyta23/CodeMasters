@@ -16,7 +16,6 @@
 }
 .customersWrapper {
   height: 48px;
-  /* max-width: 155px; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -26,6 +25,7 @@
   box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
   margin-bottom: 96px;
   background-color: var(--main-white);
+  gap: 4px;
 }
 .advantages_usersImg {
   display: flex;
@@ -109,17 +109,15 @@
   color: #fff;
   width: 168px;
 }
-button {
-  border-radius: 30px;
-  height: 26px;
-}
 .ellipse {
   border-radius: 50%;
-  background-color: var(--accent-color);
+  background-color: var(--accent);
   width: 8px;
   height: 8px;
+  margin-right: 4px;
 }
 .advatageBtnFirst {
+  display: flex;
   background-color: #323f47;
   color: var(--main-white);
   font-size: 8px;
@@ -129,6 +127,9 @@ button {
   text-align: center;
   border: none;
   width: 81px;
+  border-radius: 30px;
+  height: 26px;
+  padding: 9px 12px 9px 12px;
 }
 .advatageBtnSecond {
   background-color: var(--accent);
@@ -140,6 +141,8 @@ button {
   text-align: center;
   border: none;
   width: 83px;
+  border-radius: 30px;
+  height: 26px;
 }
 .advatageBtnThird {
   background-color: var(--main-white);
@@ -151,6 +154,8 @@ button {
   text-align: center;
   border: none;
   width: 108px;
+  border-radius: 30px;
+  height: 26px;
 }
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
   .customersWrapper {
@@ -234,7 +239,7 @@ button {
     padding: 32px 32px 64px;
     border-radius: 30px;
     margin-left: 32px;
-    background: var(--background); /* add url img for background*/
+    background: var(--background);
     background-image: url(../../img/HomePage/girl-drinks-desc-1x-min.png);
   }
 
@@ -285,19 +290,43 @@ button {
     font-size: 12px;
     line-height: 12px;
     letter-spacing: -1%;
+    width: 111px;
+    height: 34px;
+    font-weight: 700;
+    padding: 11px 16px 11px 16px;
   }
   .advatageBtnSecond {
     font-size: 12px;
     font-weight: 700;
     line-height: 12px;
+    height: 34px;
+    width: 121px;
   }
   .advatageBtnThird {
     font-size: 12px;
     line-height: 12px;
+    font-weight: 700;
+    width: 158px;
+    height: 34px;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .advantages_users {
+    max-width: 235px;
+    padding: 10px 20px;
+    margin-bottom: -14px;
+  }
+
+  .advantages_point {
+    width: 47px;
+    height: 47px;
+  }
+
+  .advantages_point:not(:first-child) {
+    margin-left: -19px;
+  }
+
   .user1 {
     background-image: url("../../img/HomePage/happy-customer-1-1x-min.png");
     width: 47px;
