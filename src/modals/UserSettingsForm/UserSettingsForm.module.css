@@ -109,10 +109,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  /* fill: none;
-  stroke: #9be1a0;
-  border: 35x;
-  font-weight: 700; */
 }
 
 .iconWrap {
@@ -150,16 +146,16 @@
 .inputField {
   color: var(--main-text);
 }
-
-/* .inputField:focus {
-  border: 1px solid #ccc;                  
-  outline: none;                           
-} */
 /* Изменяем рамку при фокусе */
 /* Убираем стандартную обводку */
+.inputField:focus {
+  border: 1px solid #ccc;
+  outline: none;
+}
+
 .inputError {
   border-color: #ef5050;
-  color: #ef5050;
+  /* color: #ef5050; */
 }
 
 .error {
