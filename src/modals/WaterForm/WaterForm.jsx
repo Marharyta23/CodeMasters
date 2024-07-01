@@ -19,16 +19,12 @@ import css from "../WaterForm/WaterForm.module.css";
 const schema = yup.object().shape({
     time: yup
         .string()
-        .required("Please, enter the recorded time!")
-        .matches(/^\d{2}:\d{2}$/, {
-            message: "Please, enter the correct recorded time: 00:00!",
-            excludeEmptyString: false,
-        }),
+        .required("Please, enter the recorded time!"),
     amount: yup
         .number()
-        .min(1, "Amount of water must be more than 1 ml!")
-        .max(5000, "Amount of water must be less than 5000 ml!")
-        .typeError("Enter a valid amount of water in ml!")
+        .min(1, "Please, enter the amount between 1 and 5000 ml!")
+        .max(5000, "Please, enter the amount between 1 and 5000 ml!")
+        .typeError("Please, enter the amount between 1 and 5000 ml!")
         .required("Please, enter the amount of water drunk!"),
 });
 
@@ -102,7 +98,7 @@ export default function WaterForm() {
                 };
                 dispatch(addWater(FormDataToAdd));
 
-                successToast("Water card added successfully!");
+                successToast("Water card has been added successfully!");
             } else {
                 const FormDataToUpdate = {
                     id: selectedWaterRecordId,
@@ -120,8 +116,7 @@ export default function WaterForm() {
 
             dispatch(closeModal());
         } catch (error) {
-            errorToast("Runtime error");
-            console.log(error.message);
+            errorToast("Runtime error:", error.message);
         }
         reset();
     };
@@ -160,9 +155,9 @@ export default function WaterForm() {
                     <span className={css.timeSpan}> Recording time:</span>
                     <input
                         className={errors.time ? css.inputError : css.input}
-                        type="string"
+                        type="time"
                         name="time"
-                        {...register("time", { pattern: /^\d{2}:\d{2}$/ })}
+                        {...register("time")}
                     />
                 </label>
                 {errors.time && <p className={css.error}>{errors.time.message}</p>}
