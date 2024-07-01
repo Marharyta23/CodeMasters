@@ -26,8 +26,8 @@ const AdvantagesSection = () => {
           <ul className={css.advatageBtnWrappeer}>
             <li>
               <button className={css.advatageBtnFirst}>
-                {/* <div className={css.ellipse}></div> */}
-                Habit drive
+                <div className={css.ellipse}></div>
+                <p> Habit drive</p>
               </button>
             </li>
             <li>
