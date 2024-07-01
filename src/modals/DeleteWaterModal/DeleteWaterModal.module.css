@@ -48,6 +48,10 @@
     border: none;
 }
 
+.modalButton:hover {
+    background-color: #87D28D;
+}
+
 .modalBtn {
     width: 304px;
     height: 46px;
@@ -69,6 +73,10 @@
     border: none;
 }
 
+.modalBtn:hover {
+    background-color: #87D28D;
+}
+
 .modalBtnCancel {
     display: flex;
     width: 304px;
@@ -88,6 +96,10 @@
     border-radius: 30px;
     background: #f0eff4;
     border: none;
+}
+
+.modalBtnCancel:hover {
+    color: #323F47;
 }
 
 .modalContentWrapper {
