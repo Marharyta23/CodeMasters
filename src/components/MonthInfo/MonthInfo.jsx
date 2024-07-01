@@ -1,6 +1,3 @@
-// import CalendarPagination from "../CalendarPagination/CalendarPagination";
-// import Calendar from "../Calendar/Calendar";
-
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,36 +13,24 @@ import {
 
 import ChooseDate from "../ChooseDate/ChooseDate";
 
-// components
+import { selectUser } from "../../redux/auth/selectors";
 import css from "./MonthInfo.module.css";
 import icons from "../../img/icons.svg";
 import { IconWrapper, Days, Day } from "./MonthlyList.styled";
-
-//import { monthStatsThunk } from "../../redux/water/waterCalendar/selectors.js";
 import {
-  selectMonthStats,
-  selectWaterRecords,
-  selectForceRender,
-} from "../../redux/waterCalendar/selectors.js";
-import { useWater } from "../../hooks/useWater.js";
+  selectWaterDataDay,
+  selectWaterDataMonth,
+} from "../../redux/water/selectors";
+import {
+  fetchWaterDataDay,
+  fetchWaterDataMonth,
+} from "../../redux/water/operations";
 
 export default function MonthInfo() {
   const dispatch = useDispatch();
 
-  /**
-   * Test useWater
-   */
-  // const waterRecords = useSelector(useWater);
-  // useEffect(() => {
-  //   console.log("Water records: ", waterRecords);
-  // }, [waterRecords]);
-  /**
-   * Test useWater
-   */
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isCurrentMonth, setIsCurrentMonth] = useState(true);
-
-  //const { monthStats, waterRecords } = useWater();
 
   const startDate = startOfMonth(currentDate);
   const endDate = endOfMonth(currentDate);
@@ -65,6 +50,9 @@ export default function MonthInfo() {
 
   const handlePrevMonth = () => {
     setCurrentDate((prevDate) => startOfMonth(addMonths(prevDate, -1)));
+    const month = currentDate.getMonth() - 1;
+    const year = currentDate.getFullYear();
+    dispatch(fetchWaterDataMonth({ month, year }));
   };
 
   const handleNextMonth = () => {
@@ -72,6 +60,17 @@ export default function MonthInfo() {
       const nextMonth = addMonths(prevDate, 1);
       return endOfMonth(nextMonth);
     });
+    const month = currentDate.getMonth() - 1;
+    const year = currentDate.getFullYear();
+    dispatch(fetchWaterDataMonth({ month, year }));
+  };
+
+  const handleDay = (date) => {
+    const day = date.split("-")[2];
+    const month = Number(date.split("-")[1]) - 1;
+    const year = date.split("-")[0];
+
+    dispatch(fetchWaterDataDay({ day, month, year }));
   };
 
   useEffect(() => {
@@ -86,37 +85,29 @@ export default function MonthInfo() {
     );
   }, [currentDate]);
 
-  // useEffect(() => {
-  //   dispatch(selectMonthStats(format(currentDate, "yyyy-MM-dd")));
-  // }, [dispatch, currentDate]);
+  const dailyWaterRate = useSelector(selectUser).dailyWaterRate * 1000;
+  const waterDataDay = useSelector(selectWaterDataMonth);
 
-  const getInfoForDay = (monthStats, d) => {
-    const [res] = monthStats.filter((el) => el.date === d);
+  let waterPercentage = {};
 
-    if (res) {
-      const percentage =
-        (res.percentage / 10).toFixed(1) * 10 > 100
-          ? 100
-          : (res.percentage / 10).toFixed(1) * 10;
+  for (let i in waterDataDay.data) {
+    if (i !== "days") {
+      let totalWater = 0;
+      if (waterDataDay.data[i].length > 0) {
+        waterDataDay.data[i].map((water) => {
+          totalWater += water.amount;
+        });
+      }
 
-      return {
-        data: currentDate,
-        dailyNorma: percentage === 0 ? 1.5 : res.dailyNorma / 1000,
-        percentage:
-          format(currentDate, "yyyy-MM-dd") === d
-            ? waterRecords.percentageOfWaterConsumption
-            : percentage,
-        totalRecords: res.totalRecords,
-      };
-    } else {
-      return {
-        data: currentDate,
-        dailyNorma: 1.5,
-        percentage: 0,
-        totalRecords: 0,
-      };
+      let percent = Math.floor((totalWater / dailyWaterRate) * 100);
+
+      if (percent > 100) {
+        percent = 100;
+      }
+
+      waterPercentage[i] = percent;
     }
-  };
+  }
 
   return (
     <div className={css.monthlyInfo__waterList}>
@@ -161,7 +152,13 @@ export default function MonthInfo() {
         {formattedDays.map((item) => {
           //const dayInfo = getInfoForDay(monthStats, item.fullDate);
           return (
-            <div className={css.monthlyInfo__WaterItem} key={item.day}>
+            <div
+              className={css.monthlyInfo__WaterItem}
+              key={item.day}
+              onClick={() => {
+                handleDay(item.fullDate);
+              }}
+            >
               {/* {dayInfo.percentage} */} {/*todo*/}
               <Day
                 className={css.monthlyInfo__Day}
@@ -171,7 +168,9 @@ export default function MonthInfo() {
                 {item.day}
               </Day>
               {/* {dayInfo.percentage} */} {/*todo*/}
-              <p className={css.monthlyInfo__Percentage}>{0}%</p>
+              <p className={css.monthlyInfo__Percentage}>
+                {waterPercentage[item.day]}%
+              </p>
             </div>
           );
         })}
