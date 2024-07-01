@@ -8,6 +8,7 @@ export const fetchWaterDataDay = createAsyncThunk(
       const response = await axios.get(
         `/water/consumption_day/${day}/month/${month}/year/${year}`
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
