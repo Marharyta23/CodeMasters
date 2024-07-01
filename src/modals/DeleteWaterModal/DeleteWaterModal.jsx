@@ -1,30 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-
-import { deleteWater, fetchWaterDataDay } from "../../redux/water/operations";
-
-import css from "./DeleteWaterModal.module.css";
+import { deleteWater } from "../../redux/water/operations";
+import { selectModalState } from "../../redux/modal/selector";
 import { closeModal } from "../../redux/modal/slice";
 import { successToast, errorToast } from "../../helpers/toast";
+import css from "./DeleteWaterModal.module.css";
 
-const DeleteWaterModal = ({ waterId }) => {
+const DeleteWaterModal = () => {
   const dispatch = useDispatch();
-  const { day, month, year } = useSelector(
-    (state) => state.water.currentDate || {}
-  );
+  const { props: waterId } = useSelector(selectModalState);
 
   const handleClose = () => {
     dispatch(closeModal());
   };
   const handleDelete = async () => {
     try {
-      const resultAction = await dispatch(deleteWater(waterId));
-      if (deleteWater.fulfilled.match(resultAction)) {
-        successToast("Record deleted successfully");
-        dispatch(fetchWaterDataDay({ day, month, year }));
-        handleClose();
-      } else {
-        throw new Error(resultAction.payload || "Failed to delete record");
-      }
+      dispatch(deleteWater(waterId));
+
+      successToast("Record deleted successfully");
+
+      dispatch(closeModal());
     } catch (error) {
       errorToast("Error deleting record: " + error.message);
     }
