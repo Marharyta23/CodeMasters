@@ -5,7 +5,7 @@ import { closeModal } from "../../redux/modal/slice";
 import { successToast, errorToast } from "../../helpers/toast";
 import css from "./DeleteWaterModal.module.css";
 
-const DeleteWaterModal = ({ waterId }) => {
+const DeleteWaterModal = () => {
   const dispatch = useDispatch();
   const { props: waterId } = useSelector(selectModalState);
 
