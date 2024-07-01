@@ -117,7 +117,7 @@ const SignUpForm = () => {
               style={{
                 position: "absolute",
                 right: 10,
-                top: "40%",
+                top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
                 fill: "none",
@@ -159,7 +159,7 @@ const SignUpForm = () => {
               style={{
                 position: "absolute",
                 right: 10,
-                top: "40%",
+                top: "50%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
                 fill: "none",
