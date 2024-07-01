@@ -98,7 +98,7 @@ export default function WaterForm() {
           ...values,
         };
         dispatch(addWater(FormDataToAdd));
-
+        console.log(FormDataToAdd.month);
         successToast("Water card has been added successfully!");
       } else {
         const FormDataToUpdate = {
