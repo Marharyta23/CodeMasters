@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 
 import icons from "../../img/icons.svg";
+import { errorToast } from "../../helpers/toast";
 
 import css from "./SignInForm.module.css";
 
@@ -41,13 +42,15 @@ const SignInForm = () => {
 
     // Відправка запиту на backend для авторизації користувача
     dispatch(logIn(data))
+      .unwrap()
       .then(() => {
         // Якщо авторизація успішна, перенаправлення на сторінку TrackerPage
         navigate("/tracker");
       })
       .catch((error) => {
-        // Обробка помилки авторизації (наприклад, показ сповіщення користувачеві)
-        console.log(`Authentication failed: ${error.message}`);
+        // Обробка помилки авторизації
+        console.log(`Autorization failed: ${error.message}`);
+        errorToast(`Autorization failed`); // Показуємо notification про помилку
       });
   };
 
@@ -93,7 +96,7 @@ const SignInForm = () => {
               style={{
                 position: "absolute",
                 right: 10,
-                top: "50%",
+                top: "40%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
                 fill: "none",
