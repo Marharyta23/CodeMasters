@@ -56,7 +56,7 @@ export default function DailyInfo() {
       "December",
     ];
 
-    return `${months[day.month - 1]} ${day.day}`;
+    return ` ${day.day}, ${months[day.month - 1]}`;
   };
 
   return (
