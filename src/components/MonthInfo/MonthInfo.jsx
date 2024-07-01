@@ -2,7 +2,7 @@
 // import Calendar from "../Calendar/Calendar";
 
 import { useEffect, useMemo, useState } from "react";
-//import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   startOfMonth,
   endOfMonth,
@@ -18,14 +18,30 @@ import ChooseDate from "../ChooseDate/ChooseDate";
 
 // components
 import css from "./MonthInfo.module.css";
+import icons from "../../img/icons.svg";
 import { IconWrapper, Days, Day } from "./MonthlyList.styled";
 
-//import { monthStatsThunk } from '../../../redux/water/waterThunk.js';
-//import { useWater } from "../../hooks/useWater.js";
+//import { monthStatsThunk } from "../../redux/water/waterCalendar/selectors.js";
+import {
+  selectMonthStats,
+  selectWaterRecords,
+  selectForceRender,
+} from "../../redux/waterCalendar/selectors.js";
+import { useWater } from "../../hooks/useWater.js";
 
 export default function MonthInfo() {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  /**
+   * Test useWater
+   */
+  // const waterRecords = useSelector(useWater);
+  // useEffect(() => {
+  //   console.log("Water records: ", waterRecords);
+  // }, [waterRecords]);
+  /**
+   * Test useWater
+   */
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isCurrentMonth, setIsCurrentMonth] = useState(true);
 
@@ -71,7 +87,7 @@ export default function MonthInfo() {
   }, [currentDate]);
 
   // useEffect(() => {
-  //   dispatch(monthStatsThunk(format(currentDate, "yyyy-MM-dd")));
+  //   dispatch(selectMonthStats(format(currentDate, "yyyy-MM-dd")));
   // }, [dispatch, currentDate]);
 
   const getInfoForDay = (monthStats, d) => {
@@ -113,7 +129,7 @@ export default function MonthInfo() {
           >
             <IconWrapper className={css.monthlyInfo__iconWrapper}>
               <svg>
-                <use href="../../src/img/icons.svg#icon-plus"></use>
+                <use href={`${icons}#icon-arr-left`}></use>
               </svg>
             </IconWrapper>
           </button>
@@ -130,10 +146,15 @@ export default function MonthInfo() {
               isCurrentMonth={isCurrentMonth}
             >
               <svg>
-                <use href="../../src/img/icons.svg#icon-plus"></use>
+                <use href={`${icons}#icon-arr-right`}></use>
               </svg>
             </IconWrapper>
           </button>
+        </div>
+        <div className={css.monthlyInfo__Statistics}>
+          <svg>
+            <use href={`${icons}#icon-pie-chart`}></use>
+          </svg>
         </div>
       </div>
       <Days className={css.monthlyInfo__Days} lastDayNumber={lastDayNumber}>
@@ -144,13 +165,13 @@ export default function MonthInfo() {
               {/* {dayInfo.percentage} */} {/*todo*/}
               <Day
                 className={css.monthlyInfo__Day}
-                percentage={100}
+                percentage={0}
                 isToday={item.isToday}
               >
                 {item.day}
               </Day>
               {/* {dayInfo.percentage} */} {/*todo*/}
-              <p className={css.monthlyInfo__Percentage}>{100}%</p>
+              <p className={css.monthlyInfo__Percentage}>{0}%</p>
             </div>
           );
         })}

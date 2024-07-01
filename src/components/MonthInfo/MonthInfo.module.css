@@ -9,6 +9,12 @@
   height: 14px;
 }
 
+.monthlyInfo__Statistics svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .monthlyInfo__ButtonPagination {
   border: none;
   padding: 0;
@@ -26,10 +32,13 @@
 .monthlyInfo__Pagination {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 1px;
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
+  flex-grow: 2;
+  justify-content: flex-end;
+  margin-right: 23px;
 }
 
 .monthlyInfo__HeaderCalendar {
@@ -45,7 +54,8 @@
   grid-template-columns: repeat(7, 1fr);
   justify-content: space-between;
   align-items: center;
-  gap: 17px;
+  column-gap: 18px;
+  row-gap: 20px;
   justify-items: center;
 }
 
@@ -81,20 +91,41 @@
     margin-bottom: 24px;
   }
 
+  .monthlyInfo__CurrentMonth {
+    width: 150px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .monthlyInfo__Statistics svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .monthlyInfo__Days {
     grid-template-columns: repeat(8, 1fr);
-    gap: 20px;
+    column-gap: 48px;
+    row-gap: 20px;
     justify-items: center;
   }
 
   .monthlyInfo__Day {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .monthlyInfo__Percentage {
     font-size: 13px;
     line-height: 1.5;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+  .monthlyInfo__Days {
+    column-gap: 43px;
   }
 
 }

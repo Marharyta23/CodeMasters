@@ -14,7 +14,7 @@
 }
 
 .welcomeText span {
-    font-weight: 700;
+    font-family: Gilroy-Bold;
 }
 
 @media (min-width: 768px) {
@@ -30,5 +30,4 @@
     }
 }
 
-@media (min-width: 1440px) {
-}
+@media (min-width: 1440px) {}

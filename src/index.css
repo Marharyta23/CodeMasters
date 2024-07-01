@@ -17,8 +17,23 @@
 }
 
 @font-face {
-  font-family: "Gilroy";
-  src: url("./fonts/Gilroy-Regular.ttf") format("ttf");
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-Regular.woff2') format('woff2'),
+    url('./fonts/Gilroy-Regular.woff') format('woff'),
+    url('./fonts/Gilroy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('./fonts/Gilroy-Bold.woff2') format('woff2'),
+    url('./fonts/Gilroy-Bold.woff') format('woff'),
+    url('./fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: bold;
+  font-display: swap;
 }
 
 /* Reset styles */
@@ -67,9 +82,11 @@ img {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
   margin: 0;
   background-color: var(--main-white);
-  min-height: 100vh;
 }
 
 @media screen and (min-width: 320px) and (max-width: 375px) {

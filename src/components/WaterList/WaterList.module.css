@@ -4,8 +4,7 @@
     padding: 0 0 24px;
     display: flex;
     gap: 8px;
-
-    min-height: 74px;
+    min-height: 98px;
     height: auto;
 }
 
@@ -14,7 +13,7 @@
     border-radius: 20px;
     display: flex;
     line-height: 26px;
-    min-width: 149px;
+    width: 147px;
     height: 74px;
     padding: 19px 14px;
     flex-direction: row;
@@ -84,8 +83,17 @@
 }
 
 @media (min-width: 768px) {
+    .dailyInfo__dataContainer {
+        gap: 10px;
+    }
+
     .dailyInfo__StyledListAddWater {
-        min-height: 86px;
+        min-height: 110px;
+        gap: 32px;
+    }
+
+    .dailyInfo__water {
+        font-size: 15px;
     }
 
     .dailyInfo__listItem {
@@ -115,5 +123,11 @@
 
     .dailyInfo__dataContainer {
         min-width: 52px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .dailyInfo__StyledListAddWater {
+        gap: 16px;
     }
 }
