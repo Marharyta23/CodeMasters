@@ -1,47 +1,66 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchWaterDataDay = createAsyncThunk("water/fetchDay", async ({ day, month, year }, thunkAPI) => {
+export const fetchWaterDataDay = createAsyncThunk(
+  "water/fetchDay",
+  async ({ day, month, year }, thunkAPI) => {
     try {
-        const response = await axios.get(`/water/consumption_day/${day}/month/${month}/year/${year}`);
-        return response.data;
+      const response = await axios.get(
+        `/water/consumption_day/${day}/month/${month}/year/${year}`
+      );
+      return response.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
-});
+  }
+);
 
-export const fetchWaterDataMonth = createAsyncThunk("water/fetchMonth", async ({ month, year }, thunkAPI) => {
+export const fetchWaterDataMonth = createAsyncThunk(
+  "water/fetchMonth",
+  async ({ month, year }, thunkAPI) => {
     try {
-        const response = await axios.get(`/water/consumption_month/${month}/year/${year}`);
-        return response.data;
+      const response = await axios.get(
+        `/water/consumption_month/${month}/year/${year}`
+      );
+      return response.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
-});
+  }
+);
 
-export const addWater = createAsyncThunk("water/add", async (waterData, thunkAPI) => {
+export const addWater = createAsyncThunk(
+  "water/add",
+  async (waterData, thunkAPI) => {
     try {
-        const response = await axios.post("/water/add", waterData);
-        return response.data;
+      const response = await axios.post("/water/add", waterData);
+      return response.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
-});
+  }
+);
 
-export const updateWater = createAsyncThunk("water/edit", async ({ id, waterData }, thunkAPI) => {
+export const updateWater = createAsyncThunk(
+  "water/edit",
+  async ({ id, waterData }, thunkAPI) => {
     try {
-        const response = await axios.patch(`/water/edit/${id}`, waterData);
-        return response.data;
+      const response = await axios.patch(`/water/edit/${id}`, waterData);
+      return response.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
-});
+  }
+);
 
-export const deleteWater = createAsyncThunk("water/delete", async (waterId, thunkAPI) => {
+export const deleteWater = createAsyncThunk(
+  "water/delete",
+  async (waterId, thunkAPI) => {
     try {
-        const response = await axios.delete(`/water/delete/${waterId}`);
-        return response.data;
+      await axios.delete(`/water/delete/${waterId}`);
+      return waterId;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
-});
+  }
+);
