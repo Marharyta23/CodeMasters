@@ -12,6 +12,7 @@ import { errorToast, successToast } from "../../helpers/toast";
 import modalIcons from "../../img/icons.svg";
 
 import css from "./UserSettingsForm.module.css";
+import Loader from "../../components/Loader/Loader";
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -58,6 +59,7 @@ export default function UserSettingsForm() {
       dailyWaterRate: 0,
     },
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -94,6 +96,7 @@ export default function UserSettingsForm() {
 
   // обработка отправки формы
   const submit = async (userData) => {
+    setIsLoading(true);
     const formData = new FormData(); // создаём объект formData
     Object.keys(userData).forEach((key) => {
       formData.append(key, userData[key]);
@@ -107,11 +110,14 @@ export default function UserSettingsForm() {
       dispatch(closeModal());
     } catch (error) {
       errorToast("Error: Unsuccessful update of user information", error);
+    } finally {
+      setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
     }
   };
 
   return (
     <>
+      {isLoading && <Loader />}
       <form
         className={css.form}
         onSubmit={handleSubmit(submit)}
