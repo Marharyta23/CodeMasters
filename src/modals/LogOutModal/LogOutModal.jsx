@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/auth/operations";
 import { closeModal } from "../../redux/modal/slice";
-
+import { errorToast } from "../../helpers/toast";
 import css from "../DeleteWaterModal/DeleteWaterModal.module.css";
 
 const LogOutModal = () => {
@@ -16,12 +16,10 @@ const LogOutModal = () => {
   const onLogOut = () => {
     dispatch(logOut())
       .then(() => {
-        console.log("Logout successful");
         navigate("/");
       })
       .catch((error) => {
-        console.error("Logout error:", error);
-        alert(error.message);
+        errorToast(error.message);
       });
     handleClose();
   };

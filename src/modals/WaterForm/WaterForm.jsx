@@ -61,11 +61,6 @@ export default function WaterForm() {
       }
     } else {
       const date = new Date();
-      // const formattedTime = date.toLocaleTimeString("en-US", {
-      //     hour: "numeric",
-      //     minute: "2-digit",
-      //     hour12: true,
-      // });
       const formattedTime = date.toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
@@ -98,7 +93,6 @@ export default function WaterForm() {
           ...values,
         };
         dispatch(addWater(FormDataToAdd));
-        console.log(FormDataToAdd.month);
         successToast("Water card has been added successfully!");
       } else {
         const FormDataToUpdate = {
@@ -111,7 +105,6 @@ export default function WaterForm() {
         };
 
         dispatch(updateWater(FormDataToUpdate));
-
         successToast("Water card has been updated successfully!");
       }
 

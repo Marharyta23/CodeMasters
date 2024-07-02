@@ -53,16 +53,17 @@ const SignUpForm = () => {
 
   // Обробник подання форми
   const onSubmit = (data) => {
+    if (data.password !== data.repeatPassword) {
+      return;
+    }
     dispatch(
       register({
         email: data.email,
         password: data.password,
-        password_conform: data.repeatPassword,
       })
     )
       .unwrap()
       .then((response) => {
-        console.log("Registration successful:", response);
         // successToast("Registration successful"); // Показуємо успішне повідомлення
         navigate("/tracker");
       })

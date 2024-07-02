@@ -94,18 +94,15 @@ export default function UserSettingsForm() {
 
   // обработка отправки формы
   const submit = async (userData) => {
-    console.log("userData: ", userData);
     const formData = new FormData(); // создаём объект formData
     Object.keys(userData).forEach((key) => {
       formData.append(key, userData[key]);
     });
     if (file) {
       formData.append("avatarURL", file);
-      console.log("file: ", file);
     }
     try {
       await dispatch(updateUserInfo(formData)); // отправка данных(formData) на бек
-      console.log("formData: ", formData);
       successToast("User updated successfuly");
       dispatch(closeModal());
     } catch (error) {

@@ -27,10 +27,6 @@ export default function SignInPage() {
   }, []);
   const loading = useSelector(selectIsLoading);
 
-  useEffect(() => {
-    console.log("Loading state:", loading);
-  }, [loading]);
-
   return (
     <div className={css.SignInPageWrapper}>
       {loading && <Loader />}

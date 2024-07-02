@@ -30,10 +30,6 @@ export default function SignUpPage() {
 
   const loading = useSelector(selectIsLoading);
 
-  useEffect(() => {
-    console.log("Loading state:", loading);
-  }, [loading]);
-
   return (
     <div className={css.SignUpPageWrapper}>
       {loading && <Loader />}
