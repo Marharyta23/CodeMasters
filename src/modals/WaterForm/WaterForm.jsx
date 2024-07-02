@@ -163,8 +163,11 @@ export default function WaterForm() {
           <input
             className={errors.amount ? css.inputError : css.input}
             type="number"
-            name="amount"
+            name="amount"        
             {...register("amount")}
+            onInput={(e) => {
+              e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            }}
           />
         </label>
         {errors.amount && <p className={css.error}>{errors.amount.message}</p>}
