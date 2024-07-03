@@ -5,9 +5,6 @@
 }
 /*---Mobile screen--*/
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
-  body {
-    zoom: 0.85;
-  }
   .SignUpPageSection {
     width: 343px;
     height: 812px;
