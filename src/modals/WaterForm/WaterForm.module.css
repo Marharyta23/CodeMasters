@@ -93,7 +93,7 @@
 }
 
 .error {
-    color: red;
+    color: #EF5050;
     font-size: 12px;
     padding-bottom: 4px;
 
@@ -166,9 +166,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .inputError {
     width: 100%;
-    color: red;
+    color: #EF5050;
     background-color: #FFFFFF;
-    border: 1.5px solid red;
+    border: 1.5px solid #EF5050;
     border-radius: 15px;
     padding: 14px 16px;
     font-size: 14px;
