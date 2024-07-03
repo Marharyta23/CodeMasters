@@ -45,7 +45,7 @@
     right: 0;
     top: 50%;
 
-    transform: translate(50%, -50%);
+    transform: translate(0%, -50%);
 
     display: block;
 
@@ -86,7 +86,7 @@
     top: 0;
     left: 0%;
 
-    transform: translateX(-50%);
+    transform: translateX(-75%);
 }
 
 @media (min-width: 768px) {
