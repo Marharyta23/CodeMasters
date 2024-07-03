@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { errorToast } from "../../helpers/toast";
-
 axios.defaults.baseURL = "https://webmail.swagger.epowhost.com:3443/";
 
 const setAuthHeader = (token) => {
@@ -25,6 +23,13 @@ export const register = createAsyncThunk(
       setAuthHeader(response.data.accessToken);
       return { data, accessToken: response.data.accessToken };
     } catch (error) {
+      console.log(error);
+      if (error.response.status == "409") {
+        return thunkAPI.rejectWithValue("User with this email already exist");
+      }
+      if (error.response.status == "400") {
+        return thunkAPI.rejectWithValue("Invalid input");
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -38,15 +43,11 @@ export const logIn = createAsyncThunk(
       setAuthHeader(data.accessToken);
       return data;
     } catch (error) {
-      switch (error.response?.status) {
-        case 401:
-          errorToast("Email or password is wrong");
-          break;
-        case 404:
-          errorToast("User not found");
-          break;
-        default:
-          errorToast(error.message);
+      if (error.response.status == "401") {
+        return thunkAPI.rejectWithValue("Email or password is wrong");
+      }
+      if (error.response.status == "400") {
+        return thunkAPI.rejectWithValue("Invalid input");
       }
       return thunkAPI.rejectWithValue(error.message);
     }

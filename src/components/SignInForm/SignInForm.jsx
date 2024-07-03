@@ -49,8 +49,7 @@ const SignInForm = () => {
       })
       .catch((error) => {
         // Обробка помилки авторизації
-        console.log(`Autorization failed: ${error.message}`);
-        errorToast(`Autorization failed`); // Показуємо notification про помилку
+        errorToast(`${error}`); // Показуємо notification про помилку
       });
   };
 

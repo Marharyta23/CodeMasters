@@ -67,8 +67,7 @@ const SignUpForm = () => {
         navigate("/tracker");
       })
       .catch((error) => {
-        console.error("Registration error:", error);
-        errorToast(`Registration failed`); // Показуємо notification про помилку
+        errorToast(`${error}`); // Показуємо notification про помилку
       });
   };
 
