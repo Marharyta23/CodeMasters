@@ -80,7 +80,10 @@ img {
 * {
   box-sizing: border-box;
 }
-
+html,
+body {
+  height: 100%;
+}
 body {
   display: flex;
   align-items: center;
@@ -102,10 +105,6 @@ body {
     padding: 16px;
     margin-left: auto;
     margin-right: auto;
-
-    /*на час розробки*/
-    /* outline: 2px solid red;
-    outline-offset: -2px; */
   }
 }
 
@@ -113,10 +112,6 @@ body {
   .container {
     max-width: 768px;
     padding: 32px;
-
-    /*на час розробки*/
-    /* outline: 2px solid rgb(0, 255, 42);
-    outline-offset: -2px; */
   }
 }
 
@@ -124,9 +119,5 @@ body {
   .container {
     max-width: 1440px;
     padding: 32px;
-
-    /*на час розробки*/
-    /* outline: 2px solid rgb(255, 0, 170);
-    outline-offset: -2px; */
   }
 }

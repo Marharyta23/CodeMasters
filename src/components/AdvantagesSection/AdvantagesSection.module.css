@@ -130,6 +130,8 @@
   border-radius: 30px;
   height: 26px;
   padding: 9px 12px 9px 12px;
+  align-items: center;
+  justify-content: center;
 }
 .advatageBtnSecond {
   background-color: var(--accent);
@@ -153,7 +155,7 @@
   letter-spacing: -0.01em;
   text-align: center;
   border: none;
-  width: 108px;
+  width: 106px;
   border-radius: 30px;
   height: 26px;
 }
@@ -161,6 +163,11 @@
   .customersWrapper {
     height: 48px;
     max-width: 155px;
+  }
+  .advatageBtnWrappeer {
+    padding-top: 10px;
+    margin-left: -8px;
+    position: relative;
   }
 }
 
@@ -176,12 +183,13 @@
   }
 
   .advantageWrapper {
-    margin-top: 283px;
+    padding-top: 267px;
   }
 
   .customersWrapper {
     width: 237px;
     height: 67px;
+    padding: 10px 20px;
   }
 
   .advatageText {
@@ -198,6 +206,7 @@
   }
   .advatageBtnWrappeer {
     width: 242px;
+    padding-top: 12px;
   }
   .advatageBtnFirst {
     width: 112px;
@@ -251,7 +260,7 @@
   .advantageWrapper {
     display: flex;
     justify-content: space-between;
-    margin-top: 534px;
+    padding-top: 505px;
   }
   .customersWrapper {
     height: 67px;

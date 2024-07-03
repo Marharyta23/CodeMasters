@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { errorToast, successToast } from "../../helpers/toast";
+import { errorToast } from "../../helpers/toast";
 
 axios.defaults.baseURL = "https://webmail.swagger.epowhost.com:3443/";
 
@@ -30,26 +30,12 @@ export const register = createAsyncThunk(
   }
 );
 
-// export const logIn = createAsyncThunk(
-//   "auth/login",
-//   async (credentials, thunkAPI) => {
-//     try {
-//       const { data } = await axios.post("auth/login", credentials);
-//       setAuthHeader(data.accessToken);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const logIn = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("auth/login", credentials);
       setAuthHeader(data.accessToken);
-      // successToast("Successfully logged in"); //  повідомлення про успішний вхід
       return data;
     } catch (error) {
       switch (error.response?.status) {
