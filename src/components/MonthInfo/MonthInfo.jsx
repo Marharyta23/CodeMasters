@@ -132,7 +132,7 @@ export default function MonthInfo() {
             </IconWrapper>
           </button>
           <span className={css.monthlyInfo__CurrentMonth}>
-            {format(currentDate, "MMMM yyyy")}
+            {format(currentDate, "MMMM, yyyy")}
           </span>
           <button
             onClick={handleNextMonth}

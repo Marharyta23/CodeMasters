@@ -27,7 +27,7 @@
 }
 
 .dailyInfo__StyledAddWaterListFrame::-webkit-scrollbar {
-  width: 8px;
+  width: 20px;
   height: 8px;
 }
 

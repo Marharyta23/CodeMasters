@@ -15,59 +15,6 @@ export default function WaterList() {
     dispatch(openModal({ modalType, props }));
   };
 
-  // const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  // const [selectedWaterId, setSelectedWaterId] = useState(null);
-
-  // const openDeleteModal = (waterId) => {
-  //     setSelectedWaterId(waterId);
-  //     setIsDeleteModalOpen(true);
-  // };
-
-  // const closeDeleteModal = () => {
-  //     setIsDeleteModalOpen(false);
-  //     setSelectedWaterId(null);
-  // };
-
-  // const [modalState, setModalState] = useState({ isOpen: false, content: "" });
-  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  // const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  // const [selectedWaterRecord, setSelectedWaterRecord] = useState(null);
-
-  // const handleOpenEditModal = (waterRecord) => {
-  //     setSelectedWaterRecord(waterRecord);
-  //     setModalState({ isOpen: true, content: "Edit" });
-  // };
-
-  // const closeEditModal = () => {
-  //     setModalState({ isOpen: false, content: "" });
-  // };
-
-  // const handleOpenDeleteModal = (waterRecord) => {
-  //     setIsDeleteModalOpen(true);
-  //     setSelectedWaterRecord(waterRecord);
-  // };
-
-  // const closeDeleteModal = () => {
-  //     setIsDeleteModalOpen(false);
-  // };
-
-  // const handleSubmit = (values) => {
-  //     console.log("Form Submitted:", values);
-  //     closeEditModal();
-  // };
-  //==============
-
-  // const handleClick = (content) => {
-  //     setModalState({ isOpen: true, content: content });
-  // };
-
-  // const handleClose = () => {
-  //     setModalState({ isOpen: false, content: "" });
-  // };
-  //================
-
-  // if (!waterRecords || waterRecords.length === 0) return;
-
   return (
     <div>
       <ul className={css.dailyInfo__StyledListAddWater}>
