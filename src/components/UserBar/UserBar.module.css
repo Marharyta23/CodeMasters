@@ -1,5 +1,7 @@
 .userBarContainer {
     position: relative;
+
+    width: max-content;
 }
 
 .userBar {
