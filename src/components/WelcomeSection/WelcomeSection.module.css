@@ -10,6 +10,7 @@
 .welcomeText {
   font-size: 14px;
   color: var(--main-text);
+  line-height: 18px;
   letter-spacing: 0.06em;
   margin-top: 74px;
   margin-bottom: 16px;
@@ -19,9 +20,10 @@
   color: var(--main);
   font-size: 38px;
   font-weight: 700;
+  line-height: 38px;
   letter-spacing: -0.01em;
   text-align: left;
-  /* margin-bottom: 32px; */
+  margin-bottom: 32px;
 }
 
 .tryBtn {
@@ -79,7 +81,7 @@
     letter-spacing: 0.06em;
     text-align: left;
     padding-left: 32px;
-    margin-top: 50px;
+    margin-top: 58px;
   }
 
   .welcomeHeader {
@@ -96,10 +98,15 @@
   }
 
   .tryBtn {
+    width: 169px;
+    height: 60px;
     font-size: 16px;
+    margin-right: 16px;
   }
 
   .signInBtn {
+    width: 135px;
+    height: 60px;
     font-size: 16px;
   }
 }
@@ -116,8 +123,8 @@
 
   .welcomeText {
     font-size: 16px;
-    padding-top: 132px;
-    padding-bottom: 16px;
+    margin-top: 132px;
+    margin-bottom: 16px;
     line-height: 24px;
     letter-spacing: 0.06em;
     text-align: left;

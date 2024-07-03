@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
-import { errorToast } from "../../helpers/toast"; // імпортуємо toast
+import { errorToast } from "../../helpers/toast";
 
 import icons from "../../img/icons.svg";
 
@@ -64,7 +64,6 @@ const SignUpForm = () => {
     )
       .unwrap()
       .then((response) => {
-        // successToast("Registration successful"); // Показуємо успішне повідомлення
         navigate("/tracker");
       })
       .catch((error) => {
