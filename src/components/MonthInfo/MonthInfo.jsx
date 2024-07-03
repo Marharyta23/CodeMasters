@@ -132,7 +132,7 @@ export default function MonthInfo() {
             </IconWrapper>
           </button>
           <span className={css.monthlyInfo__CurrentMonth}>
-            {format(currentDate, "MMMM yyyy")}
+            {format(currentDate, "MMMM, yyyy")}
           </span>
           <button
             onClick={handleNextMonth}
@@ -166,15 +166,13 @@ export default function MonthInfo() {
                 handleDay(item.fullDate);
               }}
             >
-              {/* {dayInfo.percentage} */} {/*todo*/}
               <Day
                 className={css.monthlyInfo__Day}
-                percentage={0}
+                percentage={waterPercentage[item.day]}
                 isToday={isToday(item.fullDate)}
               >
                 {item.day}
               </Day>
-              {/* {dayInfo.percentage} */} {/*todo*/}
               <p className={css.monthlyInfo__Percentage}>
                 {waterPercentage[item.day]}%
               </p>
@@ -182,8 +180,6 @@ export default function MonthInfo() {
           );
         })}
       </Days>
-      {/* <CalendarPagination />
-      <Calendar /> */}
     </div>
   );
 }
